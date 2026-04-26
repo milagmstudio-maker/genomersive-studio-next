@@ -8,7 +8,7 @@ import { WorkCard } from "./WorkCard";
 import { WorkModal } from "./WorkModal";
 import { cn } from "@/lib/cn";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 12;
 
 export function Works() {
   const [filter, setFilter] = useState<(typeof CATEGORIES)[number]>("ALL");
