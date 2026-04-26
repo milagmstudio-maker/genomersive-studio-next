@@ -6,7 +6,7 @@ import { Cursor } from "@/components/Cursor";
 import { GlitchOverlay } from "@/components/GlitchOverlay";
 import { WorksGrid } from "@/components/WorksGrid";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 12;
 
 type Props = {
   searchParams: Promise<{ category?: string; page?: string }>;
