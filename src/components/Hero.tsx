@@ -6,6 +6,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Link from "next/link";
 import { useEffect } from "react";
 import { SplitText } from "./SplitText";
 
@@ -160,17 +161,20 @@ export function Hero() {
         001 / INDEX.MIX
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Enter indicator → Works */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 6, 0] }}
-        transition={{
-          opacity: { duration: 1, delay: 1.3 },
-          y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
-        }}
-        className="absolute bottom-8 right-6 font-mono text-[10px] tracking-[0.3em] text-foreground/50"
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.3 }}
+        className="absolute bottom-8 right-6"
       >
-        SCROLL ↓
+        <Link
+          href="/works"
+          className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/55 hover:text-accent transition-colors"
+        >
+          ENTER
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </Link>
       </motion.div>
     </section>
   );

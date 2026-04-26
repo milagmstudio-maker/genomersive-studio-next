@@ -1,9 +1,5 @@
 import Link from "next/link";
 import { CATEGORY_LIST, formatDate, getPosts, type BlogPost } from "@/lib/microcms";
-import { BackgroundFX } from "@/components/BackgroundFX";
-import { BrandMark } from "@/components/BrandMark";
-import { Cursor } from "@/components/Cursor";
-import { GlitchOverlay } from "@/components/GlitchOverlay";
 
 export const revalidate = 60;
 
@@ -23,20 +19,7 @@ export default async function BlogIndex({ searchParams }: Props) {
   }
 
   return (
-    <main className="relative min-h-screen">
-      <BackgroundFX />
-      <GlitchOverlay />
-      <Cursor />
-      <BrandMark />
-
-      {/* Top-right back link */}
-      <Link
-        href="/"
-        className="fixed top-5 right-6 z-30 font-mono text-[11px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
-      >
-        ← BACK
-      </Link>
-
+    <>
       <section className="relative z-10 px-6 md:px-12 lg:px-20 pt-32 pb-32">
         <div className="mx-auto max-w-7xl">
           <header className="mb-16 md:mb-24">
@@ -98,7 +81,7 @@ export default async function BlogIndex({ searchParams }: Props) {
           )}
         </div>
       </section>
-    </main>
+    </>
   );
 }
 

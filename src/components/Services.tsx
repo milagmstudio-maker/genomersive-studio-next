@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import {
   ADDONS,
@@ -16,6 +17,7 @@ import { SectionLabel } from "./SectionLabel";
 type SelectedPlans = Record<string, { selected: boolean; units: number }>;
 
 export function Services() {
+  const router = useRouter();
   const [plans, setPlans] = useState<SelectedPlans>(() => {
     const init: SelectedPlans = {};
     PLANS.forEach((p) => {
@@ -88,7 +90,7 @@ export function Services() {
       },
       total: calc.total,
     });
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    router.push("/contact");
   };
 
   // Group plans by category

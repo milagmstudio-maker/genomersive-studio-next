@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate, getPost } from "@/lib/microcms";
-import { BackgroundFX } from "@/components/BackgroundFX";
-import { BrandMark } from "@/components/BrandMark";
-import { Cursor } from "@/components/Cursor";
-import { GlitchOverlay } from "@/components/GlitchOverlay";
 
 export const revalidate = 60;
 
@@ -23,20 +19,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="relative min-h-screen">
-      <BackgroundFX />
-      <GlitchOverlay />
-      <Cursor />
-      <BrandMark />
-
-      <Link
-        href="/blog"
-        className="fixed top-5 right-6 z-30 font-mono text-[11px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
-      >
-        ← BLOG
-      </Link>
-
-      <article className="relative z-10 px-6 md:px-12 pt-32 pb-32">
+    <article className="relative z-10 px-6 md:px-12 pt-32 pb-32">
         <div className="mx-auto max-w-3xl">
           {/* Meta */}
           <div className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/50 mb-6">
@@ -84,6 +67,5 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </article>
-    </main>
   );
 }

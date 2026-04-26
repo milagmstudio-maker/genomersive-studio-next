@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Noto_Sans_JP } from "next/font/google";
+import { BackgroundFX } from "@/components/BackgroundFX";
+import { BrandMark } from "@/components/BrandMark";
+import { Cursor } from "@/components/Cursor";
+import { DotNav } from "@/components/DotNav";
+import { GlitchOverlay } from "@/components/GlitchOverlay";
 import { Splash } from "@/components/Splash";
 import "./globals.css";
 
@@ -49,7 +54,17 @@ export default function RootLayout({
     >
       <body className="bg-noise relative min-h-full">
         <Splash />
-        {children}
+        <BackgroundFX />
+        <GlitchOverlay />
+        <Cursor />
+        <BrandMark />
+        <DotNav />
+
+        <main className="relative">{children}</main>
+
+        <footer className="relative z-10 border-t border-white/5 py-8 text-center font-mono text-[10px] tracking-[0.3em] text-foreground/30">
+          © 2026 GENOMERSIVE STUDIO / MiLa
+        </footer>
       </body>
     </html>
   );

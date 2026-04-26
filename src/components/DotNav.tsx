@@ -1,43 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
 const SECTIONS = [
-  { id: "top", label: "TOP" },
-  { id: "works", label: "WORKS" },
-  { id: "services", label: "SERVICES" },
-  { id: "blog", label: "BLOG" },
-  { id: "contact", label: "CONTACT" },
+  { href: "/", label: "TOP", match: (p: string) => p === "/" },
+  { href: "/works", label: "WORKS", match: (p: string) => p.startsWith("/works") },
+  { href: "/services", label: "SERVICES", match: (p: string) => p.startsWith("/services") },
+  { href: "/blog", label: "BLOG", match: (p: string) => p.startsWith("/blog") },
+  { href: "/contact", label: "CONTACT", match: (p: string) => p.startsWith("/contact") },
 ];
 
 export function DotNav() {
-  const [active, setActive] = useState("top");
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    );
-    SECTIONS.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, []);
+  const pathname = usePathname();
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-12 md:gap-16">
       {SECTIONS.map((s) => {
-        const isActive = active === s.id;
+        const isActive = s.match(pathname);
         return (
-          <a
-            key={s.id}
-            href={`#${s.id}`}
+          <Link
+            key={s.href}
+            href={s.href}
             className="group relative flex flex-col items-center py-2"
             aria-label={s.label}
           >
@@ -59,7 +44,7 @@ export function DotNav() {
             >
               {s.label}
             </span>
-          </a>
+          </Link>
         );
       })}
     </nav>
