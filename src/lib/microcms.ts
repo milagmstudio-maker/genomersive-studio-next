@@ -31,14 +31,12 @@ function getClient() {
 
 export async function getPosts(opts?: {
   limit?: number;
-  offset?: number;
   category?: string;
 }) {
   const queries: Record<string, string | number> = {
     orders: "-publishedAt",
     limit: opts?.limit ?? 100,
   };
-  if (opts?.offset) queries.offset = opts.offset;
   if (opts?.category) {
     queries.filters = `category[contains]${opts.category}`;
   }

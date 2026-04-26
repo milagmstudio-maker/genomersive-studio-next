@@ -7,39 +7,20 @@ import { GlitchOverlay } from "@/components/GlitchOverlay";
 
 export const revalidate = 60;
 
-const PAGE_SIZE = 6;
-
 type Props = {
-  searchParams: Promise<{ category?: string; page?: string }>;
+  searchParams: Promise<{ category?: string }>;
 };
 
 export default async function BlogIndex({ searchParams }: Props) {
-  const { category, page } = await searchParams;
-
-  const currentPage = Math.max(1, Number(page) || 1);
-  const offset = (currentPage - 1) * PAGE_SIZE;
-
+  const { category } = await searchParams;
   let posts: BlogPost[] = [];
-  let totalCount = 0;
   let fetchError = false;
   try {
-    const res = await getPosts({ category, limit: PAGE_SIZE, offset });
+    const res = await getPosts({ category });
     posts = res.contents;
-    totalCount = res.totalCount;
   } catch {
     fetchError = true;
   }
-
-  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
-  const safePage = Math.min(currentPage, totalPages);
-
-  const buildHref = (cat: string | undefined, p: number) => {
-    const params = new URLSearchParams();
-    if (cat) params.set("category", cat);
-    if (p > 1) params.set("page", String(p));
-    const qs = params.toString();
-    return qs ? `/blog?${qs}` : "/blog";
-  };
 
   return (
     <main className="relative min-h-screen">
@@ -71,13 +52,13 @@ export default async function BlogIndex({ searchParams }: Props) {
 
           {/* Category filter */}
           <div className="mb-12 flex flex-wrap gap-x-1 gap-y-2 border-b border-white/10 pb-1">
-            <CategoryLink active={!category} label="ALL" href={buildHref(undefined, 1)} />
+            <CategoryLink active={!category} label="ALL" href="/blog" />
             {CATEGORY_LIST.map((c) => (
               <CategoryLink
                 key={c}
                 active={category === c}
                 label={c}
-                href={buildHref(c, 1)}
+                href={`/blog?category=${encodeURIComponent(c)}`}
               />
             ))}
           </div>
@@ -91,39 +72,29 @@ export default async function BlogIndex({ searchParams }: Props) {
               該当する記事がありません
             </p>
           ) : (
-            <>
-              <ul className="divide-y divide-white/10 border-y border-white/10">
-                {posts.map((p) => (
-                  <li key={p.id}>
-                    <Link
-                      href={`/blog/${p.id}`}
-                      className="group grid grid-cols-1 md:grid-cols-[120px_120px_1fr_24px] items-center gap-4 md:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
-                    >
-                      <span className="font-mono text-[11px] tracking-[0.25em] text-foreground/45">
-                        {formatDate(p.publishedAt)}
-                      </span>
-                      <span className="font-mono text-[10px] tracking-[0.25em] text-accent">
-                        {p.category?.[0] ?? "—"}
-                      </span>
-                      <h2 className="font-sans font-medium text-base md:text-lg leading-snug">
-                        {p.title}
-                      </h2>
-                      <span className="hidden md:block text-foreground/40 group-hover:text-accent group-hover:translate-x-1 transition-all">
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              {totalPages > 1 && (
-                <Pagination
-                  currentPage={safePage}
-                  totalPages={totalPages}
-                  buildHref={(p) => buildHref(category, p)}
-                />
-              )}
-            </>
+            <ul className="divide-y divide-white/10 border-y border-white/10">
+              {posts.map((p) => (
+                <li key={p.id}>
+                  <Link
+                    href={`/blog/${p.id}`}
+                    className="group grid grid-cols-1 md:grid-cols-[120px_120px_1fr_24px] items-center gap-4 md:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
+                  >
+                    <span className="font-mono text-[11px] tracking-[0.25em] text-foreground/45">
+                      {formatDate(p.publishedAt)}
+                    </span>
+                    <span className="font-mono text-[10px] tracking-[0.25em] text-accent">
+                      {p.category?.[0] ?? "—"}
+                    </span>
+                    <h2 className="font-sans font-medium text-base md:text-lg leading-snug">
+                      {p.title}
+                    </h2>
+                    <span className="hidden md:block text-foreground/40 group-hover:text-accent group-hover:translate-x-1 transition-all">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </section>
@@ -154,61 +125,5 @@ function CategoryLink({
         <span className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-accent shadow-[0_0_10px_rgba(176,38,255,0.7)]" />
       )}
     </Link>
-  );
-}
-
-function Pagination({
-  currentPage,
-  totalPages,
-  buildHref,
-}: {
-  currentPage: number;
-  totalPages: number;
-  buildHref: (p: number) => string;
-}) {
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-  return (
-    <nav className="mt-16 flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.25em]">
-      {currentPage > 1 ? (
-        <Link
-          href={buildHref(currentPage - 1)}
-          className="px-3 py-2 text-foreground/70 hover:text-accent transition-colors"
-        >
-          ← PREV
-        </Link>
-      ) : (
-        <span className="px-3 py-2 text-foreground/20">← PREV</span>
-      )}
-
-      <div className="flex items-center gap-1">
-        {pages.map((p) => {
-          const active = p === currentPage;
-          return (
-            <Link
-              key={p}
-              href={buildHref(p)}
-              className={`flex h-9 w-9 items-center justify-center transition-colors ${
-                active
-                  ? "bg-accent/15 border border-accent text-foreground shadow-[0_0_12px_rgba(176,38,255,0.4)]"
-                  : "border border-white/10 text-foreground/55 hover:text-foreground hover:border-white/30"
-              }`}
-            >
-              {String(p).padStart(2, "0")}
-            </Link>
-          );
-        })}
-      </div>
-
-      {currentPage < totalPages ? (
-        <Link
-          href={buildHref(currentPage + 1)}
-          className="px-3 py-2 text-foreground/70 hover:text-accent transition-colors"
-        >
-          NEXT →
-        </Link>
-      ) : (
-        <span className="px-3 py-2 text-foreground/20">NEXT →</span>
-      )}
-    </nav>
   );
 }
