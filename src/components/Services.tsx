@@ -14,39 +14,62 @@ import { cn } from "@/lib/cn";
 import { formatJPY, saveQuote } from "@/lib/quote";
 import { SectionLabel } from "./SectionLabel";
 
-type SelectedPlans = Record<string, { selected: boolean; units: number }>;
+type Category = Plan["category"];
+
+const CATEGORY_LABELS: { key: Category; jp: string }[] = [
+  { key: "VOCAL MIX", jp: "ボーカルMix" },
+  { key: "PARA MIX", jp: "パラMix（ステム）" },
+  { key: "OBS AUDIO", jp: "OBS音響調整" },
+  { key: "PRODUCTION", jp: "プロデュース" },
+];
 
 export function Services() {
   const router = useRouter();
-  const [plans, setPlans] = useState<SelectedPlans>(() => {
-    const init: SelectedPlans = {};
+
+  // One plan per category; null if nothing selected
+  const [selectedByCategory, setSelectedByCategory] = useState<
+    Record<Category, string | null>
+  >({
+    "VOCAL MIX": null,
+    "PARA MIX": null,
+    "OBS AUDIO": null,
+    PRODUCTION: null,
+  });
+
+  const [units, setUnits] = useState<Record<string, number>>(() => {
+    const init: Record<string, number> = {};
     PLANS.forEach((p) => {
-      init[p.id] = { selected: false, units: p.extra?.defaultUnits ?? 0 };
+      if (p.extra) init[p.id] = p.extra.defaultUnits;
     });
     return init;
   });
+
   const [addons, setAddons] = useState<Record<string, boolean>>({});
   const [deliveryId, setDeliveryId] = useState(DELIVERIES[0].id);
   const [discountId, setDiscountId] = useState(DISCOUNTS[0].id);
 
   const calc = useMemo(() => {
-    const planLines = PLANS.flatMap((p) => {
-      const s = plans[p.id];
-      if (!s?.selected) return [];
-      let subtotal = p.basePrice;
-      if (p.extra) {
-        const extraUnits = Math.max(0, s.units - p.extra.includedUnits);
-        subtotal += extraUnits * p.extra.pricePerUnit;
-      }
-      return [{
-        id: p.id,
-        name: p.name,
-        category: p.category,
-        units: s.units,
-        subtotal,
-        recurring: p.recurring,
-      }];
-    });
+    const planLines = (Object.entries(selectedByCategory) as [Category, string | null][])
+      .flatMap(([, planId]) => {
+        if (!planId) return [];
+        const plan = PLANS.find((p) => p.id === planId);
+        if (!plan) return [];
+        let subtotal = plan.basePrice;
+        const u = units[plan.id] ?? plan.extra?.defaultUnits ?? 0;
+        if (plan.extra) {
+          const extraUnits = Math.max(0, u - plan.extra.includedUnits);
+          subtotal += extraUnits * plan.extra.pricePerUnit;
+        }
+        return [{
+          id: plan.id,
+          name: plan.name,
+          category: plan.category,
+          units: u,
+          subtotal,
+          recurring: plan.recurring,
+        }];
+      });
+
     const addonLines = ADDONS.filter((a) => addons[a.id]).map((a) => ({
       id: a.id,
       name: a.name,
@@ -71,12 +94,18 @@ export function Services() {
       total: afterDiscount,
       hasSelection: planLines.length > 0,
     };
-  }, [plans, addons, deliveryId, discountId]);
+  }, [selectedByCategory, units, addons, deliveryId, discountId]);
 
-  const togglePlan = (id: string) =>
-    setPlans((s) => ({ ...s, [id]: { ...s[id], selected: !s[id].selected } }));
-  const setUnits = (id: string, units: number) =>
-    setPlans((s) => ({ ...s, [id]: { ...s[id], units } }));
+  const togglePlan = (plan: Plan) => {
+    setSelectedByCategory((s) => ({
+      ...s,
+      [plan.category]: s[plan.category] === plan.id ? null : plan.id,
+    }));
+  };
+
+  const setPlanUnits = (planId: string, n: number) => {
+    setUnits((s) => ({ ...s, [planId]: n }));
+  };
 
   const goToContact = () => {
     saveQuote({
@@ -93,13 +122,17 @@ export function Services() {
     router.push("/contact");
   };
 
-  // Group plans by category
-  const groups: Array<{ key: string; label: string; plans: Plan[] }> = [
-    { key: "VOCAL MIX", label: "VOCAL MIX", plans: PLANS.filter((p) => p.category === "VOCAL MIX") },
-    { key: "PARA MIX", label: "PARA MIX", plans: PLANS.filter((p) => p.category === "PARA MIX") },
-    { key: "OBS AUDIO", label: "OBS AUDIO", plans: PLANS.filter((p) => p.category === "OBS AUDIO") },
-    { key: "PRODUCTION", label: "PRODUCTION", plans: PLANS.filter((p) => p.category === "PRODUCTION") },
-  ];
+  // Build section list (numbered)
+  const sections = CATEGORY_LABELS.map((c) => ({
+    kind: "plans" as const,
+    key: c.key,
+    enLabel: c.key,
+    jpLabel: c.jp,
+    plans: PLANS.filter((p) => p.category === c.key),
+  }));
+
+  let stepIdx = 0;
+  const stepNo = () => String(++stepIdx).padStart(2, "0");
 
   return (
     <section
@@ -111,135 +144,76 @@ export function Services() {
 
         <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
           {/* Selection panel */}
-          <div className="space-y-12">
-            {groups.map((g) => (
-              <div key={g.key}>
-                <h3 className="mb-5 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] text-foreground/60">
-                  <span className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]" />
-                  {g.label}
-                </h3>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {g.plans.map((p) => (
-                    <PlanCheckbox
-                      key={p.id}
-                      plan={p}
-                      selected={plans[p.id].selected}
-                      units={plans[p.id].units}
-                      onToggle={() => togglePlan(p.id)}
-                      onUnits={(u) => setUnits(p.id, u)}
-                    />
-                  ))}
-                </div>
-              </div>
+          <div className="space-y-20">
+            {sections.map((s) => (
+              <Step key={s.key} no={stepNo()} en={s.enLabel} jp={s.jpLabel}>
+                <TileGrid>
+                  {s.plans.map((p) => {
+                    const selected = selectedByCategory[s.key] === p.id;
+                    return (
+                      <PlanTile
+                        key={p.id}
+                        plan={p}
+                        selected={selected}
+                        units={units[p.id] ?? p.extra?.defaultUnits ?? 0}
+                        onToggle={() => togglePlan(p)}
+                        onUnits={(n) => setPlanUnits(p.id, n)}
+                      />
+                    );
+                  })}
+                </TileGrid>
+              </Step>
             ))}
 
-            {/* Add-ons */}
-            <div>
-              <h3 className="mb-5 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] text-foreground/60">
-                <span className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]" />
-                ADD-ONS
-              </h3>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {ADDONS.map((a) => (
-                  <label
-                    key={a.id}
-                    className={cn(
-                      "block border p-4 transition-colors",
-                      addons[a.id]
-                        ? "border-accent bg-accent/[0.06]"
-                        : "border-white/10 hover:border-white/30"
-                    )}
-                  >
-                    <div className="flex items-start gap-3">
-                      <CheckboxBox checked={!!addons[a.id]} />
-                      <div>
-                        <p className="font-sans font-medium leading-tight">{a.name}</p>
-                        <p className="mt-1 font-mono text-[10px] tracking-[0.15em] text-accent">
-                          +{formatJPY(a.price)}
-                        </p>
-                        <p className="mt-2 text-xs text-foreground/55 leading-snug">
-                          {a.description}
-                        </p>
-                      </div>
-                    </div>
-                    <input
-                      type="checkbox"
-                      className="sr-only"
-                      checked={!!addons[a.id]}
-                      onChange={(e) =>
-                        setAddons((s) => ({ ...s, [a.id]: e.target.checked }))
+            <Step no={stepNo()} en="ADD-ONS" jp="オプション">
+              <TileGrid>
+                {ADDONS.map((a) => {
+                  const checked = !!addons[a.id];
+                  return (
+                    <Tile
+                      key={a.id}
+                      selected={checked}
+                      onClick={() =>
+                        setAddons((s) => ({ ...s, [a.id]: !s[a.id] }))
                       }
+                      title={a.name}
+                      priceLabel={`+${formatJPY(a.price)}`}
+                      description={a.description}
                     />
-                  </label>
-                ))}
-              </div>
-            </div>
+                  );
+                })}
+              </TileGrid>
+            </Step>
 
-            {/* Delivery */}
-            <div>
-              <h3 className="mb-5 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] text-foreground/60">
-                <span className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]" />
-                DELIVERY
-              </h3>
-              <div className="grid gap-3 sm:grid-cols-4">
+            <Step no={stepNo()} en="DELIVERY" jp="納期">
+              <TileGrid cols={4}>
                 {DELIVERIES.map((d) => (
-                  <label
+                  <Tile
                     key={d.id}
-                    className={cn(
-                      "block cursor-pointer border p-3 text-center transition-colors",
-                      deliveryId === d.id
-                        ? "border-accent bg-accent/[0.06]"
-                        : "border-white/10 hover:border-white/30"
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      className="sr-only"
-                      name="delivery"
-                      checked={deliveryId === d.id}
-                      onChange={() => setDeliveryId(d.id)}
-                    />
-                    <p className="font-sans text-sm font-medium">{d.name}</p>
-                    <p className="mt-1 font-mono text-[10px] tracking-[0.15em] text-foreground/55">
-                      {d.description}
-                    </p>
-                  </label>
+                    selected={deliveryId === d.id}
+                    onClick={() => setDeliveryId(d.id)}
+                    title={d.name}
+                    priceLabel={d.surcharge > 0 ? `+${formatJPY(d.surcharge)}` : "—"}
+                    description={d.description}
+                  />
                 ))}
-              </div>
-            </div>
+              </TileGrid>
+            </Step>
 
-            {/* Discount */}
-            <div>
-              <h3 className="mb-5 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] text-foreground/60">
-                <span className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]" />
-                DISCOUNT
-              </h3>
-              <div className="grid gap-3 sm:grid-cols-3">
+            <Step no={stepNo()} en="DISCOUNT" jp="割引">
+              <TileGrid cols={3}>
                 {DISCOUNTS.map((d) => (
-                  <label
+                  <Tile
                     key={d.id}
-                    className={cn(
-                      "block cursor-pointer border p-3 text-center transition-colors",
-                      discountId === d.id
-                        ? "border-accent bg-accent/[0.06]"
-                        : "border-white/10 hover:border-white/30"
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      className="sr-only"
-                      name="discount"
-                      checked={discountId === d.id}
-                      onChange={() => setDiscountId(d.id)}
-                    />
-                    <p className="font-sans text-sm font-medium">{d.name}</p>
-                    <p className="mt-1 font-mono text-[10px] tracking-[0.15em] text-foreground/55">
-                      {d.description || "—"}
-                    </p>
-                  </label>
+                    selected={discountId === d.id}
+                    onClick={() => setDiscountId(d.id)}
+                    title={d.name}
+                    priceLabel={d.description || "—"}
+                    description=""
+                  />
                 ))}
-              </div>
-            </div>
+              </TileGrid>
+            </Step>
           </div>
 
           {/* Sticky summary */}
@@ -248,7 +222,6 @@ export function Services() {
               layout
               className="border border-white/15 bg-black/60 backdrop-blur-md"
             >
-              {/* Header — file style */}
               <div className="flex items-center justify-between border-b border-white/10 px-4 py-2 font-mono text-[10px] tracking-[0.25em] text-foreground/60">
                 <span>QUOTE / SUMMARY</span>
                 <span>EST.</span>
@@ -349,7 +322,113 @@ export function Services() {
   );
 }
 
-function PlanCheckbox({
+function Step({
+  no,
+  en,
+  jp,
+  children,
+}: {
+  no: string;
+  en: string;
+  jp: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <header className="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+        <div className="flex items-baseline gap-5">
+          <span
+            className="font-serif italic text-3xl md:text-4xl tracking-tight"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            {no}
+          </span>
+          <div className="flex flex-col gap-1">
+            <span className="font-mono text-[11px] tracking-[0.3em] text-foreground/85">
+              {en}
+            </span>
+            <span className="font-sans text-[11px] text-foreground/45">{jp}</span>
+          </div>
+        </div>
+        <span
+          aria-hidden
+          className="inline-block h-3 w-3"
+          style={{
+            background: "var(--accent-cyan)",
+            boxShadow: "0 0 10px rgba(46,255,213,0.7)",
+          }}
+        />
+      </header>
+      {children}
+    </div>
+  );
+}
+
+function TileGrid({
+  children,
+  cols = 4,
+}: {
+  children: React.ReactNode;
+  cols?: 2 | 3 | 4;
+}) {
+  const colsCls =
+    cols === 2
+      ? "sm:grid-cols-2"
+      : cols === 3
+      ? "sm:grid-cols-2 lg:grid-cols-3"
+      : "sm:grid-cols-2 lg:grid-cols-4";
+  return <div className={cn("grid gap-4", colsCls)}>{children}</div>;
+}
+
+function Tile({
+  selected,
+  onClick,
+  title,
+  priceLabel,
+  description,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  title: string;
+  priceLabel: string;
+  description: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "group relative text-left border p-5 transition-all",
+        selected
+          ? "border-accent bg-accent/[0.07] shadow-[0_0_20px_rgba(176,38,255,0.25)]"
+          : "border-white/10 hover:border-white/30 bg-black/20"
+      )}
+    >
+      {/* Selected indicator */}
+      <span
+        aria-hidden
+        className={cn(
+          "absolute top-3 right-3 inline-block h-[6px] w-[6px] transition-opacity",
+          selected
+            ? "bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)] opacity-100"
+            : "bg-foreground/25 opacity-50 group-hover:opacity-100"
+        )}
+      />
+
+      <div className="font-sans font-bold leading-tight">{title}</div>
+      <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent">
+        {priceLabel}
+      </div>
+      {description && (
+        <p className="mt-3 text-xs leading-relaxed text-foreground/60">
+          {description}
+        </p>
+      )}
+    </button>
+  );
+}
+
+function PlanTile({
   plan,
   selected,
   units,
@@ -369,36 +448,37 @@ function PlanCheckbox({
   return (
     <div
       className={cn(
-        "border p-4 transition-colors",
+        "relative border p-5 transition-all",
         selected
-          ? "border-accent bg-accent/[0.06]"
-          : "border-white/10 hover:border-white/30"
+          ? "border-accent bg-accent/[0.07] shadow-[0_0_20px_rgba(176,38,255,0.25)]"
+          : "border-white/10 hover:border-white/30 bg-black/20"
       )}
     >
-      <label className="flex items-start gap-3 cursor-pointer">
-        <CheckboxBox checked={selected} />
-        <div className="flex-1 min-w-0">
-          <div className="flex items-baseline justify-between gap-3">
-            <p className="font-sans font-medium leading-tight">{plan.name}</p>
-            <p className="shrink-0 font-mono text-[11px] tracking-[0.15em] text-accent">
-              {priceLabel}
-            </p>
-          </div>
-          <p className="mt-2 text-xs text-foreground/55 leading-snug">
-            {plan.description}
-          </p>
-        </div>
-        <input
-          type="checkbox"
-          className="sr-only"
-          checked={selected}
-          onChange={onToggle}
+      <button
+        type="button"
+        onClick={onToggle}
+        className="group block w-full text-left"
+      >
+        <span
+          aria-hidden
+          className={cn(
+            "absolute top-3 right-3 inline-block h-[6px] w-[6px] transition-opacity",
+            selected
+              ? "bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)] opacity-100"
+              : "bg-foreground/25 opacity-50 group-hover:opacity-100"
+          )}
         />
-      </label>
+        <div className="font-sans font-bold leading-tight">{plan.name}</div>
+        <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent">
+          {priceLabel}
+        </div>
+        <p className="mt-3 text-xs leading-relaxed text-foreground/60">
+          {plan.description}
+        </p>
+      </button>
 
-      {/* Stepper for plans with extras */}
       {selected && plan.extra && (
-        <div className="mt-3 flex items-center justify-between gap-3 border-t border-white/10 pt-3">
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-3">
           <span className="font-mono text-[10px] tracking-[0.2em] text-foreground/55">
             {plan.extra.label}
           </span>
@@ -424,32 +504,5 @@ function PlanCheckbox({
         </div>
       )}
     </div>
-  );
-}
-
-function CheckboxBox({ checked }: { checked: boolean }) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "mt-1 inline-block h-4 w-4 shrink-0 border transition-all",
-        checked
-          ? "border-accent bg-accent shadow-[0_0_10px_rgba(176,38,255,0.6)]"
-          : "border-white/30"
-      )}
-    >
-      {checked && (
-        <svg viewBox="0 0 16 16" className="h-full w-full">
-          <path
-            d="M3 8.5 L7 12 L13 4"
-            fill="none"
-            stroke="black"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      )}
-    </span>
   );
 }
