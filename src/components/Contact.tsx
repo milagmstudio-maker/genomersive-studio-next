@@ -43,7 +43,7 @@ export function Contact() {
     const fd = new FormData(form);
 
     if (quote) {
-      fd.append("_quote", JSON.stringify(quote, null, 2));
+      fd.append("quote", JSON.stringify(quote, null, 2));
     }
 
     try {

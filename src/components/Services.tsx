@@ -333,7 +333,7 @@ export function Services() {
                       : "border-white/10 text-foreground/30 cursor-not-allowed"
                   )}
                 >
-                  GET A QUOTE
+                  GET A CART
                   <span className="transition-transform group-hover:translate-x-1">
                     →
                   </span>
