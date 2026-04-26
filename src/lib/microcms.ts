@@ -20,18 +20,14 @@ export type BlogPost = {
   revisedAt: string;
 };
 
-const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
-const apiKey = process.env.MICROCMS_API_KEY;
-
-if (!serviceDomain || !apiKey) {
-  // Don't throw at import time during build — let the request itself fail with a clearer message
-  console.warn("[microcms] MICROCMS_SERVICE_DOMAIN or MICROCMS_API_KEY is not set");
+function getClient() {
+  const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
+  const apiKey = process.env.MICROCMS_API_KEY;
+  if (!serviceDomain || !apiKey) {
+    throw new Error("[microcms] MICROCMS_SERVICE_DOMAIN or MICROCMS_API_KEY is not set");
+  }
+  return createClient({ serviceDomain, apiKey });
 }
-
-export const microcms = createClient({
-  serviceDomain: serviceDomain ?? "",
-  apiKey: apiKey ?? "",
-});
 
 export async function getPosts(opts?: {
   limit?: number;
@@ -44,14 +40,14 @@ export async function getPosts(opts?: {
   if (opts?.category) {
     queries.filters = `category[contains]${opts.category}`;
   }
-  return microcms.getList<BlogPost>({
+  return getClient().getList<BlogPost>({
     endpoint: "blog",
     queries,
   });
 }
 
 export async function getPost(id: string) {
-  return microcms.getListDetail<BlogPost>({
+  return getClient().getListDetail<BlogPost>({
     endpoint: "blog",
     contentId: id,
   });
