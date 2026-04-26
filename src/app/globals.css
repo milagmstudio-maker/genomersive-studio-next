@@ -1,26 +1,298 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08101e; /* deep night-sky navy */
+  --foreground: #f4f4f5;
+  --accent: #b026ff;
+  --accent-glow: rgba(176, 38, 255, 0.55);
+  --accent-hot: #ff2ac0; /* hot magenta — pops, highlights */
+  --accent-wine: #5b1a8c; /* deep wine — atmospheric */
+  --accent-cream: #f4d9a6; /* warm tungsten — distant city lights */
+  --accent-cyan: #2effd5; /* small cyan punch — used sparingly */
+  --night-sky-top: #050a16; /* darker navy at top */
+  --night-sky-bottom: #0e1a30; /* slightly lighter horizon */
+  --border-soft: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hot: var(--accent-hot);
+  --color-accent-wine: var(--accent-wine);
+  --color-accent-cream: var(--accent-cream);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-border-soft: var(--border-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cormorant);
+  --font-jp: var(--font-noto-jp);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: var(--font-geist-sans), var(--font-noto-jp), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Night-sky gradient base — top dark, horizon slightly lit by city glow */
+.bg-noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, var(--night-sky-top) 0%, var(--night-sky-bottom) 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(244, 217, 166, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 75% 25%, rgba(176, 38, 255, 0.06) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Film grain overlay — animated noise texture for analog feel */
+.bg-noise::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.86  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+  animation: grain 1.6s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 4%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, 2%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-noise::after { animation: none; }
+}
+
+/* Chain-link fence motif — corner decoration evoking the brand icon */
+.chainlink-corner {
+  position: fixed;
+  pointer-events: none;
+  width: 240px;
+  height: 240px;
+  z-index: 1;
+  opacity: 0.18;
+}
+
+/* CRT scanlines — constant, very subtle */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+/* Chromatic aberration — applied to images on hover */
+.chromatic-hover {
+  transition: filter 0.3s ease;
+}
+.chromatic-hover:hover {
+  filter: drop-shadow(2px 0 0 rgba(255, 42, 192, 0.8))
+    drop-shadow(-2px 0 0 rgba(46, 255, 213, 0.6));
+}
+
+/* RGB-split scanlines — three layered horizontal bands drifting */
+@keyframes rgb-drift-1 { 0%,100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+@keyframes rgb-drift-2 { 0%,100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+
+/* Slow horizontal scroll for static-noise background */
+@keyframes static-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 200px; }
+}
+
+/* Long-exposure light streaks drifting horizontally */
+@keyframes streak-drift {
+  0% { transform: translateX(-30%); opacity: 0; }
+  10% { opacity: var(--streak-opacity, 0.4); }
+  90% { opacity: var(--streak-opacity, 0.4); }
+  100% { transform: translateX(130%); opacity: 0; }
+}
+
+/* Datamosh band — horizontal displacement, slow drift */
+@keyframes datamosh-drift {
+  0%, 100% { transform: translate(0, 0) skewX(0deg); opacity: 0.4; }
+  50% { transform: translate(-15px, 0) skewX(-1deg); opacity: 0.7; }
+}
+
+/* Slow chain-link sway for depth */
+@keyframes fence-sway {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, 4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanlines { opacity: 0.3; }
+}
+
+/* Hide native cursor on fine-pointer devices — replaced by <Cursor /> follower */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"],
+  label {
+    cursor: none;
+  }
+}
+
+/* Reusable utility — small floating pixel */
+.pixel-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Blog rich-text styles */
+.prose-mila {
+  color: rgba(244, 244, 245, 0.85);
+  line-height: 1.9;
+  font-size: 1rem;
+}
+.prose-mila > * + * {
+  margin-top: 1.5em;
+}
+.prose-mila h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2.5em;
+  padding-top: 1em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(244, 244, 245, 1);
+}
+.prose-mila h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2em;
+  color: rgba(244, 244, 245, 1);
+}
+.prose-mila h3::before {
+  content: "▸ ";
+  color: var(--accent);
+  margin-right: 0.25em;
+}
+.prose-mila p {
+  margin: 1em 0;
+}
+.prose-mila a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(176, 38, 255, 0.4);
+  transition: text-decoration-color 0.2s;
+}
+.prose-mila a:hover {
+  text-decoration-color: var(--accent);
+}
+.prose-mila strong {
+  color: rgba(244, 244, 245, 1);
+  font-weight: 600;
+}
+.prose-mila em {
+  font-style: italic;
+  color: rgba(244, 244, 245, 0.95);
+}
+.prose-mila blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.5em 1.25em;
+  margin: 1.75em 0;
+  color: rgba(244, 244, 245, 0.7);
+  font-style: italic;
+  background: rgba(176, 38, 255, 0.04);
+}
+.prose-mila ul,
+.prose-mila ol {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+.prose-mila ul > li {
+  list-style: none;
+  position: relative;
+}
+.prose-mila ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1em;
+  top: 0.85em;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+.prose-mila ol > li {
+  list-style: decimal;
+}
+.prose-mila li {
+  margin: 0.5em 0;
+}
+.prose-mila code {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875em;
+}
+.prose-mila pre {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.25em;
+  margin: 1.75em 0;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.6;
+}
+.prose-mila pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+.prose-mila img {
+  margin: 2em auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.prose-mila hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 3em 0;
 }
