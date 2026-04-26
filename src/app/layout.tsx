@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Noto_Sans_JP } from "next/font/google";
+import { Splash } from "@/components/Splash";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,7 +47,10 @@ export default function RootLayout({
       lang="ja"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${notoJp.variable} h-full antialiased`}
     >
-      <body className="bg-noise relative min-h-full">{children}</body>
+      <body className="bg-noise relative min-h-full">
+        <Splash />
+        {children}
+      </body>
     </html>
   );
 }
