@@ -1,0 +1,40 @@
+{
+  "skill_name": "shader-bg-fx",
+  "evals": [
+    {
+      "id": 0,
+      "name": "full-replace-backgroundfx",
+      "prompt": "今の `src/components/BackgroundFX.tsx` をシェーダーベースに置き換えたい。色合い・ざらつき・夜の都会感は残しつつ、GLSLでヌルッと動くノイズに。レイアウトの z-index と pointer-events は今のまま。実プロジェクトのファイルは変更せず、新しいコンポーネント類を outputs/ ディレクトリに新規作成してください。",
+      "expected_output": "ShaderCanvas wrapper component using next/dynamic ssr:false, sibling _ShaderScene with <Canvas> + ScreenQuad + fragment shader (time/mouse/resolution uniforms, fbm noise, palette in night-sky navy + purple accent + cream warmth), package.json deps update notes (or PATCH-style diff), brief approach writeup (notes.md).",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "hydration-error",
+      "prompt": "シェーダー背景を追加したら 'Hydration failed because the server rendered HTML didn't match the client' が出るようになりました。`BackgroundFX` の代わりに `<Canvas>` を直接 layout.tsx に書きました。原因の特定と直し方を教えて。コードもください。",
+      "expected_output": "Diagnosis (Canvas needs SSR-disabled dynamic wrapping, since WebGL globals don't exist on the server / Cloudflare Worker runtime). Corrected file structure: layout.tsx imports a thin ShaderCanvas wrapper using next/dynamic({ ssr: false }), which dynamically imports a sibling _ShaderScene client component. Brief explanation of why \"use client\" alone is insufficient.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "mobile-perf",
+      "prompt": "新しいシェーダー背景にしたらiPhone SE で15FPSしか出ないって連絡が来た。何を削れば軽くなるか具体的なチェックリストとコード差分で教えて。",
+      "expected_output": "Prioritized optimization checklist with code examples: (1) clamp dpr to [1, 1.5] or [1, 1.25], (2) frameloop=demand if mouse-only, (3) reduce fbm octaves to 2, (4) useDetectGPU + tier-1 fallback to a low-quality variant, (5) tree-shake drei imports, (6) gl.antialias=false, (7) Preload all in Suspense. Each item with diff-style code snippet.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "bloom-chromatic",
+      "prompt": "ブランドカラー（紫 #b026ff・マゼンタ #ff2ac0）が画面で光って見えるようにしたい。Bloom と色収差を入れて。ただし読みやすさは保ちたい。実装してください。",
+      "expected_output": "EffectComposer chain inside <Canvas> with: Bloom (intensity ~0.6, luminanceThreshold ≥0.7-0.85 so only bright neon pixels bloom — protecting text), ChromaticAberration (offset ≤0.001 with radialModulation enabled so center text stays sharp). Order Bloom → CA. Optionally Vignette + Noise. Brief comment explaining the readability tradeoffs.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "pre-deploy-checklist",
+      "prompt": "シェーダー背景の変更をリリース前にチェックしたい。何を見ればいい？チェックリストとして整理して。",
+      "expected_output": "Categorized pre-deploy checklist covering: local build (npm run build:cf clean), cross-browser smoke (Chrome/Safari desktop + mobile Safari + mobile Chrome), accessibility (prefers-reduced-motion, WCAG contrast, aria-hidden on Canvas), Cloudflare Workers compat (dynamic ssr:false, no top-level three imports in server paths, Worker bundle size delta <100KB), bundle/size (client JS delta <350KB gzipped), deploy (wrangler deploy + hard refresh + 5-minute log watch).",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+// layout.tsx への変更パッチ
+//
+// 変更箇所: BackgroundFX を ShaderCanvas に差し替える (または並列使用する場合は追加)
+//
+// ❌ 修正前 (hydration エラーが出ていた状態)
+// -----------------------------------------------
+// import { BackgroundFX } from "@/components/BackgroundFX";
+// // または直接 Canvas を書いていた場合:
+// // import { Canvas } from "@react-three/fiber";
+//
+// export default function RootLayout({ children }) {
+//   return (
+//     <html lang="ja" ...>
+//       <body ...>
+//         <BackgroundFX />   {/* または <Canvas>...</Canvas> */}
+//         ...
+//       </body>
+//     </html>
+//   );
+// }
+//
+// ✅ 修正後
+// -----------------------------------------------
+// ShaderCanvas は next/dynamic + ssr:false で Canvas を遅延ロードするので
+// layout.tsx はサーバーコンポーネントのまま維持できる。
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono, Cormorant_Garamond, Noto_Sans_JP } from "next/font/google";
+// BackgroundFX の代わりに ShaderCanvas を import
+import { ShaderCanvas } from "@/components/ShaderCanvas";
+import { BrandMark } from "@/components/BrandMark";
+import { Cursor } from "@/components/Cursor";
+import { DotNav } from "@/components/DotNav";
+import { GlitchOverlay } from "@/components/GlitchOverlay";
+import { Splash } from "@/components/Splash";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const notoJp = Noto_Sans_JP({
+  variable: "--font-noto-jp",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
+
+export const metadata: Metadata = {
+  title: "Genomersive Studio — Producer / Director / Sound Engineer",
+  description:
+    "MiLa主宰のサウンドプロダクション。ボーカルMix、Para(Stem)Mix、OBS音響調整、配信サポートまで。声をブランド化する音響設計。",
+  metadataBase: new URL("https://genomersive-studio.mila-gmstudio.workers.dev"),
+  openGraph: {
+    title: "Genomersive Studio",
+    description: "Producer / Director / Sound Engineer",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="ja"
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${notoJp.variable} h-full antialiased`}
+    >
+      <body className="bg-noise relative min-h-full">
+        <Splash />
+        {/* ShaderCanvas は内部で next/dynamic + ssr:false を使うので hydration 安全 */}
+        <ShaderCanvas />
+        <GlitchOverlay />
+        <Cursor />
+        <BrandMark />
+        <DotNav />
+
+        <main className="relative">{children}</main>
+
+        <footer className="relative z-10 border-t border-white/5 py-8 text-center font-mono text-[10px] tracking-[0.3em] text-foreground/30">
+          © 2026 GENOMERSIVE STUDIO / MiLa
+        </footer>
+      </body>
+    </html>
+  );
+}

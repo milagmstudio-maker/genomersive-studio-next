@@ -112,14 +112,22 @@ export const PLANS: Plan[] = [
       "通常マイク / 歌唱マイク / ASMRマイクなどの調整。アフターサポート2ヶ月付き。",
   },
 
-  // Subscription
+  // Pack
   {
-    id: "p-sub",
-    name: "Vocal Mix Subscription",
+    id: "p-pack-3",
+    name: "Vocal Mix 3曲パック",
     category: "VOCAL MIX",
     basePrice: 20000,
-    description: "月額制。YouTube Shorts含む全Mix対応。定員制限あり。",
-    recurring: "monthly",
+    description:
+      "ボーカルMix 3曲分のまとめパック。1曲あたり約¥6,667（通常Full Chorus ¥10,000〜と比べてお得）。Full Chorus相当の品質で対応。",
+    extra: {
+      label: "追加曲数",
+      pricePerUnit: 6000,
+      includedUnits: 3,
+      defaultUnits: 3,
+      min: 3,
+      max: 10,
+    },
   },
 
   // Production — quote only

@@ -10,8 +10,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { SplitText } from "./SplitText";
 
-const TAGS = ["VOCAL MIX", "PARA MIX", "OBS AUDIO", "PRODUCTION"];
-
 export function Hero() {
   // Mouse-driven 3D parallax
   const mx = useMotionValue(0);
@@ -57,7 +55,7 @@ export function Hero() {
       {/* Subtitle */}
       <motion.div
         style={{ x: subX }}
-        className="font-mono text-[11px] tracking-[0.45em] text-foreground/55"
+        className="font-mono text-[11px] tracking-[0.45em] text-foreground/70"
       >
         <SplitText
           text="PRODUCER  /  DIRECTOR  /  SOUND ENGINEER"
@@ -94,7 +92,7 @@ export function Hero() {
             rise={60}
           />
           <motion.span
-            initial={{ opacity: 0, y: 60, rotateX: -45 }}
+            initial={{ opacity: 0.02, y: 60, rotateX: -45 }}
             animate={{
               opacity: 1,
               y: 0,
@@ -115,33 +113,17 @@ export function Hero() {
         </span>
       </motion.h1>
 
-      {/* Service tags */}
-      <motion.div
+      {/* Service line — ヒーローは「何者か」だけ伝える（コアコピーはフッター署名で存続）*/}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 1.5 }}
         style={{ x: tagX }}
-        className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.35em] text-foreground/65"
+        className="mt-12 text-center text-xs md:text-sm tracking-wider text-foreground/85"
       >
-        {TAGS.map((t, i) => (
-          <motion.span
-            key={t}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: 1.5 + i * 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="flex items-center gap-6"
-          >
-            {i > 0 && (
-              <span
-                aria-hidden
-                className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]"
-              />
-            )}
-            <span>{t}</span>
-          </motion.span>
-        ))}
-      </motion.div>
+        Mixing / OBS音響調整 / プロデュース
+        <span className="hidden sm:inline"> — VTuber・歌い手のための音響設計</span>
+      </motion.p>
 
       {/* File-style label — bottom-left */}
       <motion.div
@@ -170,11 +152,29 @@ export function Hero() {
       >
         <Link
           href="/works"
-          className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/55 hover:text-accent transition-colors"
+          className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
         >
-          ENTER
+          実績を聴く
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
+      </motion.div>
+
+      {/* Scroll indicator — center bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+        aria-hidden
+      >
+        <span className="font-mono text-[10px] tracking-[0.35em] text-foreground/85">SCROLL</span>
+        <div className="relative h-12 w-[2px] overflow-hidden bg-foreground/30">
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-foreground shadow-[0_0_6px_rgba(255,255,255,0.8)]"
+            animate={{ height: ["0%", "100%", "100%"], y: ["0%", "0%", "100%"] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
+          />
+        </div>
       </motion.div>
     </section>
   );

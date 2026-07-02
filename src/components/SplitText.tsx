@@ -32,7 +32,9 @@ export function SplitText({
     },
   };
   const child: Variants = {
-    hidden: { y: rise, opacity: 0, rotateX: -45 },
+    // opacity 0.02: 目には見えないが「描画済み」扱いになり、LCP計測が
+    // 演出の遅延分だけ悪化するのを防ぐ
+    hidden: { y: rise, opacity: 0.02, rotateX: -45 },
     show: {
       y: 0,
       opacity: 1,

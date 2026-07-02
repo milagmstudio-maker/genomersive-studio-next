@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://genomersive-studio-next.mila-gmstudio.workers.dev/sitemap.xml

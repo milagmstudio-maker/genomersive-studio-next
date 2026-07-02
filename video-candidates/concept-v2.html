@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genomersive Studio — 新コンセプト「聴かせるサイト」ワイヤーフレーム</title>
+<style>
+  :root{
+    --bg:#0a0e18;          /* 深夜のスタジオ: 今よりわずかに無彩色寄りのネイビー */
+    --bg2:#0e1422;
+    --fg:#ece9e2;          /* 真っ白でなく、紙のような白 */
+    --cream:#e8cfa0;       /* 主役: タングステンの灯 */
+    --purple:#b026ff;      /* 句読点にまで減らした紫 */
+    --hot:#ff2ac0;
+    --line:rgba(236,233,226,.16);
+    --dim:rgba(236,233,226,.55);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--fg);
+    font-family:"Hiragino Sans",-apple-system,sans-serif; line-height:1.8;}
+  .mincho{ font-family:"Hiragino Mincho ProN",serif; }
+  .mono{ font-family:ui-monospace,monospace; letter-spacing:.22em; font-size:10px; }
+  .annot{ max-width:1080px; margin:0 auto; padding:10px 24px;
+    font-size:11px; color:#7d8aa0; font-family:ui-monospace,monospace;
+    letter-spacing:.06em; border-left:2px solid var(--purple); }
+  section{ border-bottom:1px solid var(--line); padding:90px 24px; }
+  .in{ max-width:1080px; margin:0 auto; }
+
+  /* ── HERO ── */
+  .hero{ min-height:92vh; display:flex; flex-direction:column; justify-content:center;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 110%, rgba(232,207,160,.10), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 10%, rgba(176,38,255,.05), transparent),
+      var(--bg);}
+  .hero .sub{ color:var(--dim); }
+  .hero h1{ font-size:clamp(40px,7vw,84px); font-weight:800; letter-spacing:-.02em;
+    line-height:.95; margin:18px 0 10px;}
+  .hero h1 .o{ color:var(--purple); text-shadow:0 0 22px rgba(176,38,255,.55);}
+  .hero .svc{ color:var(--dim); font-size:13px; letter-spacing:.06em; margin-bottom:56px;}
+
+  /* 試聴モジュール */
+  .listen{ border:1px solid var(--line); background:rgba(255,255,255,.02);
+    padding:28px; max-width:640px;}
+  .listen .q{ font-size:15px; margin-bottom:18px;}
+  .player{ display:flex; align-items:center; gap:18px; }
+  .play{ width:58px; height:58px; border-radius:50%; border:1px solid var(--cream);
+    background:transparent; color:var(--cream); font-size:18px; cursor:pointer;
+    transition:.25s; flex-shrink:0;}
+  .play:hover{ background:var(--cream); color:#0a0e18; box-shadow:0 0 30px rgba(232,207,160,.35);}
+  .wave{ display:flex; align-items:center; gap:2px; height:44px; flex:1; }
+  .wave i{ width:3px; background:var(--dim); border-radius:2px; transition:.4s;}
+  .ab{ display:flex; border:1px solid var(--line); }
+  .ab button{ padding:9px 18px; background:transparent; border:0; color:var(--dim);
+    font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.2em; cursor:pointer;}
+  .ab button.on{ background:var(--cream); color:#0a0e18; font-weight:700;}
+  .listen .note{ margin-top:14px; font-size:11px; color:var(--dim);}
+
+  /* ── 数字 ── */
+  .stats{ display:flex; gap:64px; flex-wrap:wrap; }
+  .stats b{ font-size:34px; font-weight:800; display:block; letter-spacing:.02em;}
+  .stats span{ color:var(--dim); }
+
+  /* ── ケーススタディ ── */
+  .case{ border:1px solid var(--line); display:grid; grid-template-columns:1fr 1.2fr; }
+  .case .ph{ background:linear-gradient(135deg,#141a2a,#0c1020); min-height:300px;
+    display:flex; align-items:center; justify-content:center; color:#3d4a63;
+    font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.2em;}
+  .case .tx{ padding:34px; }
+  .case .tx .tag{ color:var(--cream); }
+  .case h3{ font-size:24px; margin:10px 0 14px; font-weight:700;}
+  .case p{ font-size:13.5px; color:rgba(236,233,226,.8); margin:0 0 10px;}
+  .case .quote{ border-left:2px solid var(--cream); padding-left:14px; font-size:13px;}
+  .case .more{ color:var(--cream); font-family:ui-monospace,monospace; font-size:11px;
+    letter-spacing:.2em; display:inline-block; margin-top:16px;}
+  @media(max-width:760px){ .case{grid-template-columns:1fr;} }
+
+  h2.sec{ font-size:13px; font-family:ui-monospace,monospace; font-weight:400;
+    letter-spacing:.3em; color:var(--dim); margin:0 0 8px;}
+  p.lead{ font-family:"Hiragino Mincho ProN",serif; font-size:17px; margin:0 0 42px;}
+
+  /* ── footer ── */
+  footer{ padding:70px 24px 50px; text-align:center; }
+  footer .sig{ font-family:"Hiragino Mincho ProN",serif; font-size:15px;
+    letter-spacing:.15em; color:rgba(236,233,226,.75);}
+  footer .sig .p{ color:var(--hot);}
+  footer .c{ margin-top:18px; font-family:ui-monospace,monospace; font-size:10px;
+    letter-spacing:.3em; color:var(--dim);}
+  .head{ background:#070a12; padding:26px 24px; border-bottom:1px solid var(--line);}
+  .head h1{ font-size:15px; letter-spacing:.18em; margin:0 0 4px; font-weight:600;}
+  .head p{ font-size:12px; color:#7d8aa0; margin:0;}
+  .cta{ display:inline-block; border:1px solid var(--cream); color:var(--cream);
+    padding:14px 40px; font-family:ui-monospace,monospace; font-size:11px;
+    letter-spacing:.25em; text-decoration:none; transition:.25s;}
+  .cta:hover{ background:var(--cream); color:#0a0e18;}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>新コンセプト・ワイヤーフレーム — 「聴かせるサイト」</h1>
+  <p>紫のラインの注釈は設計意図のメモ。配色は「深夜のスタジオ」方向（ネオン控えめ・クリーム主役）のデモを兼ねています。</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="in">
+    <div class="mono sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+    <h1>GENOMERSIVE<br>STUDI<span class="o">O</span></h1>
+    <div class="svc">Mixing / OBS音響調整 / プロデュース — VTuber・歌い手のための音響設計</div>
+
+    <div class="listen">
+      <div class="q mincho">この声が、どこまで変わるか。<br>言葉より先に、30秒だけ聴いてください。</div>
+      <div class="player">
+        <button class="play" id="pb">▶</button>
+        <div class="wave" id="wv"></div>
+        <div class="ab">
+          <button id="bA" class="on">BEFORE</button>
+          <button id="bB">AFTER</button>
+        </div>
+      </div>
+      <div class="note">※ ワイヤーフレームのため音は出ません。実装時は許可済みの実音源でBEFORE/AFTERが切り替わります。</div>
+    </div>
+  </div>
+</section>
+<div class="annot">HERO — サイトの最初の行動を「読む」ではなく「聴く」にする。約束は書かない。機能説明＋試聴だけ。これが市場で誰もやっていない部分。</div>
+
+<!-- STATS -->
+<section>
+  <div class="in stats">
+    <div><b>500+</b><span class="mono">TOTAL WORKS</span></div>
+    <div><b>2022</b><span class="mono">EST.</span></div>
+    <div><b>2ヶ月</b><span class="mono">OBS AFTER SUPPORT</span></div>
+    <div><b>48h</b><span class="mono">REPLY</span></div>
+  </div>
+</section>
+<div class="annot">PROOF STRIP — 試聴の直後に数字。耳の納得→頭の納得の順。</div>
+
+<!-- CASE STUDY -->
+<section>
+  <div class="in">
+    <h2 class="sec">001 / CASE STUDY</h2>
+    <p class="lead">数を並べるより、一つの物語を深く。</p>
+    <div class="case">
+      <div class="ph">[ にじゅな キービジュアル ]</div>
+      <div class="tx">
+        <div class="mono tag">PRODUCE / VOCAL MIX / OBS AUDIO / CHANNEL DESIGN</div>
+        <h3>にじゅな — 「忘れられない歌手」を、設計する。</h3>
+        <p>歌ってみたのMixだけではなく、配信音響・チャンネル構造・リリース戦略まで。一人のVTuberの「声」を起点に活動全体を設計している現在進行形のプロジェクト。</p>
+        <p class="quote mincho">「相談時の状態 → 診断 → 施策 → 結果 → 本人の声」をこの1ページで語る。</p>
+        <a class="more" href="#">READ CASE →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="annot">CASE STUDY — 旗艦はにじゅな（7月の新ch始動が題材）。Mix単発の事例はBEFORE/AFTER試聴カードを2枚追加。Worksグリッドは「もっと聴く」の脇役へ。</div>
+
+<!-- SERVICES -->
+<section>
+  <div class="in">
+    <h2 class="sec">002 / SERVICES</h2>
+    <p class="lead">料金は隠しません。先に金額がわかります。</p>
+    <p style="color:var(--dim);font-size:13px;">（現行の料金シミュレーターをそのまま継続 — ここはゼロから作っても同じ結論になる部分）</p>
+  </div>
+</section>
+<div class="annot">SERVICES — 現行を維持。料金透明性はこの市場で既に優位。</div>
+
+<!-- PERSON -->
+<section>
+  <div class="in">
+    <h2 class="sec">003 / ABOUT</h2>
+    <p class="lead">「誰に頼むか」で音は変わります。</p>
+    <p style="color:var(--dim);font-size:13px;">（現行Aboutを継続 — ポートレート / 3つの理由 / SETUP。お客様の声が集まり次第ここに合流）</p>
+  </div>
+</section>
+<div class="annot">ABOUT — 現行を維持。+「お客様の声」を将来ここに（横のつながりで決まる市場への回答）。</div>
+
+<!-- CTA -->
+<section style="text-align:center;">
+  <div class="in">
+    <p class="lead" style="font-size:26px; margin-bottom:14px;">まずは、相談から<span style="color:var(--hot)">。</span></p>
+    <p style="color:var(--dim); font-size:13px; margin:0 0 34px;">見積もりだけでも、相談だけでも。初めての依頼の方も多くいます。</p>
+    <a class="cta" href="#">相談・依頼する →</a>
+  </div>
+</section>
+<div class="annot">CTA — 現行を維持。</div>
+
+<footer>
+  <div class="sig">忘れられない音にする<span class="p">。</span></div>
+  <div class="c">© 2026 GENOMERSIVE STUDIO / MiLa</div>
+</footer>
+
+<script>
+  // 波形モック
+  const wv = document.getElementById("wv");
+  const bars = [];
+  for (let i = 0; i < 64; i++) {
+    const b = document.createElement("i");
+    b.style.height = (6 + Math.abs(Math.sin(i * 0.55)) * 26 + Math.random() * 8) + "px";
+    wv.appendChild(b); bars.push(b);
+  }
+  // BEFORE/AFTER トグルで波形の表情を変える（実装イメージ）
+  const bA = document.getElementById("bA"), bB = document.getElementById("bB");
+  function setMode(after) {
+    bA.classList.toggle("on", !after);
+    bB.classList.toggle("on", after);
+    bars.forEach((b, i) => {
+      const base = after ? 10 + Math.abs(Math.sin(i * 0.35)) * 34 : 6 + Math.abs(Math.sin(i * 0.55)) * 18 + Math.random() * 14;
+      b.style.height = base + "px";
+      b.style.background = after ? "var(--cream)" : "var(--dim)";
+    });
+  }
+  bA.onclick = () => setMode(false);
+  bB.onclick = () => setMode(true);
+  let playing = false;
+  document.getElementById("pb").onclick = function(){
+    playing = !playing;
+    this.textContent = playing ? "❚❚" : "▶";
+  };
+</script>
+</body>
+</html>

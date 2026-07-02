@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>背景ループ候補 — Genomersive Studio</title>
+<style>
+  body { background:#08101e; color:#f4f4f5; font-family:-apple-system,"Hiragino Sans",sans-serif; margin:0; padding:40px 24px; }
+  h1 { font-size:18px; letter-spacing:.2em; font-weight:600; margin-bottom:6px; }
+  p.note { color:#9aa3b2; font-size:12px; margin-bottom:32px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:28px; max-width:1500px; margin:0 auto; }
+  .card { border:1px solid rgba(255,255,255,.25); }
+  .label { font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.25em; padding:8px 12px; border-bottom:1px solid rgba(255,255,255,.25); display:flex; justify-content:space-between; }
+  .stage { position:relative; aspect-ratio:16/9; overflow:hidden; }
+  video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* サイトと同じホーム用オーバーレイ (30/15/45) */
+  .ovl { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(8,16,30,.30), rgba(8,16,30,.15), rgba(8,16,30,.45)); }
+  .txt { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+  .txt .sub { font-family:ui-monospace,monospace; font-size:8px; letter-spacing:.45em; color:rgba(244,244,245,.7); }
+  .txt .ttl { font-weight:800; font-size:34px; letter-spacing:-.02em; line-height:.95; text-align:center; }
+  .txt .ttl .o { color:#b026ff; text-shadow:0 0 24px rgba(176,38,255,.7); }
+  .txt .core { font-family:"Hiragino Mincho ProN",serif; font-weight:700; font-size:15px; letter-spacing:.08em; margin-top:8px; }
+  .txt .core .p { color:#ff2ac0; }
+  .txt .svc { font-size:9px; letter-spacing:.1em; color:rgba(244,244,245,.85); }
+</style>
+</head>
+<body>
+<h1>背景ループ候補 × 5</h1>
+<p class="note">実際のサイトと同じオーバーレイ・文字を重ねた状態です。文字の読みやすさと邪魔にならなさで選んでください。</p>
+<div class="grid" id="grid"></div>
+<script>
+const items = [
+  ["01-waveform.mp4","01 / WAVEFORM","オシロスコープ波形 — 音の脈動"],
+  ["02-spectrum.mp4","02 / SPECTRUM","スペクトラムバー — アナライザー"],
+  ["03-aurora.mp4","03 / AURORA","オーロラドリフト — 旧シェーダーの世界観"],
+  ["04-dust.mp4","04 / DUST","漂う粒子 — スタジオの塵と光"],
+  ["05-ribbons.mp4","05 / RIBBONS","サインリボン — 声の重なり"],
+];
+document.getElementById("grid").innerHTML = items.map(([src,no,desc])=>`
+  <div class="card">
+    <div class="label"><span>${no}</span><span>${desc}</span></div>
+    <div class="stage">
+      <video autoplay muted loop playsinline src="${src}"></video>
+      <div class="ovl"></div>
+      <div class="txt">
+        <div class="sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+        <div class="ttl">GENOMERSIVE<br>STUDI<span class="o">O</span></div>
+        <div class="core">忘れられない音にする<span class="p">。</span></div>
+        <div class="svc">Mixing / OBS音響調整 / プロデュース</div>
+      </div>
+    </div>
+  </div>`).join("");
+</script>
+</body>
+</html>

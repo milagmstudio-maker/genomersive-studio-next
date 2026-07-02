@@ -1,0 +1,31 @@
+--- a/package.json
++++ b/package.json
+@@ -x,x +x,x @@ (excerpt — add these to the "dependencies" and "devDependencies" blocks)
+
+ "dependencies": {
++    "three": "^0.180.0",
++    "@react-three/fiber": "^9.0.0",
++    "@react-three/drei": "^10.0.0"
+ },
+ "devDependencies": {
++    "@types/three": "^0.180.0"
+ }
+
+--- Install command ---
+npm install three@^0.180 @react-three/fiber@^9 @react-three/drei@^10
+npm install -D @types/three@^0.180
+
+--- Verify React 19 compat ---
+npm ls @react-three/fiber
+# Must print v9.x.x — v8 does NOT support React 19
+
+--- Notes ---
+• @react-three/postprocessing is NOT added here because the shader handles
+  grain/vignette/scanlines internally. Add it separately if you later want
+  Bloom or ChromaticAberration as a post-processing pass.
+
+• drei is tree-shaken at import level. _ShaderScene.tsx imports only
+  { ScreenQuad }. Do not import * from @react-three/drei.
+
+• Pinning ^0.180 for three keeps you on the latest stable branch while
+  preventing accidental major-version jumps.

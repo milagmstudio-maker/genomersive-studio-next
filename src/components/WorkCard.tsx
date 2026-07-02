@@ -43,7 +43,7 @@ export function WorkCard({ work, index, onOpen }: Props) {
         animate={{ rotateX: tilt.rx, rotateY: tilt.ry }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm"
+        className="relative overflow-hidden border border-white/30 bg-black/40 backdrop-blur-sm"
       >
         {/* Thumbnail */}
         <div className="relative aspect-video overflow-hidden">
@@ -51,7 +51,7 @@ export function WorkCard({ work, index, onOpen }: Props) {
           <img
             src={`https://img.youtube.com/vi/${work.youtubeId}/maxresdefault.jpg`}
             alt={work.title}
-            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.04] chromatic-hover"
+            className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-[1.04] chromatic-hover"
             loading="lazy"
             onLoad={(e) => {
               const img = e.currentTarget as HTMLImageElement;
@@ -76,19 +76,19 @@ export function WorkCard({ work, index, onOpen }: Props) {
           </div>
 
           {/* Top-left category tag */}
-          <div className="absolute top-3 left-3 font-mono text-[9px] tracking-[0.25em] text-foreground/90 bg-black/60 backdrop-blur-sm border border-white/10 px-2 py-1">
+          <div className="absolute top-3 left-3 font-mono text-[9px] tracking-[0.25em] text-foreground bg-black/60 backdrop-blur-sm border border-white/30 px-2 py-1">
             {work.category}
           </div>
 
           {/* Top-right index */}
-          <div className="absolute top-3 right-3 font-mono text-[9px] tracking-[0.25em] text-foreground/60">
+          <div className="absolute top-3 right-3 font-mono text-[9px] tracking-[0.25em] text-foreground/90">
             {work.id.toUpperCase()}
           </div>
         </div>
 
         {/* Caption */}
-        <div className="p-4 border-t border-white/5">
-          <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/50">
+        <div className="p-4 border-t border-white/25">
+          <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/80">
             {work.artist} · {work.year}
           </p>
           <h3 className="mt-1.5 font-sans text-base md:text-lg font-medium leading-snug">

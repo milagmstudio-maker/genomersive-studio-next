@@ -21,11 +21,19 @@ export type Work = {
  */
 export const WORKS: Work[] = [
   {
+    id: "w-024",
+    title: "more than words",
+    artist: "羊文学 covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "a-sl75NMrEU",
+    year: 2026,
+  },
+  {
     id: "w-001",
     title: "アルジャーノン",
     artist: "ヨルシカ covered by にじゅな",
     category: "VOCAL MIX",
-    youtubeId: "P9xlNgmjJiI",
+    youtubeId: "V7IhaLDXk3E",
     year: 2025,
   },
   {
@@ -54,6 +62,14 @@ export const WORKS: Work[] = [
   },
   {
     id: "w-005",
+    title: "忘れてください",
+    artist: "ヨルシカ covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "p3V71Y2zkrg",
+    year: 2026,
+  },
+  {
+    id: "w-006",
     title: "舞",
     artist: "Guiano covered by 半島キタ",
     category: "VOCAL MIX",
@@ -61,7 +77,15 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-006",
+    id: "w-007",
+    title: "幸福刑",
+    artist: "LonePi covered by 半島キタ",
+    category: "VOCAL MIX",
+    youtubeId: "k6AWzAJX_Hw",
+    year: 2026,
+  },
+  {
+    id: "w-008",
     title: "若者のすべて",
     artist: "フジファブリック covered by おもや いっか",
     category: "VOCAL MIX",
@@ -69,7 +93,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-007",
+    id: "w-009",
     title: "レイニーブルー",
     artist: "徳永英明 covered by おもや いっか",
     category: "VOCAL MIX",
@@ -77,15 +101,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-008",
-    title: "ダウナーウィッチ",
-    artist: "ダウナーウィッチ covered by 時音ありす",
-    category: "VOCAL MIX",
-    youtubeId: "OmCvwoLKOnQ",
-    year: 2025,
-  },
-  {
-    id: "w-009",
+    id: "w-010",
     title: "JANE DOE",
     artist: "米津玄師, 宇多田ヒカル covered by 音調ネオン",
     category: "VOCAL MIX",
@@ -93,7 +109,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-010",
+    id: "w-011",
     title: "fake face dance music",
     artist: "音田雅則 covered by 音調ネオン",
     category: "VOCAL MIX",
@@ -101,7 +117,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-011",
+    id: "w-012",
     title: "あなたの夜が明けるまで",
     artist: "傘村トータ covered by にじゅな",
     category: "VOCAL MIX",
@@ -109,7 +125,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-012",
+    id: "w-013",
     title: "OBS音響調整のbefore or after",
     artist: "にじゅな",
     category: "OBS AUDIO",
@@ -117,7 +133,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-013",
+    id: "w-014",
     title: "【新モデル】再始動‼ お披露目会 〜そしてこれからの事〜",
     artist: "にじゅな",
     category: "OBS AUDIO",
@@ -125,15 +141,15 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-014",
-    title: "歌枠｜椎名林檎縛り",
+    id: "w-015",
+    title: "歌枠｜ありがとう2周年記念",
     artist: "巫ロキ",
     category: "OBS AUDIO",
-    youtubeId: "-UFMZCgJ7fI",
+    youtubeId: "Rd9dnDd8Dd4",
     year: 2025,
   },
   {
-    id: "w-015",
+    id: "w-016",
     title: "【耐久歌枠】チャンネル登録4000人耐久!?",
     artist: "朱瀬オト",
     category: "OBS AUDIO",
@@ -141,7 +157,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-016",
+    id: "w-017",
     title: "【歌枠】心呼の声を聴いて 高評価100目指して歌います",
     artist: "心呼",
     category: "OBS AUDIO",
@@ -149,7 +165,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-017",
+    id: "w-018",
     title: "【歌枠】高評価100まで、あったかい歌聞きたくな〜い？",
     artist: "半島キタ",
     category: "OBS AUDIO",
@@ -157,7 +173,7 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-018",
+    id: "w-019",
     title: "〖歌枠｜karaoke〗登録者さん +10人 & 高評価100耐久歌枠",
     artist: "月乃よう",
     category: "OBS AUDIO",
@@ -165,12 +181,36 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-019",
+    id: "w-020",
     title: "にじゅな",
     artist: "にじゅな",
     category: "PRODUCTION",
     youtubeId: "ZmR9zQ7U8Ks",
     year: 2025,
+  },
+  {
+    id: "w-021",
+    title: "熱異常",
+    artist: "いよわ covered by 半島キタ",
+    category: "VOCAL MIX",
+    youtubeId: "Im80q0h7av0",
+    year: 2026,
+  },
+  {
+    id: "w-022",
+    title: "【 #KARAOKE/ #歌枠 】🌟明日が憂鬱な君へ大丈夫だよ。 ┊アニソンリラックスバラード🌟",
+    artist: "歌玻 まいろ",
+    category: "OBS AUDIO",
+    youtubeId: "zvGAGwNzv-8",
+    year: 2026,
+  },
+  {
+    id: "w-023",
+    title: "フィナーレ。",
+    artist: "eill covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "I-PkfF2rd_U",
+    year: 2026,
   },
 ];
 

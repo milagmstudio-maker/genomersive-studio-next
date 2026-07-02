@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ヒーロー比較 — Genomersive Studio</title>
+<style>
+  :root{
+    --bg:#08101e; --fg:#f4f4f5; --accent:#b026ff; --hot:#ff2ac0; --cream:#f4d9a6;
+  }
+  *{box-sizing:border-box;}
+  body{ background:#05080f; color:var(--fg); margin:0;
+    font-family:-apple-system,"Hiragino Sans",sans-serif; }
+  .head{ padding:32px 24px 8px; }
+  .head h1{ font-size:17px; letter-spacing:.18em; font-weight:600; margin:0 0 6px; }
+  .head p{ color:#9aa3b2; font-size:12px; margin:0; line-height:1.7; }
+  .hero{ position:relative; height:78vh; min-height:520px; overflow:hidden;
+    border-top:1px solid rgba(255,255,255,.12); }
+  .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ovl{ position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(8,16,30,.30), rgba(8,16,30,.15), rgba(8,16,30,.45)); }
+  .tag{ position:absolute; top:16px; left:20px; z-index:5;
+    font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.22em;
+    color:var(--hot); background:rgba(0,0,0,.55); padding:5px 12px; border:1px solid rgba(255,42,192,.5); }
+  .note{ position:absolute; bottom:16px; left:20px; right:20px; z-index:5;
+    font-size:11px; color:rgba(244,244,245,.65); font-family:ui-monospace,monospace; letter-spacing:.08em; }
+
+  .center{ position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; z-index:3; padding:0 24px;}
+  .sub{ font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.45em; color:rgba(244,244,245,.7);}
+  .ttl{ font-weight:800; font-size:clamp(34px,7vw,86px); letter-spacing:-.02em; line-height:.92; margin-top:18px;}
+  .ttl .o{ color:var(--accent); text-shadow:0 0 24px rgba(176,38,255,.7);}
+  .core-big{ font-family:"Hiragino Mincho ProN",serif; font-weight:700;
+    font-size:clamp(18px,2.4vw,30px); letter-spacing:.08em; margin-top:26px;}
+  .core-big .p{ color:var(--hot);}
+  .svc{ font-size:clamp(11px,1.1vw,14px); letter-spacing:.06em; color:rgba(244,244,245,.85); margin-top:20px;}
+
+  /* C: 署名を隅に小さく */
+  .sig{ position:absolute; bottom:22px; right:24px; z-index:4;
+    font-family:"Hiragino Mincho ProN",serif; font-size:13px; letter-spacing:.14em;
+    color:rgba(244,244,245,.6);}
+  .sig .p{ color:var(--hot);}
+  /* C': 署名を縦書きで左 */
+  .sig-v{ position:absolute; top:50%; left:34px; transform:translateY(-50%); z-index:4;
+    writing-mode:vertical-rl; font-family:"Hiragino Mincho ProN",serif; font-size:15px;
+    letter-spacing:.18em; color:rgba(244,244,245,.55);}
+  .sig-v .p{ color:var(--hot);}
+</style>
+</head>
+<body>
+<div class="head">
+  <h1>ヒーロー比較 — 「忘れられない音にする。」の置き方</h1>
+  <p>同じ動画・同じ文字。違いは「コアコピーの扱い」だけ。スクロールで4案を見比べてください。<br>
+  胡散臭さ＝中央・大・感情コピーを上に掲げること。それを崩した案がB〜Dです。</p>
+</div>
+
+<!-- A: 現状 -->
+<div class="hero">
+  <video autoplay muted loop playsinline poster="../public/videos/sound-wave-poster.jpg" src="../public/videos/sound-wave.mp4"></video>
+  <div class="ovl"></div>
+  <div class="tag">A / 現状</div>
+  <div class="center">
+    <div class="sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+    <div class="ttl">GENOMERSIVE<br>STUDI<span class="o">O</span></div>
+    <div class="core-big">忘れられない音にする<span class="p">。</span></div>
+    <div class="svc">Mixing / OBS音響調整 / プロデュース — VTuber・歌い手のための音響設計</div>
+  </div>
+  <div class="note">約束を中央に掲げている。情報商材LPと同じ構文 → 胡散臭さの源</div>
+</div>
+
+<!-- B: クリーン(推奨) -->
+<div class="hero">
+  <video autoplay muted loop playsinline poster="../public/videos/sound-wave-poster.jpg" src="../public/videos/sound-wave.mp4"></video>
+  <div class="ovl"></div>
+  <div class="tag">B / クリーン（推奨）</div>
+  <div class="center">
+    <div class="sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+    <div class="ttl">GENOMERSIVE<br>STUDI<span class="o">O</span></div>
+    <div class="svc">Mixing / OBS音響調整 / プロデュース — VTuber・歌い手のための音響設計</div>
+  </div>
+  <div class="note">コピーを抜く。ヒーローは「何者か」だけ伝える。感情は直下の実績が音で担当。コピーはフッター署名で生きる</div>
+</div>
+
+<!-- C: 隅に署名 -->
+<div class="hero">
+  <video autoplay muted loop playsinline poster="../public/videos/sound-wave-poster.jpg" src="../public/videos/sound-wave.mp4"></video>
+  <div class="ovl"></div>
+  <div class="tag">C / 隅に署名（横）</div>
+  <div class="center">
+    <div class="sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+    <div class="ttl">GENOMERSIVE<br>STUDI<span class="o">O</span></div>
+    <div class="svc">Mixing / OBS音響調整 / プロデュース — VTuber・歌い手のための音響設計</div>
+  </div>
+  <div class="sig">忘れられない音にする<span class="p">。</span></div>
+  <div class="note">コピーは残すが、中央の主役から降ろして右下に小さく署名化。控えめ＝自信に見える</div>
+</div>
+
+<!-- D: 縦書き署名 -->
+<div class="hero">
+  <video autoplay muted loop playsinline poster="../public/videos/sound-wave-poster.jpg" src="../public/videos/sound-wave.mp4"></video>
+  <div class="ovl"></div>
+  <div class="tag">D / 縦書き署名（左）</div>
+  <div class="sig-v">忘れられない音にする<span class="p">。</span></div>
+  <div class="center">
+    <div class="sub">PRODUCER / DIRECTOR / SOUND ENGINEER</div>
+    <div class="ttl">GENOMERSIVE<br>STUDI<span class="o">O</span></div>
+    <div class="svc">Mixing / OBS音響調整 / プロデュース — VTuber・歌い手のための音響設計</div>
+  </div>
+  <div class="note">縦書きの明朝署名を左端に。和の意匠＋編集的。LP感が最も消え、作家性が出る</div>
+</div>
+
+</body>
+</html>
