@@ -29,6 +29,14 @@ export const WORKS: Work[] = [
     year: 2026,
   },
   {
+    id: "w-025",
+    title: "マシュマロ",
+    artist: "DECO*27 covered by 灯火ホタル",
+    category: "VOCAL MIX",
+    youtubeId: "DFL4Q8uVijo",
+    year: 2026,
+  },
+  {
     id: "w-001",
     title: "アルジャーノン",
     artist: "ヨルシカ covered by にじゅな",

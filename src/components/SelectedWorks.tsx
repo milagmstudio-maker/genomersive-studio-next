@@ -7,7 +7,7 @@ import { WorkCard } from "./WorkCard";
 import { WorkModal } from "./WorkModal";
 
 // トップページに出す代表作。差し替えはこのID配列を編集するだけ
-const FEATURED_IDS = ["w-009", "w-013", "w-001"];
+const FEATURED_IDS = ["w-025", "w-009", "w-013", "w-001"];
 
 export function SelectedWorks() {
   const [open, setOpen] = useState<Work | null>(null);
@@ -34,7 +34,7 @@ export function SelectedWorks() {
           言葉より先に、耳で確かめてください。
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {featured.map((w, i) => (
             <WorkCard key={w.id} work={w} index={i} onOpen={setOpen} />
           ))}
