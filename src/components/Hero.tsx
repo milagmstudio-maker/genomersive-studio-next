@@ -113,17 +113,29 @@ export function Hero() {
         </span>
       </motion.h1>
 
-      {/* Service line — ヒーローは「何者か」だけ伝える（コアコピーはフッター署名で存続）*/}
-      <motion.p
+      {/* Service message — existing reveal and parallax are preserved */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 1.5 }}
         style={{ x: tagX }}
-        className="mt-12 text-center text-xs md:text-sm tracking-wider text-foreground/85"
+        className="mt-10 max-w-3xl text-center"
       >
-        Mixing / OBS音響調整 / プロデュース
-        <span className="hidden sm:inline"> — VTuber・歌い手のための音響設計</span>
-      </motion.p>
+        <p
+          className="font-mincho text-xl font-bold leading-relaxed tracking-[0.08em] md:text-2xl"
+          style={{ color: "var(--accent-cream)" }}
+        >
+          音を整え、活動の次の一歩まで。
+        </p>
+        <p className="mt-4 text-xs leading-loose tracking-wider text-foreground/85 md:text-sm">
+          Vocal Mix・配信音響設計・整音を通じて、
+          <br className="hidden sm:block" />
+          作品や配信が「届く状態」になるところまでサポートします。
+        </p>
+        <p className="mt-2 font-mono text-[9px] tracking-[0.18em] text-foreground/60 md:text-[10px]">
+          VTuber・歌い手・配信者のための音響制作スタジオ
+        </p>
+      </motion.div>
 
       {/* File-style label — bottom-left */}
       <motion.div

@@ -8,7 +8,7 @@ export function About() {
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
-          <span>005</span>
+          <span>006</span>
           <span className="h-px w-10 bg-foreground/30" />
           <span>ABOUT / MiLaについて</span>
         </div>
@@ -58,7 +58,7 @@ export function About() {
               「なんかいい感じにしてほしい」を技術の言葉に翻訳して、技術の話はあなたの言葉で返す。エンジニアとあなたの間に壁を作らないのが、Genomersive Studio のやり方です。
             </p>
             <p className="mt-4 text-sm md:text-base leading-loose text-foreground/90">
-              そして音を整えるのは手段で、目的はあなたの活動が届くこと。プロデューサー・マネジメントの視点から、「いま何をすべきか」まで一緒に考えます。
+              そして音を整えるのは手段で、目的は作品や配信が届くこと。投稿導線、企画の整理、見せ方など、音を整えたあとの次の一歩まで一緒に考えます。
             </p>
 
             {/* Produce */}

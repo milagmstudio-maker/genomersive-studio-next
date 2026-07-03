@@ -22,7 +22,7 @@ export async function Notices() {
       <div className="mx-auto max-w-5xl">
         {/* Section Label */}
         <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
-          <span>006</span>
+          <span>007</span>
           <span className="h-px w-10 bg-foreground/30" />
           <span>NOTICES / お知らせ</span>
         </div>

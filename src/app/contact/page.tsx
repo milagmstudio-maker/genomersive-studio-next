@@ -1,9 +1,9 @@
 import { Contact } from "@/components/Contact";
 
 export const metadata = {
-  title: "ボーカルMix・音響調整のご依頼・ご相談｜Genomersive Studio",
+  title: "音響制作のご依頼・ご相談｜Genomersive Studio",
   description:
-    "ボーカルMix・パラMix・OBS音響調整・プロデュースのご依頼・ご相談はこちら。「見積もりだけ」「相談だけ」でも歓迎、原則48時間以内に返信します。メール・X DM・Discordで受付。",
+    "Vocal Mix・Para Mix・OBS Audio・Binaural・Audio Edit・Creative Directionのご相談はこちら。内容や素材を確認してから金額と納期をご案内します。",
   openGraph: {
     title: "ご依頼・ご相談 — Genomersive Studio",
     description: "見積もりだけ・相談だけでも歓迎。原則48時間以内に返信します。",

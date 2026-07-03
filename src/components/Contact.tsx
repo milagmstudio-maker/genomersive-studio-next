@@ -11,10 +11,13 @@ const FORM_ENDPOINT = "/api/contact";
 
 const CONTACT_TYPES = ["メール", "X DM", "Discord"] as const;
 const INQUIRY_TYPES = [
-  "ボーカルMix",
-  "OBS音響調整",
-  "プロデュース",
-  "その他・相談だけ",
+  "Vocal Mix",
+  "Para Mix",
+  "OBS Audio / 配信音響設計",
+  "Binaural",
+  "Audio Edit / 整音",
+  "Creative Direction",
+  "その他相談",
 ] as const;
 const DELIVERY_HOPES = [
   "通常（1〜2週間）",
@@ -77,7 +80,7 @@ export function Contact() {
           index="005"
           kicker="GET IN TOUCH"
           title="Contact."
-          lead="相談だけでも、見積もりだけでも大丈夫です。48時間以内にご返信します。"
+          lead="内容や素材が揃っていなくても大丈夫です。確認後、対応可否・金額・納期をご案内します。"
         />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_320px]">
@@ -165,6 +168,9 @@ export function Contact() {
                   </label>
                 ))}
               </div>
+              <p className="mt-3 text-xs leading-relaxed text-foreground/70">
+                OBS Audio / 配信音響設計は、雑談・ゲーム配信・歌枠・ASMRなどに対応しています。
+              </p>
             </Field>
 
             {/* Contact preference */}
@@ -304,7 +310,7 @@ export function Contact() {
                     <div key={p.id} className="flex justify-between gap-3">
                       <span className="truncate text-foreground">{p.name}</span>
                       <span className="font-mono text-foreground shrink-0">
-                        {formatJPY(p.subtotal)}
+                        {p.subtotal === 0 ? "個別相談" : formatJPY(p.subtotal)}
                       </span>
                     </div>
                   ))}
@@ -319,8 +325,10 @@ export function Contact() {
                       TOTAL
                     </span>
                     <span className="font-sans text-xl font-bold tabular-nums">
-                      {formatJPY(quote.total)}
-                      <span className="ml-1 text-sm font-normal text-foreground/80">〜</span>
+                      {quote.total === 0 ? "個別相談" : formatJPY(quote.total)}
+                      {quote.total > 0 && (
+                        <span className="ml-1 text-sm font-normal text-foreground/80">〜</span>
+                      )}
                     </span>
                   </div>
                   <p className="font-mono text-[9px] tracking-[0.2em] text-foreground/70 pt-1">
@@ -397,4 +405,3 @@ function Field({
     </div>
   );
 }
-

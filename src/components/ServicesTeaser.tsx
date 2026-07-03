@@ -3,30 +3,44 @@ import Link from "next/link";
 const SERVICES = [
   {
     en: "VOCAL MIX",
-    jp: "ボーカルMix",
+    jp: "Vocal Mix",
     price: "¥3,000〜",
     description:
-      "歌ってみた・Shorts用のMix。ピッチ補正・ハモリ作成からマスタリングまで込み。",
+      "歌ってみた、カバー、オリジナル楽曲に対応。歌声の魅力が自然に届くように整えます。",
   },
   {
     en: "PARA MIX",
-    jp: "パラMix（ステム）",
+    jp: "Para Mix",
     price: "¥12,000〜",
-    description: "弾き語り・バンド・オリジナル曲のステムMix。",
+    description: "弾き語り、バンド、複数トラック楽曲の音像とバランスを整えます。",
   },
   {
     en: "OBS AUDIO",
-    jp: "OBS音響調整",
-    price: "¥25,000〜",
+    jp: "OBS Audio",
+    price: "¥30,000",
     description:
-      "配信の声をプロ仕様に設計。アフターサポート2ヶ月付き。",
+      "雑談、ゲーム配信、歌枠、ASMRに合わせて、聞きやすく届く配信音響を設計します。",
   },
   {
-    en: "PRODUCTION",
-    jp: "プロデュース",
-    price: "個別見積",
+    en: "BINAURAL",
+    jp: "Binaural",
+    price: "個別相談",
     description:
-      "Mixing・配信音響調整からチャンネル設計まで、活動をまるごと支えるプラン。",
+      "ボイス作品やシチュエーション音声の距離感・定位・空間の広がりを整えます。",
+  },
+  {
+    en: "AUDIO EDIT",
+    jp: "Audio Edit",
+    price: "個別相談",
+    description:
+      "整音、ノイズ除去、音量調整、素材修復で、音声を使いやすい状態へ整えます。",
+  },
+  {
+    en: "CREATIVE DIRECTION",
+    jp: "Creative Direction",
+    price: "個別相談",
+    description:
+      "投稿導線、企画整理、見せ方など、音を整えたあとの次の一歩を一緒に整理します。",
   },
 ];
 
@@ -43,7 +57,7 @@ export function ServicesTeaser() {
           <span>SERVICES / できること</span>
         </div>
         <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
-          料金は隠しません。組み合わせて、その場で概算が出せます。
+          音響制作から、作品や配信を届けるための次の一歩まで。
         </p>
 
         <ul className="divide-y divide-white/30 border-y border-white/30">

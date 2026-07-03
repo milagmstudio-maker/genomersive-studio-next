@@ -9,18 +9,21 @@ import {
   DISCOUNTS,
   PLANS,
   type Plan,
+  type ServiceCategory,
 } from "@/data/services";
 import { cn } from "@/lib/cn";
 import { formatJPY, saveQuote } from "@/lib/quote";
 import { SectionLabel } from "./SectionLabel";
 
-type Category = Plan["category"];
+type Category = ServiceCategory;
 
 const CATEGORY_LABELS: { key: Category; jp: string }[] = [
-  { key: "VOCAL MIX", jp: "ボーカルMix" },
-  { key: "PARA MIX", jp: "パラMix（ステム）" },
-  { key: "OBS AUDIO", jp: "OBS音響調整" },
-  { key: "PRODUCTION", jp: "プロデュース" },
+  { key: "VOCAL MIX", jp: "Vocal Mix" },
+  { key: "PARA MIX", jp: "Para Mix" },
+  { key: "OBS AUDIO", jp: "OBS Audio / 配信音響設計" },
+  { key: "BINAURAL", jp: "Binaural" },
+  { key: "AUDIO EDIT", jp: "Audio Edit / 整音" },
+  { key: "CREATIVE DIRECTION", jp: "Creative Direction" },
 ];
 
 export function Services() {
@@ -33,7 +36,9 @@ export function Services() {
     "VOCAL MIX": null,
     "PARA MIX": null,
     "OBS AUDIO": null,
-    PRODUCTION: null,
+    BINAURAL: null,
+    "AUDIO EDIT": null,
+    "CREATIVE DIRECTION": null,
   });
 
   const [units, setUnits] = useState<Record<string, number>>(() => {
@@ -144,7 +149,7 @@ export function Services() {
           index="003"
           kicker="PRICING SIMULATOR"
           title="Services."
-          lead="「見積もりのために連絡する」の順番を逆にしました。先に金額がわかります。"
+          lead="音響制作の6つの入口。内容と素材を確認したうえで、対応可否・金額・納期をご案内します。"
         />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
@@ -234,7 +239,7 @@ export function Services() {
                           </p>
                         </div>
                         <p className="shrink-0 font-mono text-foreground/95">
-                          {formatJPY(l.subtotal)}
+                          {l.subtotal === 0 ? "個別相談" : formatJPY(l.subtotal)}
                         </p>
                       </div>
                     ))}
@@ -272,8 +277,10 @@ export function Services() {
                     TOTAL
                   </span>
                   <span className="font-sans text-3xl font-bold tabular-nums">
-                    {formatJPY(calc.total)}
-                    {calc.hasSelection && (
+                    {calc.hasSelection && calc.total === 0
+                      ? "個別相談"
+                      : formatJPY(calc.total)}
+                    {calc.hasSelection && calc.total > 0 && (
                       <span className="ml-1 text-base font-normal text-foreground/80">〜</span>
                     )}
                   </span>
@@ -426,7 +433,7 @@ function PlanTile({
   onUnits: (n: number) => void;
 }) {
   const priceLabel = plan.basePrice === 0
-    ? "ASK"
+    ? "個別相談"
     : `${formatJPY(plan.basePrice)}${plan.startsFrom ? "〜" : ""}${plan.recurring === "monthly" ? " / 月" : ""}`;
 
   return (

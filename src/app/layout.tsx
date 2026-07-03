@@ -41,13 +41,13 @@ const zenMincho = Zen_Old_Mincho({
 });
 
 export const metadata: Metadata = {
-  title: "ボーカルMix・OBS音響調整の依頼｜VTuber・歌い手の音響制作 Genomersive Studio",
+  title: "音を整え、活動の次の一歩まで。｜Genomersive Studio",
   description:
-    "歌ってみた・配信の音、プロに任せませんか。VTuber・歌い手・配信者向けにボーカルMix・パラMix・OBS音響調整を依頼できるサウンドスタジオ。料金は依頼前に概算が出せます。実績500件以上、サウンドエンジニア MiLa。",
+    "Vocal Mix・配信音響設計・整音を通じて、VTuber・歌い手・配信者の作品や配信が届く状態になるところまでサポートする音響制作スタジオ。",
   metadataBase: new URL("https://genomersivestudio.com"),
   openGraph: {
     title: "Genomersive Studio",
-    description: "Producer / Director / Sound Engineer",
+    description: "音を整え、活動の次の一歩まで。",
     type: "website",
     images: [
       {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Genomersive Studio",
-    description: "Producer / Director / Sound Engineer",
+    description: "音を整え、活動の次の一歩まで。",
     images: ["/og-image.jpg"],
   },
   verification: {

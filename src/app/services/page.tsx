@@ -4,12 +4,12 @@ import { Faq } from "@/components/Faq";
 import { CtaBand } from "@/components/CtaBand";
 
 export const metadata = {
-  title: "ボーカルMix・OBS音響調整の料金｜依頼前に概算がわかる Genomersive Studio",
+  title: "音響制作サービス・料金｜Genomersive Studio",
   description:
-    "ボーカルMix・パラMix・OBS音響調整の料金を、依頼する前にその場で確認。VTuber・歌い手向けのプラン・納期・オプションを組み合わせて概算見積もりが出せます。料金は¥3,000から、すべて公開。",
+    "Vocal Mix、Para Mix、OBS Audio、Binaural、Audio Edit、Creative Directionのサービス内容と受付の流れをご案内します。",
   openGraph: {
-    title: "料金シミュレーター — ボーカルMix・OBS音響調整 Genomersive Studio",
-    description: "ボーカルMix・OBS音響調整の料金を、依頼前にその場で。¥3,000から、すべて公開。",
+    title: "音響制作サービス — Genomersive Studio",
+    description: "作品や配信が届く状態になるところまでサポートします。",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg"] },
@@ -22,10 +22,10 @@ export default function ServicesPage() {
       <section className="relative z-10 px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-0">
         <div className="mx-auto max-w-3xl">
           <h1 className="font-sans font-bold text-2xl md:text-4xl leading-tight">
-            ボーカルMix・OBS音響調整の料金と、依頼の進め方。
+            音響制作サービスと、ご依頼の進め方。
           </h1>
           <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
-            「いくらかかるか分からないと、相談すらしづらい」——その入口の不安を、先に消します。ボーカルMix・パラMix・OBS音響調整の料金を、依頼する前にこのページで組み立てて確認できます。VTuber・歌い手・配信者の歌ってみたから配信まで、必要なぶんだけ。
+            Vocal Mix、Para Mix、配信音響、バイノーラル、整音、投稿導線の相談まで。まず内容や素材を確認し、対応可否・金額・納期をご案内します。価格が決まっている項目は、このページで概算を確認できます。
           </p>
         </div>
       </section>

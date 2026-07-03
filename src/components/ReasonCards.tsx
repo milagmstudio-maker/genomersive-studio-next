@@ -5,7 +5,7 @@ import { WORKS, type Work } from "@/data/works";
 import { WorkModal } from "./WorkModal";
 
 // 02の「主張」をその場で「証拠」に変えるための聴き比べ動画
-const PROOF_WORK_ID = "w-013"; // OBS音響調整のbefore/after
+const PROOF_WORK_ID = "w-013"; // OBS Audioのbefore/after
 
 const REASONS = [
   {
@@ -21,8 +21,8 @@ const REASONS = [
   },
   {
     no: "03",
-    title: "活動全体を見て、提案できる",
-    body: "音を良くするだけなら技術の仕事。「その曲を今出すべきか」「配信とどう繋げるか」まで考えるのがプロデューサーの仕事です。実際に、VTuberのプロデュース・マネジメントを現在進行形でやっています。納品後の伴走（OBS調整はアフターサポート2ヶ月付き）も前提です。",
+    title: "音を整えたあとまで相談できる",
+    body: "投稿導線、企画の整理、見せ方など、制作物をどう活かすかまで一緒に整理します。正解を押し付けるのではなく、活動者本人の意思を尊重しながら次の一歩をご提案します。",
   },
 ];
 
@@ -60,7 +60,7 @@ export function ReasonCards() {
               className="group mt-4 flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] text-accent hover:text-foreground transition-colors"
             >
               <span className="inline-block h-[5px] w-[5px] bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)]" />
-              OBS調整のbefore / afterを聴き比べる
+              OBS Audioのbefore / afterを聴き比べる
               <span className="transition-transform group-hover:translate-x-1">
                 →
               </span>

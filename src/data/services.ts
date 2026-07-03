@@ -1,9 +1,15 @@
-import type { WorkCategory } from "./works";
+export type ServiceCategory =
+  | "VOCAL MIX"
+  | "PARA MIX"
+  | "OBS AUDIO"
+  | "BINAURAL"
+  | "AUDIO EDIT"
+  | "CREATIVE DIRECTION";
 
 export type Plan = {
   id: string;
   name: string;
-  category: WorkCategory | "PRODUCTION";
+  category: ServiceCategory;
   /** Base price in JPY */
   basePrice: number;
   /** Show "〜" suffix indicating "starting from" */
@@ -96,20 +102,12 @@ export const PLANS: Plan[] = [
 
   // OBS Audio
   {
-    id: "p-obs-full",
-    name: "OBS音響調整 + Mix",
+    id: "p-obs-audio",
+    name: "OBS Audio / 配信音響設計",
     category: "OBS AUDIO",
     basePrice: 30000,
     description:
-      "通常マイク / 歌唱マイク / ASMRマイクなどの調整 + Mix。アフターサポート2ヶ月付き。",
-  },
-  {
-    id: "p-obs-only",
-    name: "OBS音響調整のみ",
-    category: "OBS AUDIO",
-    basePrice: 25000,
-    description:
-      "通常マイク / 歌唱マイク / ASMRマイクなどの調整。アフターサポート2ヶ月付き。",
+      "雑談、ゲーム配信、歌枠、ASMR配信に合わせて、声・BGM・ゲーム音・効果音が視聴者に聞きやすく届く音響を設計します。アフターサポート2ヶ月付き。",
   },
 
   // Pack
@@ -130,14 +128,30 @@ export const PLANS: Plan[] = [
     },
   },
 
-  // Production — quote only
+  // Additional services — quote after checking source material and scope
   {
-    id: "p-production",
-    name: "Production / Direction",
-    category: "PRODUCTION",
+    id: "p-binaural",
+    name: "Binaural",
+    category: "BINAURAL",
     basePrice: 0,
     description:
-      "プロデュース、マネジメント、楽曲のMixやOBS音響調整まで、内容に応じて個別お見積もり。",
+      "ボイス作品やシチュエーション音声向けに、距離感・定位・空間の広がりを整えます。",
+  },
+  {
+    id: "p-audio-edit",
+    name: "Audio Edit / 整音",
+    category: "AUDIO EDIT",
+    basePrice: 0,
+    description:
+      "整音、ノイズ除去、音量調整、素材修復に対応。音声素材を作品や投稿に使いやすい状態へ整えます。",
+  },
+  {
+    id: "p-creative-direction",
+    name: "Creative Direction",
+    category: "CREATIVE DIRECTION",
+    basePrice: 0,
+    description:
+      "投稿導線、企画整理、見せ方の相談など、音を整えたあとの活動の使い方と次の一歩を一緒に整理します。",
   },
 ];
 
