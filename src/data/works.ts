@@ -21,14 +21,6 @@ export type Work = {
  */
 export const WORKS: Work[] = [
   {
-    id: "w-024",
-    title: "more than words",
-    artist: "羊文学 covered by にじゅな",
-    category: "VOCAL MIX",
-    youtubeId: "a-sl75NMrEU",
-    year: 2026,
-  },
-  {
     id: "w-025",
     title: "マシュマロ",
     artist: "DECO*27 covered by 灯火ホタル",
@@ -74,6 +66,14 @@ export const WORKS: Work[] = [
     artist: "ヨルシカ covered by にじゅな",
     category: "VOCAL MIX",
     youtubeId: "p3V71Y2zkrg",
+    year: 2026,
+  },
+  {
+    id: "w-026",
+    title: "ラグトレイン",
+    artist: "稲葉曇 covered by 半島キタ",
+    category: "VOCAL MIX",
+    youtubeId: "ZFeC9NnX5sI",
     year: 2026,
   },
   {
@@ -218,6 +218,14 @@ export const WORKS: Work[] = [
     artist: "eill covered by にじゅな",
     category: "VOCAL MIX",
     youtubeId: "I-PkfF2rd_U",
+    year: 2026,
+  },
+  {
+    id: "w-024",
+    title: "more than words",
+    artist: "羊文学 covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "a-sl75NMrEU",
     year: 2026,
   },
 ];
