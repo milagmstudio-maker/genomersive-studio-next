@@ -28,6 +28,15 @@ export function Works() {
     [filter]
   );
 
+  // 実績が1件もないカテゴリタブは出さない（「実績なし」を自ら見せる状態を避ける）
+  const visibleCategories = useMemo(
+    () =>
+      CATEGORIES.filter(
+        (c) => c === "ALL" || WORKS.some((w) => w.category === c)
+      ),
+    []
+  );
+
   const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
   const start = (safePage - 1) * PAGE_SIZE;
@@ -55,7 +64,7 @@ export function Works() {
 
         {/* Filter tabs */}
         <div className="mb-12 flex flex-wrap gap-x-1 gap-y-2 border-b border-white/30 pb-1">
-          {CATEGORIES.map((c) => {
+          {visibleCategories.map((c) => {
             const active = filter === c;
             return (
               <button

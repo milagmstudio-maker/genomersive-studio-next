@@ -155,18 +155,25 @@ export function Hero() {
         001 / INDEX.MIX
       </motion.div>
 
-      {/* Enter indicator → Works */}
+      {/* Enter indicators → Works / Services */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.3 }}
-        className="absolute bottom-8 right-6"
+        className="absolute bottom-8 right-6 flex flex-col items-end gap-2"
       >
         <Link
           href="/works"
           className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
         >
           実績を聴く
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </Link>
+        <Link
+          href="/services"
+          className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
+        >
+          料金を見る
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
       </motion.div>
