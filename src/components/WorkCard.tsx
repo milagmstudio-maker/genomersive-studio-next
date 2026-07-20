@@ -91,7 +91,7 @@ export function WorkCard({ work, index, onOpen }: Props) {
           <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/80">
             {work.artist} · {work.year}
           </p>
-          <h3 className="mt-1.5 font-sans text-base md:text-lg font-medium leading-snug">
+          <h3 className="mt-1.5 line-clamp-2 font-sans text-base md:text-lg font-medium leading-snug">
             {work.title}
           </h3>
         </div>

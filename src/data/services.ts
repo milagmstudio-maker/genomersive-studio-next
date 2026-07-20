@@ -61,7 +61,7 @@ export const PLANS: Plan[] = [
     id: "p-collab",
     name: "Collab・合唱",
     category: "VOCAL MIX",
-    basePrice: 14000,
+    basePrice: 15000,
     startsFrom: true,
     description: "2名様分のコラボ・合唱Mix。3名以降は1名追加ごとに+¥5,000。",
     extra: {
