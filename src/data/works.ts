@@ -21,6 +21,22 @@ export type Work = {
  */
 export const WORKS: Work[] = [
   {
+    id: "w-027",
+    title: "奏",
+    artist: "スキマスイッチ covered by まちこりーた",
+    category: "VOCAL MIX",
+    youtubeId: "LBPEHn2EM-s",
+    year: 2026,
+  },
+  {
+    id: "w-028",
+    title: "青のすみか",
+    artist: "キタニタツヤ covered by まちこりーた",
+    category: "VOCAL MIX",
+    youtubeId: "HlcvqfMCAHY",
+    year: 2026,
+  },
+  {
     id: "w-025",
     title: "マシュマロ",
     artist: "DECO*27 covered by 灯火ホタル",
@@ -133,6 +149,14 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
+    id: "w-031",
+    title: "#歌枠 / KARAOKE】睡眠導入歌枠、癒しをお届けします🌙",
+    artist: "翠雨しの",
+    category: "OBS AUDIO",
+    youtubeId: "7P95e8ySOq8",
+    year: 2026,
+  },
+  {
     id: "w-013",
     title: "OBS音響調整のbefore or after",
     artist: "にじゅな",
@@ -226,6 +250,22 @@ export const WORKS: Work[] = [
     artist: "羊文学 covered by にじゅな",
     category: "VOCAL MIX",
     youtubeId: "a-sl75NMrEU",
+    year: 2026,
+  },
+  {
+    id: "w-029",
+    title: "CH9000人目指してゆるりと歌いましょう",
+    artist: "夜世音",
+    category: "OBS AUDIO",
+    youtubeId: "8ionZ_EyZlE",
+    year: 2026,
+  },
+  {
+    id: "w-030",
+    title: "定期歌枠🎶まったりしながらグッとくる歌声はいかがですか？🎤初見さん・ROM◎",
+    artist: "時音ありす",
+    category: "OBS AUDIO",
+    youtubeId: "_rNClxHWCPQ",
     year: 2026,
   },
 ];

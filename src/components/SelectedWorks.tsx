@@ -7,7 +7,7 @@ import { WorkCard } from "./WorkCard";
 import { WorkModal } from "./WorkModal";
 
 // トップページに出す代表作。差し替えはこのID配列を編集するだけ
-const FEATURED_IDS = ["w-025", "w-009", "w-013", "w-001"];
+const FEATURED_IDS = ["w-027", "w-025", "w-009", "w-013"];
 
 export function SelectedWorks() {
   const [open, setOpen] = useState<Work | null>(null);
