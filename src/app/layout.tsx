@@ -83,13 +83,13 @@ export default function RootLayout({
         <JsonLd />
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-9VCCFHNVGL"
+          src="https://www.googletagmanager.com/gtag/js?id=G-9VCCFHNYGL"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-9VCCFHNVGL');`}
+gtag('config', 'G-9VCCFHNYGL');`}
         </Script>
       </head>
       <body className="bg-noise relative min-h-full">
