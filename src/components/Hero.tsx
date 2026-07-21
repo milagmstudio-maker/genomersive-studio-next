@@ -128,7 +128,7 @@ export function Hero() {
           音を整え、活動の次の一歩まで。
         </p>
         <p className="mt-4 text-xs leading-loose tracking-wider text-foreground/85 md:text-sm">
-          Vocal Mix・配信音響設計・整音を通じて、
+          Vocal Mix・Para Mix・配信音響設計・整音を通じて、
           <br className="hidden sm:block" />
           作品や配信が「届く状態」になるところまでサポートします。
         </p>
