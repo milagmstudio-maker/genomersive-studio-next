@@ -21,6 +21,14 @@ export type Work = {
  */
 export const WORKS: Work[] = [
   {
+    id: "w-032",
+    title: "春はゆく",
+    artist: "Aimer covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "BTmDFhWe9GU",
+    year: 2026,
+  },
+  {
     id: "w-027",
     title: "奏",
     artist: "スキマスイッチ covered by まちこりーた",
