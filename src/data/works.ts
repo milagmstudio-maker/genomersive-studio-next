@@ -158,10 +158,10 @@ export const WORKS: Work[] = [
   },
   {
     id: "w-031",
-    title: "#歌枠 / KARAOKE】睡眠導入歌枠、癒しをお届けします🌙",
+    title: "リクエスト大歓迎な歌枠です✨",
     artist: "翠雨しの",
     category: "OBS AUDIO",
-    youtubeId: "7P95e8ySOq8",
+    youtubeId: "L9RMOuVzM8A",
     year: 2026,
   },
   {
