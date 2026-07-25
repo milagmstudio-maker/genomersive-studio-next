@@ -276,6 +276,14 @@ export const WORKS: Work[] = [
     youtubeId: "_rNClxHWCPQ",
     year: 2026,
   },
+  {
+    id: "w-033",
+    title: "【歌枠 KARAOKE】好きなお歌をのんびり歌います【蔵乃のるん】",
+    artist: "蔵乃のるん",
+    category: "OBS AUDIO",
+    youtubeId: "JU6WDj2OfkQ",
+    year: 2026,
+  },
 ];
 
 export const CATEGORIES: ("ALL" | WorkCategory)[] = [
