@@ -157,6 +157,14 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
+    id: "w-034",
+    title: "【 #歌枠 / #弾き語り】日曜定期配信！！おやすみ弾き語り🌙【 #しのの仕立て屋 / vsinger 】",
+    artist: "翠雨しの",
+    category: "OBS AUDIO",
+    youtubeId: "TDKYjLOh1m8",
+    year: 2026,
+  },
+  {
     id: "w-031",
     title: "リクエスト大歓迎な歌枠です✨",
     artist: "翠雨しの",
