@@ -165,14 +165,6 @@ export const WORKS: Work[] = [
     year: 2026,
   },
   {
-    id: "w-031",
-    title: "リクエスト大歓迎な歌枠です✨",
-    artist: "翠雨しの",
-    category: "OBS AUDIO",
-    youtubeId: "L9RMOuVzM8A",
-    year: 2026,
-  },
-  {
     id: "w-013",
     title: "OBS音響調整のbefore or after",
     artist: "にじゅな",
