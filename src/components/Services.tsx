@@ -80,8 +80,15 @@ export function Services() {
       name: a.name,
       price: a.price,
     }));
-    const delivery = DELIVERIES.find((d) => d.id === deliveryId)!;
     const discount = DISCOUNTS.find((d) => d.id === discountId)!;
+
+    // パック系を選ぶと納期オプションは適用しない（常に通常納期扱い）
+    const deliveryLocked = planLines.some(
+      (l) => PLANS.find((p) => p.id === l.id)?.excludesDelivery
+    );
+    const delivery = deliveryLocked
+      ? DELIVERIES[0]
+      : DELIVERIES.find((d) => d.id === deliveryId)!;
 
     const planSum = planLines.reduce((s, l) => s + l.subtotal, 0);
     const addonSum = addonLines.reduce((s, l) => s + l.price, 0);
@@ -95,6 +102,7 @@ export function Services() {
       planLines,
       addonLines,
       delivery,
+      deliveryLocked,
       discount,
       total: afterDiscount,
       hasSelection: planLines.length > 0,
@@ -196,11 +204,17 @@ export function Services() {
             </Step>
 
             <Step no={stepNo()} en="DELIVERY" jp="納期">
+              {calc.deliveryLocked && (
+                <p className="mb-4 border border-white/25 bg-black/30 px-4 py-3 font-mono text-[10px] leading-relaxed tracking-[0.15em] text-foreground/75">
+                  パックプランをお選びの場合、納期オプションは適用されません。
+                </p>
+              )}
               <TileGrid cols={4}>
                 {DELIVERIES.map((d) => (
                   <Tile
                     key={d.id}
-                    selected={deliveryId === d.id}
+                    selected={!calc.deliveryLocked && deliveryId === d.id}
+                    disabled={calc.deliveryLocked}
                     onClick={() => setDeliveryId(d.id)}
                     title={d.name}
                     priceLabel={d.surcharge > 0 ? `+${formatJPY(d.surcharge)}` : "—"}
@@ -261,7 +275,9 @@ export function Services() {
                       <div className="flex justify-between">
                         <span className="text-foreground/90">納期</span>
                         <span className="font-mono">
-                          {calc.delivery.surcharge > 0
+                          {calc.deliveryLocked
+                            ? "対象外"
+                            : calc.delivery.surcharge > 0
                             ? `+${formatJPY(calc.delivery.surcharge)}`
                             : "—"}
                         </span>
@@ -377,20 +393,25 @@ function Tile({
   title,
   priceLabel,
   description,
+  disabled = false,
 }: {
   selected: boolean;
   onClick: () => void;
   title: string;
   priceLabel: string;
   description: string;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={cn(
         "group relative text-left border p-5 transition-all",
-        selected
+        disabled
+          ? "border-white/15 bg-black/20 opacity-40 cursor-not-allowed"
+          : selected
           ? "border-accent bg-accent/[0.07] shadow-[0_0_20px_rgba(176,38,255,0.25)]"
           : "border-white/30 hover:border-white/60 bg-black/20"
       )}

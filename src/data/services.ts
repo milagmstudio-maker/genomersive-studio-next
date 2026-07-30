@@ -29,6 +29,8 @@ export type Plan = {
   };
   /** Recurring monthly plans display differently */
   recurring?: "monthly";
+  /** パック系は納期オプション（特急料金）の対象外 */
+  excludesDelivery?: boolean;
 };
 
 export const PLANS: Plan[] = [
@@ -126,6 +128,25 @@ export const PLANS: Plan[] = [
       min: 3,
       max: 10,
     },
+  },
+  {
+    id: "p-pack-shorts",
+    name: "Shorts Vocal Mix Pack",
+    category: "VOCAL MIX",
+    basePrice: 10000,
+    excludesDelivery: true,
+    description:
+      "ショート尺Mix 5本セット。1本あたり¥2,000（通常Short Mix ¥3,000〜）。ご依頼から1ヶ月以内に5本分をご消化ください。納期オプションの対象外です。",
+  },
+  {
+    id: "p-pack-monthly",
+    name: "Monthly Vocal Mix Pack",
+    category: "VOCAL MIX",
+    basePrice: 15000,
+    recurring: "monthly",
+    excludesDelivery: true,
+    description:
+      "毎月フル尺1本 + 別々の曲のショート5本。当月内でのご消化となり、翌月への繰り越しはできません。納期オプションの対象外です。",
   },
 
   // Additional services — quote after checking source material and scope
