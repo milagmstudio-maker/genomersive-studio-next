@@ -284,6 +284,14 @@ export const WORKS: Work[] = [
     youtubeId: "JU6WDj2OfkQ",
     year: 2026,
   },
+  {
+    id: "w-035",
+    title: "【 #鳴潮 】 完全初見『 第2章 幕間 & 第8幕 赫耀の陽に灼かれて 』読んでくよ～！ . ｜ #Vtuber #雑談",
+    artist: "あのこみる",
+    category: "OBS AUDIO",
+    youtubeId: "koqkDFSCnio",
+    year: 2026,
+  },
 ];
 
 export const CATEGORIES: ("ALL" | WorkCategory)[] = [
