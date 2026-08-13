@@ -85,12 +85,12 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
-    id: "w-004",
-    title: "怪獣",
-    artist: "サカナクション covered by MEMESIA",
+    id: "w-038",
+    title: "この夜を止めてよ",
+    artist: "JUJU covered by にじゅな",
     category: "VOCAL MIX",
-    youtubeId: "lOxiHsbp84Q",
-    year: 2025,
+    youtubeId: "QWhjMWdtkVU",
+    year: 2026,
   },
   {
     id: "w-005",
@@ -171,6 +171,14 @@ export const WORKS: Work[] = [
     category: "VOCAL MIX",
     youtubeId: "omyq3X02vXs",
     year: 2026,
+  },
+  {
+    id: "w-004",
+    title: "怪獣",
+    artist: "サカナクション covered by MEMESIA",
+    category: "VOCAL MIX",
+    youtubeId: "lOxiHsbp84Q",
+    year: 2025,
   },
   {
     id: "w-034",
