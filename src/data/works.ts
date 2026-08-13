@@ -165,6 +165,14 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
+    id: "w-037",
+    title: "命に嫌われている。",
+    artist: "カンザキイオリ covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "omyq3X02vXs",
+    year: 2026,
+  },
+  {
     id: "w-034",
     title: "【 #歌枠 / #弾き語り】日曜定期配信！！おやすみ弾き語り🌙【 #しのの仕立て屋 / vsinger 】",
     artist: "翠雨しの",
