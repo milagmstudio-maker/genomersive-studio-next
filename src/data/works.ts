@@ -316,6 +316,14 @@ export const WORKS: Work[] = [
     youtubeId: "koqkDFSCnio",
     year: 2026,
   },
+  {
+    id: "w-039",
+    title: "【歌枠】寝る前に一曲いかが？いつもの気ままに歌う歌枠",
+    artist: "森神りぃしゅ",
+    category: "OBS AUDIO",
+    youtubeId: "1LsB35Ie9B4",
+    year: 2026,
+  },
 ];
 
 export const CATEGORIES: ("ALL" | WorkCategory)[] = [
