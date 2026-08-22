@@ -21,6 +21,14 @@ export type Work = {
  */
 export const WORKS: Work[] = [
   {
+    id: "w-040",
+    title: "ルーマー（Rumor）",
+    artist: "ポリスピカデリー covered by 翠雨しの",
+    category: "VOCAL MIX",
+    youtubeId: "zLKLrx1jkos",
+    year: 2026,
+  },
+  {
     id: "w-036",
     title: "SUMMER SONG",
     artist: "flumpool covered by まちこりーた",
