@@ -9,7 +9,7 @@ export function AmbientVideo() {
   const isHome = pathname === "/";
 
   // 動画(2.3MB)が初回表示の帯域を奪わないよう、ページ読み込み完了後にsrcを差す。
-  // それまでは poster 画像が背景を担う
+  // それまでは poster 画像(90KB)が背景を担う
   const [videoReady, setVideoReady] = useState(false);
 
   const overlayClass = isHome
@@ -17,13 +17,30 @@ export function AmbientVideo() {
     : "from-background/80 via-background/70 to-background/85";
 
   useEffect(() => {
+    // 小さい画面・データセーバー・低速回線では動画を読まず poster のままにする。
+    // 背景は雰囲気を担うだけなので、静止画でも成立する
+    const shouldLoadVideo = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) return false;
+      const conn = (
+        navigator as Navigator & {
+          connection?: { saveData?: boolean; effectiveType?: string };
+        }
+      ).connection;
+      if (conn?.saveData) return false;
+      if (conn?.effectiveType && /(^|-)2g$/.test(conn.effectiveType)) return false;
+      return true;
+    };
+
+    const activate = () => {
+      if (shouldLoadVideo()) setVideoReady(true);
+    };
+
     if (document.readyState === "complete") {
-      setVideoReady(true);
+      activate();
       return;
     }
-    const onLoad = () => setVideoReady(true);
-    window.addEventListener("load", onLoad, { once: true });
-    return () => window.removeEventListener("load", onLoad);
+    window.addEventListener("load", activate, { once: true });
+    return () => window.removeEventListener("load", activate);
   }, []);
 
   useEffect(() => {
