@@ -128,29 +128,34 @@ export function Contact() {
             <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
 
             {/* Name */}
-            <Field label="お名前" required>
+            <Field htmlFor="f-name" label="お名前" required>
               <input
+                id="f-name"
                 type="text"
                 name="name"
                 required
+                autoComplete="name"
                 placeholder="山田 太郎"
                 className={inputCls}
               />
             </Field>
 
             {/* Email */}
-            <Field label="メールアドレス" required>
+            <Field htmlFor="f-email" label="メールアドレス" required>
               <input
+                id="f-email"
                 type="email"
                 name="email"
                 required
+                autoComplete="email"
+                inputMode="email"
                 placeholder="you@example.com"
                 className={inputCls}
               />
             </Field>
 
             {/* Inquiry type */}
-            <Field label="ご相談の種類" required>
+            <FieldGroup label="ご相談の種類" required>
               <div className="flex flex-wrap gap-3">
                 {INQUIRY_TYPES.map((t, i) => (
                   <label key={t} className="flex items-center gap-2 cursor-pointer">
@@ -171,10 +176,10 @@ export function Contact() {
               <p className="mt-3 text-xs leading-relaxed text-foreground/70">
                 OBS Audio / 配信音響設計は、雑談・ゲーム配信・歌枠・ASMRなどに対応しています。
               </p>
-            </Field>
+            </FieldGroup>
 
             {/* Contact preference */}
-            <Field label="ご希望の連絡方法" required>
+            <FieldGroup label="ご希望の連絡方法" required>
               <div className="flex flex-wrap gap-3">
                 {CONTACT_TYPES.map((t, i) => (
                   <label key={t} className="flex items-center gap-2 cursor-pointer">
@@ -195,13 +200,15 @@ export function Contact() {
               <input
                 type="text"
                 name="contact_handle"
+                aria-label="X / Discord ID"
+                autoComplete="off"
                 placeholder="X / Discord ID（メール以外を選んだ場合）"
                 className={`${inputCls} mt-3`}
               />
-            </Field>
+            </FieldGroup>
 
             {/* Delivery */}
-            <Field label="希望納期">
+            <FieldGroup label="希望納期">
               <div className="flex flex-wrap gap-3">
                 {DELIVERY_HOPES.map((d, i) => (
                   <label key={d} className="flex items-center gap-2 cursor-pointer">
@@ -218,23 +225,29 @@ export function Contact() {
                   </label>
                 ))}
               </div>
-            </Field>
+            </FieldGroup>
 
             {/* Reference URL */}
-            <Field label="参考音源URL">
+            <Field htmlFor="f-reference" label="参考音源URL">
               <input
+                id="f-reference"
                 type="url"
                 name="reference_url"
+                autoComplete="off"
+                inputMode="url"
                 placeholder="https://..."
                 className={inputCls}
               />
             </Field>
 
             {/* File URL */}
-            <Field label="ファイル共有URL">
+            <Field htmlFor="f-file" label="ファイル共有URL">
               <input
+                id="f-file"
                 type="url"
                 name="file_url"
+                autoComplete="off"
+                inputMode="url"
                 placeholder="https://drive.google.com/... / https://www.dropbox.com/... など"
                 className={inputCls}
               />
@@ -244,8 +257,9 @@ export function Contact() {
             </Field>
 
             {/* Message */}
-            <Field label="ご相談内容" required>
+            <Field htmlFor="f-message" label="ご相談内容" required>
               <textarea
+                id="f-message"
                 name="message"
                 required
                 rows={6}
@@ -386,7 +400,37 @@ export function Contact() {
 const inputCls =
   "w-full bg-black/40 border border-white/35 focus:border-accent focus:outline-none focus:bg-black/60 px-4 py-3 text-foreground placeholder:text-foreground/60 transition-colors";
 
+const LABEL_CLS =
+  "block font-mono text-[11px] tracking-[0.3em] text-foreground/90 mb-3";
+
+/** 単一の入力欄用。htmlFor と入力側の id を必ず対にする */
 function Field({
+  htmlFor,
+  label,
+  required,
+  children,
+}: {
+  htmlFor: string;
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label htmlFor={htmlFor} className={LABEL_CLS}>
+        {label}
+        {required && <span className="text-accent ml-2">*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+/**
+ * ラジオ群用。個々の選択肢が既に label を持つため、
+ * 全体を label で包むと label の入れ子になる。群は fieldset/legend で括る。
+ */
+function FieldGroup({
   label,
   required,
   children,
@@ -396,12 +440,12 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <label className="block font-mono text-[11px] tracking-[0.3em] text-foreground/90 mb-3">
+    <fieldset className="m-0 border-0 p-0">
+      <legend className={LABEL_CLS}>
         {label}
         {required && <span className="text-accent ml-2">*</span>}
-      </label>
+      </legend>
       {children}
-    </div>
+    </fieldset>
   );
 }
