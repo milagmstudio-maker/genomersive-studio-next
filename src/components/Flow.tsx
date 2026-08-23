@@ -76,7 +76,7 @@ export function Flow() {
                   {s.no}
                 </span>
                 <div>
-                  <p className="font-mono text-[9px] tracking-[0.3em] text-foreground/70">
+                  <p className="font-mono text-[10px] tracking-[0.3em] text-foreground/70">
                     {s.en}
                   </p>
                   <h3 className="font-sans font-bold text-base">{s.jp}</h3>

@@ -132,7 +132,7 @@ export function Hero() {
           <br className="hidden sm:block" />
           作品や配信が「届く状態」になるところまでサポートします。
         </p>
-        <p className="mt-2 font-mono text-[9px] tracking-[0.18em] text-foreground/60 md:text-[10px]">
+        <p className="mt-2 font-mono text-[10px] tracking-[0.18em] text-foreground/60">
           VTuber・歌い手・配信者のための音響制作スタジオ
         </p>
       </motion.div>

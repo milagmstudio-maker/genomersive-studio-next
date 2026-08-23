@@ -113,7 +113,7 @@ export default function NijyunaCasePage() {
               ["STATUS", "進行中 — 2026年6月、歌のための新チャンネル始動"],
             ].map(([k, v]) => (
               <div key={k} className="flex items-start gap-4">
-                <dt className="font-mono text-[9px] tracking-[0.2em] text-foreground/70 w-20 shrink-0 pt-[3px]">
+                <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/70 w-20 shrink-0 pt-[3px]">
                   {k}
                 </dt>
                 <dd className="text-foreground/90 leading-relaxed">{v}</dd>

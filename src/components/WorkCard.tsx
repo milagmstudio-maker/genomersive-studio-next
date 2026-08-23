@@ -76,19 +76,20 @@ export function WorkCard({ work, index, onOpen }: Props) {
           </div>
 
           {/* Top-left category tag */}
-          <div className="absolute top-3 left-3 font-mono text-[9px] tracking-[0.25em] text-foreground bg-black/60 backdrop-blur-sm border border-white/30 px-2 py-1">
+          <div className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.25em] text-foreground bg-black/60 backdrop-blur-sm border border-white/30 px-2 py-1">
             {work.category}
           </div>
 
           {/* Top-right index */}
-          <div className="absolute top-3 right-3 font-mono text-[9px] tracking-[0.25em] text-foreground/90">
+          <div className="absolute top-3 right-3 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
             {work.id.toUpperCase()}
           </div>
         </div>
 
         {/* Caption */}
         <div className="p-4 border-t border-white/25">
-          <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/80">
+          {/* 和名の固有名詞が入るため字間は詰める。0.25emだと語が解ける */}
+          <p className="font-mono text-[10px] tracking-[0.1em] text-foreground/80">
             {work.artist} · {work.year}
           </p>
           <h3 className="mt-1.5 line-clamp-2 font-sans text-base md:text-lg font-medium leading-snug">

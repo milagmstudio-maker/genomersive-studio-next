@@ -33,7 +33,7 @@ export function About() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-black/60 backdrop-blur-sm px-3 py-1.5 font-mono text-[9px] tracking-[0.25em] text-foreground/85">
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-black/60 backdrop-blur-sm px-3 py-1.5 font-mono text-[10px] tracking-[0.25em] text-foreground/85">
                 <span>MILA / PORTRAIT</span>
                 <span
                   className="inline-block h-[5px] w-[5px]"
@@ -63,7 +63,7 @@ export function About() {
 
             {/* Produce */}
             <div className="mt-8 flex items-center justify-between gap-4 border border-white/30 bg-black/30 backdrop-blur-sm px-4 py-3">
-              <span className="font-mono text-[9px] tracking-[0.3em] text-foreground/70 shrink-0">
+              <span className="font-mono text-[10px] tracking-[0.3em] text-foreground/70 shrink-0">
                 PRODUCE
               </span>
               <a
@@ -85,7 +85,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   500+
                 </p>
-                <p className="mt-1 font-mono text-[9px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
                   TOTAL WORKS
                 </p>
               </div>
@@ -93,7 +93,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   2022
                 </p>
-                <p className="mt-1 font-mono text-[9px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
                   EST.
                 </p>
               </div>
@@ -101,7 +101,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   2<span className="text-base font-normal">ヶ月</span>
                 </p>
-                <p className="mt-1 font-mono text-[9px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
                   OBS AFTER SUPPORT
                 </p>
               </div>
@@ -126,7 +126,7 @@ export function About() {
                   ["GENRE", "ポップス / ボカロ / ロック / バラード / メタル"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex items-start gap-4">
-                    <dt className="font-mono text-[9px] tracking-[0.2em] text-foreground/70 w-28 shrink-0 pt-[3px]">
+                    <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/70 w-28 shrink-0 pt-[3px]">
                       {k}
                     </dt>
                     <dd className="text-foreground/90 leading-relaxed">{v}</dd>

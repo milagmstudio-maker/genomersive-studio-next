@@ -46,7 +46,7 @@ export function DotNav() {
             </span>
             <span
               className={cn(
-                "hidden md:block font-sans text-[9px] -mt-1 transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
+                "hidden md:block font-sans text-[10px] -mt-1 transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
                 isActive ? "text-foreground/85" : "text-foreground/55 group-hover:text-foreground/85"
               )}
             >

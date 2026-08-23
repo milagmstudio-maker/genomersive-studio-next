@@ -32,7 +32,7 @@ export function CaseStudy() {
 
           <div className="p-6 md:p-9">
             <p
-              className="font-mono text-[9px] tracking-[0.28em]"
+              className="font-mono text-[10px] tracking-[0.28em]"
               style={{ color: "var(--accent-cream)" }}
             >
               PRODUCE / VOCAL MIX / OBS AUDIO / CHANNEL DESIGN

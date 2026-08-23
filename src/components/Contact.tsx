@@ -345,7 +345,7 @@ export function Contact() {
                       )}
                     </span>
                   </div>
-                  <p className="font-mono text-[9px] tracking-[0.2em] text-foreground/70 pt-1">
+                  <p className="font-mono text-[10px] tracking-[0.2em] text-foreground/70 pt-1">
                     送信時に内容が自動で添付されます
                   </p>
                 </div>
