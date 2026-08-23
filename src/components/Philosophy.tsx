@@ -21,7 +21,7 @@ export function Philosophy() {
             }}
           />
           <h2
-            className="max-w-3xl font-mincho text-2xl font-bold leading-relaxed md:text-4xl"
+            className="max-w-3xl font-mincho text-2xl leading-relaxed md:text-4xl"
             style={{ color: "var(--accent-cream)" }}
           >
             納品して終わりではなく、

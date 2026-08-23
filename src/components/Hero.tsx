@@ -122,7 +122,7 @@ export function Hero() {
         className="mt-10 max-w-3xl text-center"
       >
         <p
-          className="font-mincho text-xl font-bold leading-relaxed tracking-[0.08em] md:text-2xl"
+          className="font-mincho text-xl leading-relaxed tracking-[0.08em] md:text-2xl"
           style={{ color: "var(--accent-cream)" }}
         >
           音を整え、活動の次の一歩まで。

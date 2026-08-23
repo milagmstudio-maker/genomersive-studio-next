@@ -27,11 +27,13 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 });
 
-// 日本語ディスプレイ書体 — コアコピー・リード文・和文見出し専用
+// 日本語ディスプレイ書体 — コアコピー・リード文・和文見出し専用。
+// 和文はグリフ数が多く1ウェイトでも配信量が大きいため、太字は持たない。
+// （明朝の太字は使わず、字送りと級数で強さを出す方針）
 const zenMincho = Zen_Old_Mincho({
   variable: "--font-zen-mincho",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -98,7 +100,7 @@ gtag('config', 'G-9VCCFHNYGL');`}
         <main className="relative">{children}</main>
 
         <footer className="relative z-10 border-t border-white/25 py-8 font-mono text-[10px] tracking-[0.3em] text-foreground/60">
-          <p className="mb-6 text-center font-mincho text-sm font-bold tracking-[0.15em] text-foreground/80">
+          <p className="mb-6 text-center font-mincho text-sm tracking-[0.15em] text-foreground/80">
             忘れられない音にする。
           </p>
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 sm:flex-row sm:justify-between">
