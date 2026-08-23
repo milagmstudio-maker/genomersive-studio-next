@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist, Geist_Mono, Cormorant_Garamond, Noto_Sans_JP, Zen_Old_Mincho } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond, Zen_Old_Mincho } from "next/font/google";
 import { AmbientVideo } from "@/components/AmbientVideo";
 import { BrandMark } from "@/components/BrandMark";
 import { Cursor } from "@/components/Cursor";
@@ -25,12 +25,6 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-});
-
-const notoJp = Noto_Sans_JP({
-  variable: "--font-noto-jp",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
 });
 
 // 日本語ディスプレイ書体 — コアコピー・リード文・和文見出し専用
@@ -77,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${notoJp.variable} ${zenMincho.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${zenMincho.variable} h-full antialiased`}
     >
       <head>
         <JsonLd />
