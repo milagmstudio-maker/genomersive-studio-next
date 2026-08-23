@@ -8,7 +8,7 @@ export function Philosophy() {
         <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>005</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>PHILOSOPHY / サービス思想</span>
+          <h2 className="font-normal">PHILOSOPHY / サービス思想</h2>
         </div>
 
         <div className="relative overflow-hidden border border-white/30 bg-black/30 px-6 py-10 backdrop-blur-sm md:px-12 md:py-14">
@@ -20,14 +20,14 @@ export function Philosophy() {
                 "linear-gradient(90deg, transparent, var(--accent-cyan))",
             }}
           />
-          <h2
+          <h3
             className="max-w-3xl font-mincho text-2xl leading-relaxed md:text-4xl"
             style={{ color: "var(--accent-cream)" }}
           >
             納品して終わりではなく、
             <br className="hidden sm:block" />
             次の一歩が見えるところまで。
-          </h2>
+          </h3>
           <div className="mt-8 max-w-3xl space-y-5 text-sm leading-loose text-foreground/90 md:text-base">
             <p>
               Genomersive Studioは、音を整えることだけをゴールにしていません。

@@ -24,7 +24,7 @@ export async function Notices() {
         <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>007</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>NOTICES / お知らせ</span>
+          <h2 className="font-normal">NOTICES / お知らせ</h2>
         </div>
 
         <ul className="divide-y divide-white/30 border-y border-white/30">

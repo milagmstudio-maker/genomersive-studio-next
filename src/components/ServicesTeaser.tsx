@@ -54,7 +54,7 @@ export function ServicesTeaser() {
         <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>004</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>SERVICES / できること</span>
+          <h2 className="font-normal">SERVICES / できること</h2>
         </div>
         <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
           音響制作から、作品や配信を届けるための次の一歩まで。

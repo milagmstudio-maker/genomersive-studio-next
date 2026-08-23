@@ -10,7 +10,7 @@ export function About() {
         <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>006</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>ABOUT / MiLaについて</span>
+          <h2 className="font-normal">ABOUT / MiLaについて</h2>
         </div>
         <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
           「誰に頼むか」で音は変わります。だから先に、人の話をします。
@@ -45,12 +45,12 @@ export function About() {
               </div>
             </div>
 
-            <h2 className="font-sans font-bold text-2xl md:text-3xl leading-snug">
+            <h3 className="font-sans font-bold text-2xl md:text-3xl leading-snug">
               MiLa
               <span className="ml-3 font-mono text-[10px] tracking-[0.25em] font-normal text-foreground/70 align-middle">
                 PRODUCER / DIRECTOR / SOUND ENGINEER
               </span>
-            </h2>
+            </h3>
             <p className="mt-6 text-sm md:text-base leading-loose text-foreground/90">
               ミキシングを軸に、録音・音響・PA——現場を自分の手でやってきました。だから音の判断に「たぶん」がありません。
             </p>

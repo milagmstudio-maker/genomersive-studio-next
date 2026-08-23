@@ -28,7 +28,7 @@ export function SelectedWorks() {
         <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>002</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>SELECTED WORKS / 代表作</span>
+          <h2 className="font-normal">SELECTED WORKS / 代表作</h2>
         </div>
         <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
           言葉より先に、耳で確かめてください。

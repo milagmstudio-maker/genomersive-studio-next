@@ -11,7 +11,7 @@ export function CaseStudy() {
         <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
           <span>003</span>
           <span className="h-px w-10 bg-foreground/30" />
-          <span>CASE STUDY / プロデュース事例</span>
+          <h2 className="font-normal">CASE STUDY / プロデュース事例</h2>
         </div>
         <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
           数を並べるより、一つの物語を深く。
