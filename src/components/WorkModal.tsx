@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { Work } from "@/data/works";
 
 type Props = {
@@ -10,18 +10,50 @@ type Props = {
   onClose: () => void;
 };
 
+const FOCUSABLE =
+  'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
+
 export function WorkModal({ work, onClose }: Props) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  // 開く前にフォーカスしていた要素。閉じた時にここへ戻す
+  const restoreRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
+    if (!work) return;
+
+    restoreRef.current = document.activeElement as HTMLElement | null;
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      // Tabがモーダルの外へ抜けないよう先頭と末尾を繋ぐ
+      const items = panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE);
+      if (!items || items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
-    if (work) {
-      document.addEventListener("keydown", onKey);
-      document.body.style.overflow = "hidden";
-    }
+
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    // 開いた直後はパネル内へフォーカスを移す
+    panelRef.current?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      restoreRef.current?.focus?.();
     };
   }, [work, onClose]);
 
@@ -37,6 +69,10 @@ export function WorkModal({ work, onClose }: Props) {
           onClick={onClose}
         >
           <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="work-modal-title"
             initial={{ scale: 0.96, opacity: 0, y: 16 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.96, opacity: 0, y: 16 }}
@@ -80,7 +116,10 @@ export function WorkModal({ work, onClose }: Props) {
                     <span>·</span>
                     <span>{work.year}</span>
                   </div>
-                  <h3 className="mt-2 font-mincho text-2xl md:text-3xl">
+                  <h3
+                    id="work-modal-title"
+                    className="mt-2 font-mincho text-2xl md:text-3xl"
+                  >
                     {work.title}
                   </h3>
                   <p className="mt-1 text-sm text-foreground">{work.artist}</p>

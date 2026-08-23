@@ -89,6 +89,9 @@ gtag('config', 'G-9VCCFHNYGL');`}
         </Script>
       </head>
       <body className="bg-noise relative min-h-full">
+        <a href="#main" className="skip-link font-mono">
+          本文へスキップ
+        </a>
         <Splash />
         <AmbientVideo />
         <GlitchOverlay />
@@ -97,7 +100,9 @@ gtag('config', 'G-9VCCFHNYGL');`}
         <DotNav />
         <MobileNav />
 
-        <main className="relative">{children}</main>
+        <main id="main" className="relative">
+          {children}
+        </main>
 
         <footer className="relative z-10 border-t border-white/25 py-8 font-mono text-[10px] tracking-[0.3em] text-foreground/60">
           <p className="mb-6 text-center font-mincho text-sm tracking-[0.15em] text-foreground/80">

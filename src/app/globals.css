@@ -51,6 +51,37 @@ body {
   color: #000;
 }
 
+/*
+ * キーボード操作時だけ出るフォーカスリング。
+ * サイトはカスタムカーソル（cursor: none）でマウス位置を示すため、
+ * Tab移動時に現在地が分かる手掛かりがこれ以外に無い。
+ */
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
+/* 画面外に退避し、Tabで入った時だけ現れる本文スキップリンク */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  transform: translateY(-120%);
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--accent-cyan);
+  padding: 0.75rem 1.25rem;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* Night-sky gradient base — top dark, horizon slightly lit by city glow */
 .bg-noise::before {
   content: "";
