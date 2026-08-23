@@ -70,7 +70,7 @@ export function About() {
                 href="https://x.com/Nijyuuu7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-sm text-foreground/95 hover:text-accent transition-colors"
+                className="group inline-flex items-center gap-2 py-3 -my-2 text-sm text-foreground/95 hover:text-accent transition-colors"
               >
                 にじゅな
                 <span className="font-mono text-[10px] text-foreground/70 group-hover:text-accent">

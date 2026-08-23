@@ -51,7 +51,7 @@ export function CaseStudy() {
             </p>
             <Link
               href="/case/nijyuna"
-              className="group mt-6 inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] hover:text-foreground transition-colors"
+              className="group mt-4 inline-flex items-center gap-2 py-4 font-mono text-[10px] tracking-[0.3em] hover:text-foreground transition-colors"
               style={{ color: "var(--accent-cream)" }}
             >
               READ CASE

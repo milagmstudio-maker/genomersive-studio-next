@@ -52,7 +52,7 @@ export async function Notices() {
         <div className="mt-8 flex justify-end">
           <Link
             href="/blog"
-            className="group flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-foreground/85 hover:text-accent transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[10px] tracking-[0.3em] text-foreground/85 hover:text-accent transition-colors"
           >
             VIEW ALL
             <span className="transition-transform group-hover:translate-x-1">

@@ -110,13 +110,13 @@ gtag('config', 'G-9VCCFHNYGL');`}
                 href="https://x.com/mila_mixstudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
+                className="inline-flex items-center py-4 -my-4 hover:text-foreground transition-colors"
               >
                 X @mila_mixstudio
               </a>
               <a
                 href="mailto:mila.gmstudio@gmail.com"
-                className="hover:text-foreground transition-colors"
+                className="inline-flex items-center py-4 -my-4 hover:text-foreground transition-colors"
               >
                 MAIL
               </a>

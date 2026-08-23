@@ -57,7 +57,7 @@ export function ReasonCards() {
             <button
               type="button"
               onClick={() => setOpen(proofWork)}
-              className="group mt-4 flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] text-accent hover:text-foreground transition-colors"
+              className="group mt-3 inline-flex items-center gap-2 py-2 font-mono text-[10px] tracking-[0.25em] text-accent hover:text-foreground transition-colors"
             >
               <span className="inline-block h-[5px] w-[5px] bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)]" />
               OBS Audioのbefore / afterを聴き比べる
