@@ -200,7 +200,7 @@ export default function NijyunaCasePage() {
 
         {/* Footer nav */}
         <div className="mt-20 pt-8 border-t border-white/30 flex justify-between font-mono text-[11px] tracking-[0.3em]">
-          <Link href="/" className="text-foreground hover:text-accent transition-colors">
+          <Link href="/" className="text-foreground hover:text-accent-text transition-colors">
             ← HOME
           </Link>
           <div className="flex items-center gap-6">
@@ -208,7 +208,7 @@ export default function NijyunaCasePage() {
               href="https://www.youtube.com/@Nijyuna714"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground hover:text-accent transition-colors"
+              className="text-foreground hover:text-accent-text transition-colors"
             >
               YouTube ↗
             </a>
@@ -216,7 +216,7 @@ export default function NijyunaCasePage() {
               href="https://x.com/Nijyuuu7"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground hover:text-accent transition-colors"
+              className="text-foreground hover:text-accent-text transition-colors"
             >
               X ↗
             </a>

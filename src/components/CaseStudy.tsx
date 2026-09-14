@@ -8,12 +8,12 @@ export function CaseStudy() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>003</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">CASE STUDY / プロデュース事例</h2>
         </div>
-        <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
           数を並べるより、一つの物語を深く。
         </p>
 
@@ -40,18 +40,18 @@ export function CaseStudy() {
             <h3 className="mt-3 font-sans font-bold text-xl md:text-2xl leading-snug">
               にじゅな — 「忘れられない歌手」を、設計する。
             </h3>
-            <p className="mt-4 text-xs md:text-sm leading-relaxed text-foreground/85">
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/90">
               歌ってみたのMixだけではなく、配信音響・チャンネル構造・リリース戦略まで。一人のVTuberの「声」を起点に、活動全体を設計している現在進行形のプロジェクト。
             </p>
             <p
-              className="mt-4 border-l-2 pl-4 font-mincho text-xs md:text-sm leading-relaxed text-foreground/90"
+              className="mt-4 border-l-2 pl-4 font-mincho text-sm md:text-base leading-relaxed text-foreground/95"
               style={{ borderColor: "var(--accent-cream)" }}
             >
               2026年6月、歌のための新チャンネルが始動しました。
             </p>
             <Link
               href="/case/nijyuna"
-              className="group mt-4 inline-flex items-center gap-2 py-4 font-mono text-[10px] tracking-[0.3em] hover:text-foreground transition-colors"
+              className="group mt-4 inline-flex items-center gap-2 py-4 font-mono text-xs tracking-[0.22em] hover:text-foreground transition-colors"
               style={{ color: "var(--accent-cream)" }}
             >
               READ CASE

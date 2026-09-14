@@ -51,12 +51,12 @@ export function ServicesTeaser() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>004</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">SERVICES / できること</h2>
         </div>
-        <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
           音響制作から、作品や配信を届けるための次の一歩まで。
         </p>
 
@@ -68,20 +68,20 @@ export function ServicesTeaser() {
                 className="group grid grid-cols-[1fr_auto] sm:grid-cols-[180px_1fr_110px_24px] items-center gap-x-4 gap-y-1 sm:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
               >
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/75">
+                  <p className="font-mono text-[11px] tracking-[0.22em] text-foreground/80">
                     {s.en}
                   </p>
                   <p className="font-sans font-bold text-base md:text-lg leading-snug">
                     {s.jp}
                   </p>
                 </div>
-                <p className="col-span-2 sm:col-span-1 row-start-2 sm:row-start-auto text-xs md:text-sm leading-relaxed text-foreground/85">
+                <p className="col-span-2 sm:col-span-1 row-start-2 sm:row-start-auto text-sm md:text-base leading-relaxed text-foreground/90">
                   {s.description}
                 </p>
-                <p className="font-mono text-sm text-accent text-right tabular-nums">
+                <p className="font-mono text-sm text-accent-text text-right tabular-nums">
                   {s.price}
                 </p>
-                <span className="hidden sm:block text-foreground/70 group-hover:text-accent group-hover:translate-x-1 transition-all text-right">
+                <span className="hidden sm:block text-foreground/70 group-hover:text-accent-text group-hover:translate-x-1 transition-all text-right">
                   →
                 </span>
               </Link>
@@ -92,7 +92,7 @@ export function ServicesTeaser() {
         <div className="mt-8 flex justify-end">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[10px] tracking-[0.3em] text-foreground/85 hover:text-accent transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-xs tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
           >
             料金シミュレーターで概算を出す
             <span className="transition-transform group-hover:translate-x-1">

@@ -87,7 +87,7 @@ export function WorkModal({ work, onClose }: Props) {
               </span>
               <button
                 onClick={onClose}
-                className="ml-4 px-2 py-0.5 hover:text-accent transition-colors"
+                className="ml-4 px-2 py-0.5 hover:text-accent-text transition-colors"
                 aria-label="Close"
               >
                 ✕

@@ -5,7 +5,7 @@ export function Philosophy() {
       className="relative z-10 px-6 py-24 md:px-12 md:py-32 lg:px-20"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-12 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>005</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">PHILOSOPHY / サービス思想</h2>
@@ -28,7 +28,7 @@ export function Philosophy() {
             <br className="hidden sm:block" />
             次の一歩が見えるところまで。
           </h3>
-          <div className="mt-8 max-w-3xl space-y-5 text-sm leading-loose text-foreground/90 md:text-base">
+          <div className="mt-8 max-w-3xl space-y-5 text-base leading-loose text-foreground/95">
             <p>
               Genomersive Studioは、音を整えることだけをゴールにしていません。
             </p>

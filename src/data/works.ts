@@ -94,10 +94,10 @@ export const WORKS: Work[] = [
   },
   {
     id: "w-038",
-    title: "この夜を止めてよ",
-    artist: "JUJU covered by にじゅな",
+    title: "プロローグ",
+    artist: "Uru covered by にじゅな",
     category: "VOCAL MIX",
-    youtubeId: "QWhjMWdtkVU",
+    youtubeId: "hbAoxkukffw",
     year: 2026,
   },
   {
@@ -201,7 +201,7 @@ export const WORKS: Work[] = [
     title: "OBS音響調整のbefore or after",
     artist: "にじゅな",
     category: "OBS AUDIO",
-    youtubeId: "07jz4h_p7J0",
+    youtubeId: "3_C27HA0Hq8",
     year: 2025,
   },
   {
@@ -230,10 +230,10 @@ export const WORKS: Work[] = [
   },
   {
     id: "w-017",
-    title: "【歌枠】心呼の声を聴いて 高評価100目指して歌います",
+    title: "【 #Mooっと推して歌枠リレー 】開会式｜#心呼",
     artist: "心呼",
     category: "OBS AUDIO",
-    youtubeId: "matCu6LG0RM",
+    youtubeId: "kj7G-mEwTQg",
     year: 2025,
   },
   {
@@ -330,6 +330,22 @@ export const WORKS: Work[] = [
     artist: "森神りぃしゅ",
     category: "OBS AUDIO",
     youtubeId: "1LsB35Ie9B4",
+    year: 2026,
+  },
+  {
+    id: "w-041",
+    title: "you",
+    artist: "癒月 covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "hC5xWdJKxFc",
+    year: 2026,
+  },
+  {
+    id: "w-042",
+    title: "【 #歌枠 】ただいま🌙 約10か月ぶりに…歌わせてください！⚠️どうなるかは本人も知りません。 #神那レイア #vtuber",
+    artist: "神那レイア",
+    category: "OBS AUDIO",
+    youtubeId: "tDmZu0sD9i8",
     year: 2026,
   },
 ];

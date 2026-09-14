@@ -428,7 +428,7 @@ function Tile({
       />
 
       <div className="font-sans font-bold leading-tight">{title}</div>
-      <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent">
+      <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent-text">
         {priceLabel}
       </div>
       {description && (
@@ -481,7 +481,7 @@ function PlanTile({
           )}
         />
         <div className="font-sans font-bold leading-tight">{plan.name}</div>
-        <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent">
+        <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent-text">
           {priceLabel}
         </div>
         <p className="mt-3 text-xs leading-relaxed text-foreground/90">
@@ -497,7 +497,7 @@ function PlanTile({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onUnits(Math.max(plan.extra!.min, units - 1))}
-              className="h-7 w-7 border border-white/35 hover:border-accent hover:text-accent transition-colors font-mono"
+              className="h-7 w-7 border border-white/35 hover:border-accent hover:text-accent-text transition-colors font-mono"
               aria-label="decrease"
             >
               −
@@ -507,7 +507,7 @@ function PlanTile({
             </span>
             <button
               onClick={() => onUnits(Math.min(plan.extra!.max, units + 1))}
-              className="h-7 w-7 border border-white/35 hover:border-accent hover:text-accent transition-colors font-mono"
+              className="h-7 w-7 border border-white/35 hover:border-accent hover:text-accent-text transition-colors font-mono"
               aria-label="increase"
             >
               +

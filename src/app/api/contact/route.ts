@@ -4,14 +4,16 @@ import { NextResponse } from "next/server";
 // 外部フォームサービス（Formspree等）の件数制限を受けないための実装。
 
 const FIELD_LABELS: Record<string, string> = {
-  name: "お名前",
+  name: "活動名",
   email: "メールアドレス",
   inquiry_type: "ご相談の種類",
   contact_type: "ご希望の連絡方法",
   contact_handle: "X / Discord ID",
-  delivery_hope: "希望納期",
-  reference_url: "参考音源URL",
+  delivery_date: "希望納期（日付）",
+  delivery_other: "希望納期（その他）",
   file_url: "ファイル共有URL",
+  terms_confirmed: "留意事項の確認",
+  terms_version: "留意事項の版",
 };
 
 // Discord embed の field value は1024文字まで
@@ -35,10 +37,18 @@ export async function POST(req: Request) {
   const name = String(fd.get("name") ?? "").trim();
   const email = String(fd.get("email") ?? "").trim();
   const message = String(fd.get("message") ?? "").trim();
+  const termsConfirmed = String(fd.get("terms_confirmed") ?? "").trim();
 
   if (!name || !email || !message) {
     return NextResponse.json(
       { error: "必須項目が入力されていません" },
+      { status: 400 }
+    );
+  }
+
+  if (termsConfirmed !== "confirmed") {
+    return NextResponse.json(
+      { error: "ご依頼に関する留意事項をご確認ください" },
       { status: 400 }
     );
   }
@@ -54,7 +64,8 @@ export async function POST(req: Request) {
   const fields = Object.entries(FIELD_LABELS)
     .map(([key, label]) => {
       const v = String(fd.get(key) ?? "").trim();
-      return v ? { name: label, value: clip(v), inline: key !== "name" && key !== "email" ? true : false } : null;
+      const displayValue = key === "terms_confirmed" && v === "confirmed" ? "確認済み" : v;
+      return displayValue ? { name: label, value: clip(displayValue), inline: key !== "name" && key !== "email" ? true : false } : null;
     })
     .filter((f): f is { name: string; value: string; inline: boolean } => !!f);
 

@@ -95,7 +95,7 @@ export function MobileNav() {
                       <span
                         className={cn(
                           "font-sans text-[11px] tracking-[0.3em] transition-colors",
-                          isActive ? "text-accent" : "text-foreground/50"
+                          isActive ? "text-accent-text" : "text-foreground/50"
                         )}
                       >
                         {link.sub}

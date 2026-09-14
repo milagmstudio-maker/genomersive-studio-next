@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80 mb-6">
             <span>{formatDate(post.publishedAt)}</span>
             <span className="h-px w-8 bg-foreground/30" />
-            <span className="text-accent">{post.category?.[0] ?? ""}</span>
+            <span className="text-accent-text">{post.category?.[0] ?? ""}</span>
           </div>
 
           {/* Title */}
@@ -91,10 +91,10 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Footer nav */}
           <div className="mt-20 pt-8 border-t border-white/30 flex justify-between font-mono text-[11px] tracking-[0.3em]">
-            <Link href="/blog" className="text-foreground hover:text-accent transition-colors">
+            <Link href="/blog" className="text-foreground hover:text-accent-text transition-colors">
               ← BACK TO LIST
             </Link>
-            <Link href="/" className="text-foreground hover:text-accent transition-colors">
+            <Link href="/" className="text-foreground hover:text-accent-text transition-colors">
               HOME →
             </Link>
           </div>

@@ -50,14 +50,14 @@ export function ReasonCards() {
               {r.title}
             </h3>
           </div>
-          <p className="mt-3 text-xs md:text-sm leading-relaxed text-foreground/85">
+          <p className="mt-3 text-sm md:text-base leading-relaxed text-foreground/90">
             {r.body}
           </p>
           {r.proof && proofWork && (
             <button
               type="button"
               onClick={() => setOpen(proofWork)}
-              className="group mt-3 inline-flex items-center gap-2 py-2 font-mono text-[10px] tracking-[0.25em] text-accent hover:text-foreground transition-colors"
+              className="group mt-3 inline-flex items-center gap-2 py-2 font-mono text-xs tracking-[0.2em] text-accent-text hover:text-foreground transition-colors"
             >
               <span className="inline-block h-[5px] w-[5px] bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)]" />
               OBS Audioのbefore / afterを聴き比べる

@@ -7,12 +7,12 @@ export function About() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>006</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">ABOUT / MiLaについて</h2>
         </div>
-        <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
           「誰に頼むか」で音は変わります。だから先に、人の話をします。
         </p>
 
@@ -51,13 +51,13 @@ export function About() {
                 PRODUCER / DIRECTOR / SOUND ENGINEER
               </span>
             </h3>
-            <p className="mt-6 text-sm md:text-base leading-loose text-foreground/90">
+            <p className="mt-6 text-base leading-loose text-foreground/95">
               ミキシングを軸に、録音・音響・PA——現場を自分の手でやってきました。だから音の判断に「たぶん」がありません。
             </p>
-            <p className="mt-4 text-sm md:text-base leading-loose text-foreground/90">
+            <p className="mt-4 text-base leading-loose text-foreground/95">
               「なんかいい感じにしてほしい」を技術の言葉に翻訳して、技術の話はあなたの言葉で返す。エンジニアとあなたの間に壁を作らないのが、Genomersive Studio のやり方です。
             </p>
-            <p className="mt-4 text-sm md:text-base leading-loose text-foreground/90">
+            <p className="mt-4 text-base leading-loose text-foreground/95">
               そして音を整えるのは手段で、目的は作品や配信が届くこと。投稿導線、企画の整理、見せ方など、音を整えたあとの次の一歩まで一緒に考えます。
             </p>
 
@@ -70,10 +70,10 @@ export function About() {
                 href="https://x.com/Nijyuuu7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 py-3 -my-2 text-sm text-foreground/95 hover:text-accent transition-colors"
+                className="group inline-flex items-center gap-2 py-3 -my-2 text-sm text-foreground/95 hover:text-accent-text transition-colors"
               >
                 にじゅな
-                <span className="font-mono text-[10px] text-foreground/70 group-hover:text-accent">
+                <span className="font-mono text-[10px] text-foreground/70 group-hover:text-accent-text">
                   — VTuber ↗
                 </span>
               </a>
@@ -117,7 +117,7 @@ export function About() {
               <div className="border-b border-white/30 px-5 py-2 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
                 SETUP / 使用環境
               </div>
-              <dl className="p-5 space-y-3 text-xs md:text-sm">
+              <dl className="p-5 space-y-3 text-sm md:text-base">
                 {[
                   ["DAW", "Pro Tools / REAPER / Logic Pro"],
                   ["PITCH & VOCAL", "Melodyne 5 Studio / Vovious / RePitch"],

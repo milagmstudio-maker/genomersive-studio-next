@@ -80,13 +80,13 @@ export default async function BlogIndex({ searchParams }: Props) {
                     <span className="font-mono text-[11px] tracking-[0.25em] text-foreground/75">
                       {formatDate(p.publishedAt)}
                     </span>
-                    <span className="font-mono text-[10px] tracking-[0.25em] text-accent">
+                    <span className="font-mono text-[10px] tracking-[0.25em] text-accent-text">
                       {p.category?.[0] ?? "—"}
                     </span>
                     <h2 className="font-sans font-medium text-base md:text-lg leading-snug">
                       {p.title}
                     </h2>
-                    <span className="hidden md:block text-foreground/70 group-hover:text-accent group-hover:translate-x-1 transition-all">
+                    <span className="hidden md:block text-foreground/70 group-hover:text-accent-text group-hover:translate-x-1 transition-all">
                       →
                     </span>
                   </Link>

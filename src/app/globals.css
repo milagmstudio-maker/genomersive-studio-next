@@ -4,6 +4,7 @@
   --background: #08101e; /* deep night-sky navy */
   --foreground: #f4f4f5;
   --accent: #b026ff;
+  --accent-text: #d16cff; /* readable purple for small text on dark backgrounds */
   --accent-glow: rgba(176, 38, 255, 0.55);
   --accent-hot: #ff2ac0; /* hot magenta — pops, highlights */
   --accent-wine: #5b1a8c; /* deep wine — atmospheric */
@@ -18,6 +19,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
   --color-accent-hot: var(--accent-hot);
   --color-accent-wine: var(--accent-wine);
   --color-accent-cream: var(--accent-cream);
@@ -317,14 +319,14 @@ body {
 }
 .prose-mila h3::before {
   content: "▸ ";
-  color: var(--accent);
+  color: var(--accent-text);
   margin-right: 0.25em;
 }
 .prose-mila p {
   margin: 1em 0;
 }
 .prose-mila a {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: rgba(176, 38, 255, 0.4);

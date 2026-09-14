@@ -69,7 +69,7 @@ export function Faq() {
                 </h3>
                 <span
                   aria-hidden
-                  className="shrink-0 font-mono text-accent transition-transform group-open:rotate-45"
+                  className="shrink-0 font-mono text-accent-text transition-transform group-open:rotate-45"
                 >
                   +
                 </span>

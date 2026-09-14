@@ -25,12 +25,12 @@ export function SelectedWorks() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>002</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">SELECTED WORKS / 代表作</h2>
         </div>
-        <p className="mb-12 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
           言葉より先に、耳で確かめてください。
         </p>
 
@@ -43,7 +43,7 @@ export function SelectedWorks() {
         <div className="mt-10 flex justify-end">
           <Link
             href="/works"
-            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[10px] tracking-[0.3em] text-foreground/85 hover:text-accent transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-xs tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
           >
             VIEW ALL WORKS
             <span className="transition-transform group-hover:translate-x-1">

@@ -127,12 +127,12 @@ export function Hero() {
         >
           音を整え、活動の次の一歩まで。
         </p>
-        <p className="mt-4 text-xs leading-loose tracking-wider text-foreground/85 md:text-sm">
+        <p className="mt-4 text-sm leading-loose tracking-wide text-foreground/90 md:text-base">
           Vocal Mix・Para Mix・配信音響設計・整音を通じて、
           <br className="hidden sm:block" />
           作品や配信が「届く状態」になるところまでサポートします。
         </p>
-        <p className="mt-2 font-mono text-[10px] tracking-[0.18em] text-foreground/60">
+        <p className="mt-2 font-mono text-[11px] tracking-[0.16em] text-foreground/75">
           VTuber・歌い手・配信者のための音響制作スタジオ
         </p>
       </motion.div>
@@ -164,14 +164,14 @@ export function Hero() {
       >
         <Link
           href="/works"
-          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
+          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent-text transition-colors"
         >
           実績を聴く
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
         <Link
           href="/services"
-          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent transition-colors"
+          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent-text transition-colors"
         >
           料金を見る
           <span className="transition-transform group-hover:translate-x-1">→</span>

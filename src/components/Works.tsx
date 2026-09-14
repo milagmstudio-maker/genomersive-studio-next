@@ -108,7 +108,7 @@ export function Works() {
             {safePage > 1 ? (
               <button
                 onClick={() => goToPage(safePage - 1)}
-                className="px-3 py-2 text-foreground hover:text-accent transition-colors"
+                className="px-3 py-2 text-foreground hover:text-accent-text transition-colors"
               >
                 ← PREV
               </button>
@@ -139,7 +139,7 @@ export function Works() {
             {safePage < totalPages ? (
               <button
                 onClick={() => goToPage(safePage + 1)}
-                className="px-3 py-2 text-foreground hover:text-accent transition-colors"
+                className="px-3 py-2 text-foreground hover:text-accent-text transition-colors"
               >
                 NEXT →
               </button>

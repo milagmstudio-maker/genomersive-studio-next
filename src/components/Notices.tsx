@@ -21,7 +21,7 @@ export async function Notices() {
     >
       <div className="mx-auto max-w-5xl">
         {/* Section Label */}
-        <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-12 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
           <span>007</span>
           <span className="h-px w-10 bg-foreground/30" />
           <h2 className="font-normal">NOTICES / お知らせ</h2>
@@ -34,13 +34,13 @@ export async function Notices() {
                 href={`/blog/${n.id}`}
                 className="group grid grid-cols-[100px_1fr_24px] md:grid-cols-[140px_1fr_24px] items-center gap-4 md:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
               >
-                <span className="font-mono text-[11px] tracking-[0.25em] text-foreground/75">
+                <span className="font-mono text-xs tracking-[0.2em] text-foreground/80">
                   {formatDate(n.publishedAt)}
                 </span>
-                <h3 className="font-sans font-medium text-sm md:text-base leading-snug">
+                <h3 className="font-sans font-medium text-base leading-snug">
                   {n.title}
                 </h3>
-                <span className="text-foreground/70 group-hover:text-accent group-hover:translate-x-1 transition-all text-right">
+                <span className="text-foreground/70 group-hover:text-accent-text group-hover:translate-x-1 transition-all text-right">
                   →
                 </span>
               </Link>
@@ -52,7 +52,7 @@ export async function Notices() {
         <div className="mt-8 flex justify-end">
           <Link
             href="/blog"
-            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[10px] tracking-[0.3em] text-foreground/85 hover:text-accent transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-xs tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
           >
             VIEW ALL
             <span className="transition-transform group-hover:translate-x-1">
