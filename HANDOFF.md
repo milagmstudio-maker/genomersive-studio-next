@@ -170,7 +170,7 @@ Worker名: `genomersive-studio-next`（旧URL `genomersive-studio-next.mila-gmst
 
 ### git の状態について（2026-09-15時点）
 
-公開中のサイトは、**コミットしていない作業ツリー**からビルドされている（未コミット24ファイル＋未追跡の `src/app/notes/`。main は origin より29コミット先行、push していない）。`git checkout` / `git stash` / `git reset` を使うと公開版の元データを失うので注意。コミットの時期はMiLaの判断待ち。
+公開中のサイト（2026-09-13 ビルド）は、コミット `5f51c78 Snapshot the live site as the working baseline` として記録済み。**今後の更新はこのコミットから始める**。main は origin より30コミット先行（push していない）。`.playwright-cli/`（確認用スクショ・ログ）と `output/` はサイト本体ではないのでコミットしていない。
 
 ---
 
