@@ -175,9 +175,9 @@ npx wrangler deploy  # Cloudflareに反映
 **OpenNext のキャッシュは未設定**（`open-next.config.ts` が初期設定のまま）。そのため全ページがアクセスのたびに作られる。`export const dynamicParams = false` を使うと、ビルド時に作ったページが読めずに404になる（2026-09-18 に `/works/<カテゴリ>` で発生）。
 Worker名: `genomersive-studio-next`（旧URL `genomersive-studio-next.mila-gmstudio.workers.dev` → 308で本番ドメインへ転送）
 
-### git の状態について（2026-09-15時点）
+### git の状態について（2026-09-18時点）
 
-公開中のサイト（2026-09-13 ビルド）は、コミット `5f51c78 Snapshot the live site as the working baseline` として記録済み。**今後の更新はこのコミットから始める**。main は origin より30コミット先行（push していない）。`.playwright-cli/`（確認用スクショ・ログ）と `output/` はサイト本体ではないのでコミットしていない。
+公開中のサイト（2026-09-13 ビルド）は、コミット `5f51c78 Snapshot the live site as the working baseline` として記録済み。**今後の更新はこのコミットから始める**。2026-09-18 に GitHub（`milagmstudio-maker/genomersive-studio-next`）へ push 済み。**このリポジトリは公開（PUBLIC）なので、秘密情報（Webhook URL・APIキーなど）はファイルに書かずに wrangler secret で管理する**。`.playwright-cli/`（確認用スクショ・ログ）と `output/` はサイト本体ではないのでコミットしていない。
 
 ---
 
