@@ -37,7 +37,8 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 | URL | ファイル | 中身 |
 |-----|----------|------|
 | `/` | `src/app/page.tsx` | トップ（下の「トップの構成」参照） |
-| `/works` | `src/app/works/page.tsx` → `Works.tsx` | 実績一覧。カテゴリ絞り込み＋ページ送り |
+| `/works` | `src/app/works/page.tsx` → `Works.tsx` | 実績一覧（ALL）。ページ送りあり（ページ番号はURLに載らない） |
+| `/works/vocal-mix` など | `src/app/works/[category]/page.tsx` | カテゴリ別の実績。タブを押すとURLが変わる。実績が1件以上あるカテゴリだけ自動で作られ、0件のカテゴリのURLは404（例: 今は `/works/para-mix`）。ページごとのタイトル・説明文は同ファイルの `META` |
 | `/services` | `src/app/services/page.tsx` | `Services`（料金シミュレーター）→ `Flow`（依頼の流れ）→ `Faq`（8問）→ `CtaBand` |
 | `/case/nijyuna` | `src/app/case/nijyuna/page.tsx` | ケーススタディ CASE 001：にじゅな |
 | `/blog`, `/blog/[id]` | `src/app/blog/` | microCMSのブログ。記事末に `BlogCta` |
@@ -92,6 +93,8 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 ```
 
 現在41件。
+
+カテゴリとURLの対応は同ファイル末尾の `CATEGORY_SLUGS`（VOCAL MIX → `vocal-mix` など）。0件だったカテゴリに実績を足すと、次のビルドでそのカテゴリのページとタブが自動で出る。
 
 ### トップの代表作を差し替える（`src/components/SelectedWorks.tsx`）
 
@@ -178,7 +181,7 @@ Worker名: `genomersive-studio-next`（旧URL `genomersive-studio-next.mila-gmst
 
 - **正規ドメイン**: `https://genomersivestudio.com`（Cloudflare Registrar）
 - **旧URL転送**: workers.dev → 本番ドメイン（308）。`next.config.ts` の `redirects()` に `has: [{ type: "host", ... }]` を指定して実装
-- **sitemap**: `/sitemap.xml`（静的7ページ: `/` `/works` `/case/nijyuna` `/services` `/blog` `/contact` `/notes` ＋ microCMSのブログ記事）
+- **sitemap**: `/sitemap.xml`（静的7ページ: `/` `/works` `/case/nijyuna` `/services` `/blog` `/contact` `/notes` ＋ 実績のあるカテゴリページ ＋ microCMSのブログ記事）
 - **構造化データ**: `JsonLd.tsx`（Person / Organization / サービス一覧＋料金）
 - **Google Search Console**: ドメインプロパティ登録済み（確認コード: `yC1SsnbYlhUxLauGhdw287HDdaywwZMntUBhEbCmPBE`）
 

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPosts } from "@/lib/microcms";
+import { ACTIVE_CATEGORIES, CATEGORY_SLUGS } from "@/data/works";
 
 const BASE = "https://genomersivestudio.com";
 
@@ -14,6 +15,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/blog`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${BASE}/contact`,     lastModified: new Date(), changeFrequency: "yearly",  priority: 0.6 },
     { url: `${BASE}/notes`,       lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
+    ...ACTIVE_CATEGORIES.map((c) => ({
+      url: `${BASE}/works/${CATEGORY_SLUGS[c]}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
   ];
 
   try {

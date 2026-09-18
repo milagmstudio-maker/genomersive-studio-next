@@ -1,8 +1,15 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { CATEGORIES, WORKS, type Work } from "@/data/works";
+import {
+  ACTIVE_CATEGORIES,
+  WORKS,
+  categoryHref,
+  type Work,
+  type WorkCategory,
+} from "@/data/works";
 import { SectionLabel } from "./SectionLabel";
 import { WorkCard } from "./WorkCard";
 import { WorkModal } from "./WorkModal";
@@ -10,15 +17,12 @@ import { cn } from "@/lib/cn";
 
 const PAGE_SIZE = 21;
 
-export function Works() {
-  const [filter, setFilter] = useState<(typeof CATEGORIES)[number]>("ALL");
+// カテゴリはURLで決まる（/works = ALL、/works/vocal-mix など）。
+// ページ番号はURLに載せず、カテゴリを移ると1ページ目に戻る（呼び出し側が key で再マウント）
+export function Works({ category }: { category?: WorkCategory }) {
+  const filter: "ALL" | WorkCategory = category ?? "ALL";
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState<Work | null>(null);
-
-  const handleFilterChange = useCallback((f: (typeof CATEGORIES)[number]) => {
-    setFilter(f);
-    setPage(1); // フィルター変更と同時にリセット（useEffect より確実）
-  }, []);
 
   const handleClose = useCallback(() => setOpen(null), []);
 
@@ -29,13 +33,7 @@ export function Works() {
   );
 
   // 実績が1件もないカテゴリタブは出さない（「実績なし」を自ら見せる状態を避ける）
-  const visibleCategories = useMemo(
-    () =>
-      CATEGORIES.filter(
-        (c) => c === "ALL" || WORKS.some((w) => w.category === c)
-      ),
-    []
-  );
+  const visibleCategories: ("ALL" | WorkCategory)[] = ["ALL", ...ACTIVE_CATEGORIES];
 
   const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
@@ -67,9 +65,11 @@ export function Works() {
           {visibleCategories.map((c) => {
             const active = filter === c;
             return (
-              <button
+              <Link
                 key={c}
-                onClick={() => handleFilterChange(c)}
+                href={categoryHref(c)}
+                scroll={false}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "relative px-4 py-2 font-mono text-[11px] tracking-[0.3em] transition-colors",
                   active
@@ -85,7 +85,7 @@ export function Works() {
                     transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
                 )}
-              </button>
+              </Link>
             );
           })}
         </div>

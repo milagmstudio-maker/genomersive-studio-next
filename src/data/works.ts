@@ -357,3 +357,26 @@ export const CATEGORIES: ("ALL" | WorkCategory)[] = [
   "OBS AUDIO",
   "PRODUCTION",
 ];
+
+// カテゴリごとのURL（/works/vocal-mix など）。ALL は /works
+export const CATEGORY_SLUGS: Record<WorkCategory, string> = {
+  "VOCAL MIX": "vocal-mix",
+  "PARA MIX": "para-mix",
+  "OBS AUDIO": "obs-audio",
+  PRODUCTION: "production",
+};
+
+export function categoryHref(c: "ALL" | WorkCategory): string {
+  return c === "ALL" ? "/works" : `/works/${CATEGORY_SLUGS[c]}`;
+}
+
+export function categoryFromSlug(slug: string): WorkCategory | undefined {
+  return (Object.keys(CATEGORY_SLUGS) as WorkCategory[]).find(
+    (c) => CATEGORY_SLUGS[c] === slug
+  );
+}
+
+// 実績が1件以上あるカテゴリだけ（タブ表示・ページ生成・サイトマップで共通）
+export const ACTIVE_CATEGORIES: WorkCategory[] = (
+  Object.keys(CATEGORY_SLUGS) as WorkCategory[]
+).filter((c) => WORKS.some((w) => w.category === c));

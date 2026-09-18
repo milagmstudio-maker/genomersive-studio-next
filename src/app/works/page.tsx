@@ -2,6 +2,7 @@ import { Works } from "@/components/Works";
 
 export const metadata = {
   title: "制作実績・ボーカルMix作品集｜VTuber・歌い手の歌ってみた Genomersive Studio",
+  alternates: { canonical: "/works" },
   description:
     "ボーカルMix・パラMix・OBS音響調整の制作実績。VTuber・歌い手・配信者の歌ってみた／配信を手がけたサウンドエンジニア MiLa の作品を、YouTube動画でそのまま聴いて確かめられます。",
   openGraph: {
@@ -13,5 +14,5 @@ export const metadata = {
 };
 
 export default function WorksPage() {
-  return <Works />;
+  return <Works key="ALL" />;
 }
