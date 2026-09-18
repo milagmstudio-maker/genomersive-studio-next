@@ -8,9 +8,9 @@ import {
   type WorkCategory,
 } from "@/data/works";
 
-// 実績があるカテゴリだけをビルド時に生成し、それ以外のURLは404にする
-export const dynamicParams = false;
-
+// 実績があるカテゴリだけをビルド時に生成する。それ以外のURLはページ側の notFound() で404。
+// ※ dynamicParams = false は使わない。このサイトのOpenNextにはキャッシュ設定が無く、
+//   ビルド時に作ったページを読めないため、全カテゴリが404になる（2026-09-18に本番で発生）
 export function generateStaticParams() {
   return ACTIVE_CATEGORIES.map((c) => ({ category: CATEGORY_SLUGS[c] }));
 }
