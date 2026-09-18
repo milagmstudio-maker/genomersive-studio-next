@@ -29,6 +29,22 @@ export const WORKS: Work[] = [
     year: 2026,
   },
   {
+    id: "w-043",
+    title: "mosi mosi?",
+    artist: "楽音 covered by 翠雨しの",
+    category: "VOCAL MIX",
+    youtubeId: "aO9GiF8alG8",
+    year: 2026,
+  },
+  {
+    id: "w-044",
+    title: "ワールドイズマイン",
+    artist: "supercell covered by 翠雨しの",
+    category: "VOCAL MIX",
+    youtubeId: "k6Usnmi_Kho",
+    year: 2026,
+  },
+  {
     id: "w-036",
     title: "SUMMER SONG",
     artist: "flumpool covered by まちこりーた",

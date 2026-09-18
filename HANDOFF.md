@@ -83,7 +83,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 
 ```typescript
 {
-  id: "w-043",            // 連番（現在の最大は w-042）
+  id: "w-045",            // 連番（現在の最大は w-044）
   title: "曲名",
   artist: "原曲アーティスト covered by タレント名",
   category: "VOCAL MIX", // "VOCAL MIX" | "PARA MIX" | "OBS AUDIO" | "PRODUCTION"
@@ -92,7 +92,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 },
 ```
 
-現在37件（2026-09-18 に YouTube で見られなくなった4件を削除）。
+現在39件（2026-09-18 に YouTube で見られなくなった4件を削除、2026-09-19 に翠雨しのの Shorts 2本を追加）。
 
 カテゴリとURLの対応は同ファイル末尾の `CATEGORY_SLUGS`（VOCAL MIX → `vocal-mix` など）。0件だったカテゴリに実績を足すと、次のビルドでそのカテゴリのページとタブが自動で出る。
 
