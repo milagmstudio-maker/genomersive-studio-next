@@ -168,7 +168,11 @@ npm run build:cf     # Next.jsビルド + OpenNextビルド
 npx wrangler deploy  # Cloudflareに反映
 ```
 
+**反映の前に `npm run preview` で確認する**（Cloudflare と同じ仕組みで手元で動く）。`npm run dev` は普通の Node.js で動くので、Cloudflare でだけ起きる問題を見落とす。
+
 反映後、キャッシュを回避して公開ページを確認する（ローカルのビルドが通っただけで「反映済み」と言わない）。
+
+**OpenNext のキャッシュは未設定**（`open-next.config.ts` が初期設定のまま）。そのため全ページがアクセスのたびに作られる。`export const dynamicParams = false` を使うと、ビルド時に作ったページが読めずに404になる（2026-09-18 に `/works/<カテゴリ>` で発生）。
 Worker名: `genomersive-studio-next`（旧URL `genomersive-studio-next.mila-gmstudio.workers.dev` → 308で本番ドメインへ転送）
 
 ### git の状態について（2026-09-15時点）
