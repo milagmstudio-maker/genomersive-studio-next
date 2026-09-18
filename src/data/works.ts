@@ -93,6 +93,14 @@ export const WORKS: Work[] = [
     year: 2025,
   },
   {
+    id: "w-041",
+    title: "you",
+    artist: "癒月 covered by にじゅな",
+    category: "VOCAL MIX",
+    youtubeId: "hC5xWdJKxFc",
+    year: 2026,
+  },
+  {
     id: "w-026",
     title: "ラグトレイン",
     artist: "稲葉曇 covered by 半島キタ",
@@ -298,14 +306,6 @@ export const WORKS: Work[] = [
     artist: "森神りぃしゅ",
     category: "OBS AUDIO",
     youtubeId: "1LsB35Ie9B4",
-    year: 2026,
-  },
-  {
-    id: "w-041",
-    title: "you",
-    artist: "癒月 covered by にじゅな",
-    category: "VOCAL MIX",
-    youtubeId: "hC5xWdJKxFc",
     year: 2026,
   },
   {
