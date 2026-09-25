@@ -11,7 +11,7 @@ export function CtaBand() {
           className="mt-5 font-mincho text-4xl md:text-6xl tracking-tight"
           style={{ color: "var(--accent-cream)" }}
         >
-          まずは、相談から<span style={{ color: "var(--accent-hot)" }}>。</span>
+          まずは、相談から<span className="text-accent-grad">。</span>
         </h2>
         <p className="mt-6 text-base leading-loose text-foreground/90">
           見積もりだけでも、相談だけでも大丈夫です。初めての依頼の方も多くいます。

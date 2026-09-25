@@ -42,7 +42,7 @@ export default async function BlogIndex({ searchParams }: Props) {
               <span>JOURNAL & TIPS</span>
             </div>
             <h1 className="mt-5 font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tight">
-              Blog.
+              Blog<span className="text-accent-grad">.</span>
             </h1>
             <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
               読むだけで音が良くなる、を目指して書いています。

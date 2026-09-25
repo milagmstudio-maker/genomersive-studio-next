@@ -21,23 +21,21 @@ export function SectionLabel({ index, kicker, title, lead, as: Heading = "h2" }:
   return (
     <header className="mb-16 md:mb-24">
       <div
-        className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em]"
-        style={{ color: "var(--accent-cream)", opacity: 0.6 }}
+        className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80"
       >
         <span>{index}</span>
         <span
           className="h-px w-10"
-          style={{ background: "rgba(244,232,193,0.4)" }}
+          style={{ background: "rgba(255,255,255,0.3)" }}
         />
         <span>{kicker}</span>
       </div>
       <Heading
-        className="mt-5 font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tight"
-        style={{ color: "var(--accent-cream)" }}
+        className="mt-5 font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tight text-foreground"
       >
         {base}
         {punct && (
-          <span style={{ color: "var(--accent-hot)" }}>{punct}</span>
+          <span className="text-accent-grad">{punct}</span>
         )}
       </Heading>
       {lead && (

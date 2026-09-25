@@ -53,7 +53,7 @@ export function Hero() {
         <SplitText text="DIRECTOR  /  PRODUCER" delay={0.4} stagger={0.015} rise={12} />
       </motion.div>
 
-      {/* Brand name — char-level reveal + 3D parallax */}
+      {/* スタジオ名 — 元の筆記体ロゴ（網点の質感はそのまま）。左から右へ書かれていくように現れ、マウスで少し傾く */}
       <motion.h1
         style={{
           rotateX,
@@ -62,43 +62,28 @@ export function Hero() {
           y: titleY,
           transformStyle: "preserve-3d",
         }}
-        className="mt-6 text-center font-serif leading-[0.9] will-change-transform"
+        className="relative mt-8 w-[min(90vw,1100px)] will-change-transform"
       >
-        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
-          <SplitText
-            text="GENOMERSIVE"
-            delay={0.4}
-            stagger={0.05}
-            rise={60}
-          />
-        </span>
-        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
-          <SplitText
-            text="STUDI"
-            delay={0.95}
-            stagger={0.05}
-            rise={60}
-          />
-          <motion.span
-            initial={{ opacity: 0.02, y: 60, rotateX: -45 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              rotateX: 0,
-              color: ["#b026ff", "#ff2ac0", "#b026ff", "#5b1a8c", "#b026ff"],
-            }}
-            transition={{
-              opacity: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
-              y: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
-              rotateX: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
-              color: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 },
-            }}
-            className="inline-block drop-shadow-[0_0_24px_rgba(176,38,255,0.7)]"
-            style={{ transformOrigin: "50% 100%" }}
-          >
-            O
-          </motion.span>
-        </span>
+        <span className="sr-only">Genomersive Studio</span>
+        {/* ロゴの後ろに敷く楕円の光（ロゴ自体に影を付けると網点ごとに光って四角い帯になるため） */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-x-[6%] -inset-y-[45%] -z-10 bg-[radial-gradient(closest-side,rgba(176,38,255,0.22),rgba(42,54,255,0.08)_60%,transparent)] blur-2xl"
+        />
+        <motion.img
+          src="/brand/genomersive-studio-logo.webp"
+          alt=""
+          aria-hidden="true"
+          width={2200}
+          height={340}
+          fetchPriority="high"
+          draggable={false}
+          // 完全に隠すと表示計測（LCP）が演出の分だけ遅れるので、2%だけ見せた状態から始める
+          initial={{ clipPath: "inset(0 98% 0 0)" }}
+          animate={{ clipPath: "inset(0 0% 0 0)" }}
+          transition={{ duration: 1.6, delay: 0.35, ease: [0.65, 0, 0.35, 1] }}
+          className="block h-auto w-full select-none"
+        />
       </motion.h1>
 
       {/* Service message — existing reveal and parallax are preserved */}

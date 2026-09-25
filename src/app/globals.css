@@ -459,3 +459,11 @@ body {
   font-weight: 600;
 }
 
+/* 句点など1文字だけに使うブランドのアクセント（青 → 紫 → ピンク） */
+.text-accent-grad {
+  background: linear-gradient(90deg, #2a36ff, #b026ff 55%, #ff2ac0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+

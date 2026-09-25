@@ -79,7 +79,7 @@ export function Contact() {
             005 / GET IN TOUCH
           </p>
           <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-[-0.055em] text-foreground">
-            Contact.
+            Contact<span className="text-accent-grad">.</span>
           </h1>
         </header>
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
