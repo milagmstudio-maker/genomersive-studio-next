@@ -43,6 +43,12 @@ export function SplitText({
     },
   };
 
+  // 単語と空白に分け、それぞれの先頭が全体の何文字目かを先に求める（accentIndex の判定用）
+  const tokens = text.split(/(\s+)/).map((part, k, all) => ({
+    part,
+    start: all.slice(0, k).join("").length,
+  }));
+
   return (
     <motion.span
       className={className}
@@ -51,24 +57,37 @@ export function SplitText({
       animate="show"
       style={{ display: "inline-block", perspective: 800 }}
     >
-      {Array.from(text).map((c, i) => (
-        <motion.span
-          key={i}
-          variants={child}
-          className={
-            i === accentIndex
-              ? `${charClassName ?? ""} ${accentClassName ?? ""}`
-              : charClassName
-          }
-          style={{
-            display: "inline-block",
-            transformOrigin: "50% 100%",
-            whiteSpace: "pre",
-          }}
-        >
-          {c === " " ? " " : c}
-        </motion.span>
-      ))}
+      {/* 単語ごとに折り返し禁止でまとめ、改行は単語間の空白でだけ起こす（1文字ずつだと単語の途中で折れる） */}
+      {tokens.map(({ part, start }, pi) => {
+        if (/^\s+$/.test(part)) {
+          return (
+            <span key={pi} style={{ whiteSpace: "pre-wrap" }}>
+              {part}
+            </span>
+          );
+        }
+        return (
+          <span key={pi} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+            {Array.from(part).map((c, ci) => {
+              const i = start + ci;
+              return (
+                <motion.span
+                  key={ci}
+                  variants={child}
+                  className={
+                    i === accentIndex
+                      ? `${charClassName ?? ""} ${accentClassName ?? ""}`
+                      : charClassName
+                  }
+                  style={{ display: "inline-block", transformOrigin: "50% 100%" }}
+                >
+                  {c}
+                </motion.span>
+              );
+            })}
+          </span>
+        );
+      })}
     </motion.span>
   );
 }

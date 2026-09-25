@@ -26,12 +26,17 @@
   --color-accent-cyan: var(--accent-cyan);
   --color-border-soft: var(--border-soft);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-cormorant);
+  /* ラベル・英字見出しは横長の太いゴシック（Archivo）。調整は末尾の「タイポグラフィ」節 */
+  --font-mono: var(--font-archivo);
+  --font-serif: var(--font-archivo);
+  /* スプラッシュのロゴ（Genomersive Studio.）だけは従来のセリフ斜体を保つ */
+  --font-wordmark: var(--font-cormorant);
   /* 和文はOS標準の高品質ゴシックに委ねる。Webフォント配信を避けて初期表示を軽くする */
   --font-jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic,
     Meiryo, sans-serif;
-  --font-mincho: var(--font-zen-mincho);
+  /* 和文の見出し・コピーはOS標準の太いゴシック（Webフォントを増やさない） */
+  --font-mincho: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic,
+    Meiryo, sans-serif;
 }
 
 html,
@@ -410,3 +415,47 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   margin: 3em 0;
 }
+
+/*
+ * タイポグラフィ（2026-09 リニューアル）
+ * 参考: 横長の太いゴシックを、字間を詰めて・濃く使う。
+ * 既存コンポーネントの font-mono / font-serif / font-mincho と小さな級数をここで一括調整する。
+ * レイヤー外に置いているので、Tailwind の tracking・italic・text-[10px] などより優先される。
+ */
+.font-mono {
+  font-stretch: 112%;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+/* スマホは横幅と級数を1段控えめにして、狭いカードやラベルの行に収める */
+.font-mono.text-\[10px\] { font-size: 11px; }
+.font-mono.text-\[11px\] { font-size: 12px; }
+@media (min-width: 640px) {
+  .font-mono { font-stretch: 125%; }
+  .font-mono.text-\[10px\] { font-size: 12px; }
+  .font-mono.text-\[11px\] { font-size: 13px; }
+}
+.font-mono.text-foreground\/45,
+.font-mono.text-foreground\/50,
+.font-mono.text-foreground\/55,
+.font-mono.text-foreground\/60 {
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+
+.font-serif {
+  font-stretch: 125%;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -0.02em;
+}
+
+.font-mincho {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+/* 段落サイズ（sm / base）は長く読むので一段細く */
+.font-mincho.text-sm,
+.font-mincho.text-base {
+  font-weight: 600;
+}
+

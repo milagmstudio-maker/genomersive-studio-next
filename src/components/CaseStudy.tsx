@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TopSectionHeading } from "./TopSectionHeading";
 
 /** プロデュース業の証明を担う旗艦事例。Worksのタイルが「棚」、ここは「ショーケース」 */
 export function CaseStudy() {
@@ -8,14 +9,7 @@ export function CaseStudy() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
-          <span>003</span>
-          <span className="h-px w-10 bg-foreground/30" />
-          <h2 className="font-normal">CASE STUDY / プロデュース事例</h2>
-        </div>
-        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
-          数を並べるより、一つの物語を深く。
-        </p>
+        <TopSectionHeading index="003" en="CASE STUDY" ja="プロデュース事例" lead="数を並べるより、一つの物語を深く。" />
 
         <div className="grid md:grid-cols-[1fr_1.2fr] border border-white/30 bg-black/30 backdrop-blur-sm overflow-hidden">
           {/* Key visual */}

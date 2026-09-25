@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TopSectionHeading } from "./TopSectionHeading";
 
 const SERVICES = [
   {
@@ -51,14 +52,7 @@ export function ServicesTeaser() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
-          <span>004</span>
-          <span className="h-px w-10 bg-foreground/30" />
-          <h2 className="font-normal">SERVICES / できること</h2>
-        </div>
-        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
-          音響制作から、作品や配信を届けるための次の一歩まで。
-        </p>
+        <TopSectionHeading index="004" en="SERVICES" ja="できること" lead="音響制作から、作品や配信を届けるための次の一歩まで。" />
 
         <ul className="divide-y divide-white/30 border-y border-white/30">
           {SERVICES.map((s) => (

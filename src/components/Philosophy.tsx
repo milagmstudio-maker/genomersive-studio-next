@@ -1,3 +1,5 @@
+import { TopSectionHeading } from "./TopSectionHeading";
+
 export function Philosophy() {
   return (
     <section
@@ -5,11 +7,7 @@ export function Philosophy() {
       className="relative z-10 px-6 py-24 md:px-12 md:py-32 lg:px-20"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-12 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
-          <span>005</span>
-          <span className="h-px w-10 bg-foreground/30" />
-          <h2 className="font-normal">PHILOSOPHY / サービス思想</h2>
-        </div>
+        <TopSectionHeading index="005" en="PHILOSOPHY" ja="サービス思想" />
 
         <div className="relative overflow-hidden border border-white/30 bg-black/30 px-6 py-10 backdrop-blur-sm md:px-12 md:py-14">
           <span

@@ -80,8 +80,8 @@ export function WorkCard({ work, index, onOpen }: Props) {
             {work.category}
           </div>
 
-          {/* Top-right index */}
-          <div className="absolute top-3 right-3 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
+          {/* Top-right index — スマホの2列表示ではカテゴリタグと重なるので隠す */}
+          <div className="absolute top-3 right-3 hidden sm:block font-mono text-[10px] tracking-[0.25em] text-foreground/90">
             {work.id.toUpperCase()}
           </div>
         </div>

@@ -107,7 +107,7 @@ export function Contact() {
                 DIRECT
               </p>
               <dl className="mt-5 space-y-3 text-sm">
-                <div className="grid grid-cols-[70px_1fr] gap-3">
+                <div className="grid grid-cols-[88px_1fr] gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/50">MAIL</dt>
                   <dd>
                     <a className="break-all text-foreground/85 transition-colors hover:text-accent-cyan" href="mailto:mila.gmstudio@gmail.com">
@@ -115,7 +115,7 @@ export function Contact() {
                     </a>
                   </dd>
                 </div>
-                <div className="grid grid-cols-[70px_1fr] gap-3">
+                <div className="grid grid-cols-[88px_1fr] gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/50">X</dt>
                   <dd>
                     <a className="text-foreground/85 transition-colors hover:text-accent-cyan" href="https://x.com/mila_mixstudio" target="_blank" rel="noopener noreferrer">
@@ -123,7 +123,7 @@ export function Contact() {
                     </a>
                   </dd>
                 </div>
-                <div className="grid grid-cols-[70px_1fr] gap-3">
+                <div className="grid grid-cols-[88px_1fr] gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/50">DISCORD</dt>
                   <dd className="text-foreground/85">mila_mix</dd>
                 </div>

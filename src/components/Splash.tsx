@@ -41,7 +41,7 @@ export function Splash() {
 
             <h1 className="overflow-hidden">
               <motion.span
-                className="block font-serif italic text-4xl md:text-6xl tracking-tight"
+                className="block font-wordmark italic text-4xl md:text-6xl tracking-tight"
                 style={{ color: "var(--accent-cream)" }}
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

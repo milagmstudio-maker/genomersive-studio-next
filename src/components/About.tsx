@@ -1,4 +1,5 @@
 import { ReasonCards } from "./ReasonCards";
+import { TopSectionHeading } from "./TopSectionHeading";
 
 export function About() {
   return (
@@ -7,14 +8,7 @@ export function About() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-4 flex items-center gap-4 font-mono text-[11px] tracking-[0.28em] text-foreground/85">
-          <span>006</span>
-          <span className="h-px w-10 bg-foreground/30" />
-          <h2 className="font-normal">ABOUT / MiLaについて</h2>
-        </div>
-        <p className="mb-12 font-mincho text-base leading-relaxed text-foreground/90">
-          「誰に頼むか」で音は変わります。だから先に、人の話をします。
-        </p>
+        <TopSectionHeading index="006" en="ABOUT" ja="MiLaについて" lead="「誰に頼むか」で音は変わります。だから先に、人の話をします。" />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
           {/* Profile */}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist, Geist_Mono, Cormorant_Garamond, Zen_Old_Mincho } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond, Archivo } from "next/font/google";
 import { AmbientVideo } from "@/components/AmbientVideo";
 import { BrandMark } from "@/components/BrandMark";
 import { Cursor } from "@/components/Cursor";
@@ -27,13 +27,11 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 });
 
-// 日本語ディスプレイ書体 — コアコピー・リード文・和文見出し専用。
-// 和文はグリフ数が多く1ウェイトでも配信量が大きいため、太字は持たない。
-// （明朝の太字は使わず、字送りと級数で強さを出す方針）
-const zenMincho = Zen_Old_Mincho({
-  variable: "--font-zen-mincho",
+// ラベル・英字見出し用。横幅（wdth）軸つきの可変フォントで、横長の太いゴシックとして使う
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400"],
+  axes: ["wdth"],
 });
 
 export const metadata: Metadata = {
@@ -73,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${zenMincho.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${archivo.variable} h-full antialiased`}
     >
       <head>
         <JsonLd />
