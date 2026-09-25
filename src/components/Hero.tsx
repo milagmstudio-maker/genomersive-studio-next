@@ -41,17 +41,16 @@ export function Hero() {
       className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6"
       style={{ perspective: 1200 }}
     >
-      {/* 何をするスタジオか（肩書きより機能で名乗る） */}
+      {/* 肩書き */}
       <motion.div
         style={{ x: subX }}
         className="font-mono text-[11px] text-foreground/80 text-center"
       >
-        <SplitText
-          text="VOCAL MIX  /  PARA MIX  /  配信音響  /  整音"
-          delay={0.15}
-          stagger={0.015}
-          rise={12}
-        />
+        {/* スマホでは「SOUND ENGINEER」を1語として2行目に送る */}
+        <SplitText text="PRODUCER  /  DIRECTOR" delay={0.15} stagger={0.015} rise={12} />
+        <span className="hidden whitespace-pre sm:inline">{"  /  "}</span>
+        <br className="sm:hidden" />
+        <SplitText text="SOUND ENGINEER" delay={0.45} stagger={0.015} rise={12} />
       </motion.div>
 
       {/* Brand name — char-level reveal + 3D parallax */}
@@ -116,10 +115,11 @@ export function Hero() {
         >
           音を整え、活動の次の一歩まで。
         </p>
-        <p className="mt-3 font-mincho text-sm leading-relaxed text-foreground/85">
-          歌う人も、話す人も、つくる人も。
-          <br className="sm:hidden" />
-          音で活動する、すべての人の音響制作スタジオ
+        <p className="mt-4 font-mono text-[11px] text-foreground/90">
+          SOUND STUDIO FOR EVERY VOICE
+        </p>
+        <p className="mt-1.5 font-mincho text-sm leading-relaxed text-foreground/75">
+          声と音で活動する、すべての人へ
         </p>
 
         {/* 行動は大きく・中央に。主（実績）は塗り、副（料金）は枠線 */}

@@ -1,6 +1,6 @@
 # Genomersive Studio HP — 引き継ぎ書
 
-最終更新: 2026-09-15（公開中の genomersivestudio.com と手元のソースを照合して書き直し）
+最終更新: 2026-09-25（タイポグラフィ刷新とヒーロー整理を反映）
 
 AIアシスタント（Claude / ChatGPT など）や他の作業者が、このサイトの現状を把握して更新を続けるための資料。
 **公開中のサイトが「正」**。この文書と公開版がずれていたら、公開版とソースを優先し、この文書を直す。
@@ -24,6 +24,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 | フレームワーク | Next.js 16.2.4 (App Router)。学習データと仕様が違うので `node_modules/next/dist/docs/` を確認してから書く |
 | 言語 | TypeScript |
 | スタイリング | Tailwind CSS v4 |
+| フォント | 本文 Geist ／ ラベル・英字見出し Archivo（横幅 wdth 112〜125%、太字）／ 和文見出し OS標準の太いゴシック（Webフォントなし）／ スプラッシュのロゴだけ Cormorant Garamond 斜体。調整は `globals.css` 末尾の「タイポグラフィ」節で一括 |
 | アニメーション | framer-motion |
 | CMS | microCMS（ブログのみ。サービスドメイン: `mila-blog`） |
 | デプロイ | Cloudflare Workers（@opennextjs/cloudflare） |
@@ -52,8 +53,8 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 
 | No. | コンポーネント | 見出し・コピー |
 |-----|----------------|----------------|
-| 001 | `Hero` | INDEX.MIX「音を整え、活動の次の一歩まで。」／ボタン「実績を聴く」「料金を見る」 |
-| 002 | `SelectedWorks` | SELECTED WORKS / 代表作「言葉より先に、耳で確かめてください。」 |
+| 001 | `Hero` | 肩書き「PRODUCER / DIRECTOR / SOUND ENGINEER」→ 名前「GENOMERSIVE STUDIO」（横長の極太）→「音を整え、活動の次の一歩まで。」→「SOUND STUDIO FOR EVERY VOICE／声と音で活動する、すべての人へ」→ ボタン「実績を聴く」（白塗り）「料金を見る」（枠線） |
+| 002 | `SelectedWorks` | SELECTED WORKS / 代表作「言葉より先に、耳で確かめてください。」（002〜006の見出しは `TopSectionHeading`：番号＋和文の小ラベルの下に英字を極太で大きく） |
 | 003 | `CaseStudy` | CASE STUDY / プロデュース事例「数を並べるより、一つの物語を深く。」（にじゅな） |
 | 004 | `ServicesTeaser` | SERVICES / できること（6サービス＋「料金シミュレーターで概算を出す」） |
 | 005 | `Philosophy` | PHILOSOPHY / サービス思想「納品して終わりではなく、次の一歩が見えるところまで。」 |
@@ -68,7 +69,8 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 ### 部品として中で使われているコンポーネント
 
 - `ReasonCards.tsx` — About の中の「3つの強み」カード
-- `SplitText.tsx` — Hero の文字アニメーション
+- `SplitText.tsx` — Hero の文字アニメーション（単語の途中では折り返さない）
+- `TopSectionHeading.tsx` — トップ002〜006のセクション見出し
 - `SectionLabel.tsx` — Works / Services のセクション見出し
 - `WorkCard.tsx` / `WorkModal.tsx` — 実績カードと再生モーダル
 - `BlogContent.tsx` — ブログ本文
