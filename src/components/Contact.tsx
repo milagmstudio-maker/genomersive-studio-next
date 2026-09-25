@@ -71,15 +71,18 @@ export function Contact() {
   return (
     <section id="contact" className="relative z-10 px-5 py-28 sm:px-8 md:py-36 lg:px-12">
       <div className="mx-auto max-w-6xl">
+        {/* 見出しは2列の上に置き、ページ幅いっぱいまで大きく（cqw＝この枠の幅に対する割合。「Contact.」は字幅≒級数×5.2） */}
+        <header className="@container mb-12 lg:mb-16">
+          <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">
+            005 / GET IN TOUCH
+          </p>
+          <h1 className="mt-6 font-serif text-[clamp(2.5rem,18.6cqw,12rem)] font-medium leading-[0.9] tracking-[-0.055em] text-foreground">
+            Contact.
+          </h1>
+        </header>
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
           <aside className="self-start lg:sticky lg:top-24">
-            <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">
-              005 / GET IN TOUCH
-            </p>
-            <h1 className="mt-6 font-serif text-[clamp(2.5rem,15vw,8.75rem)] font-medium leading-[0.9] tracking-[-0.055em] text-foreground lg:text-[clamp(3rem,5vw,4.5rem)]">
-              Contact.
-            </h1>
-            <p className="mt-10 max-w-md font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">
+            <p className="max-w-md font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">
               音源や素材が揃っていなくても大丈夫です。
             </p>
             <p className="mt-4 max-w-md text-sm leading-8 text-foreground/75 md:text-base">

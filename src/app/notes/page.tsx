@@ -15,11 +15,15 @@ export const metadata: Metadata = {
 export default function NotesPage() {
   return (
     <section className="relative z-10 px-5 py-28 sm:px-8 md:py-36 lg:px-12">
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
-        <header className="self-start lg:sticky lg:top-24">
+      <div className="mx-auto max-w-6xl">
+        {/* 見出しは2列の上に置き、ページ幅いっぱいまで大きく（「Notes.」は字幅≒級数×4.0） */}
+        <div className="@container mb-12 lg:mb-16">
           <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">POLICY / BEFORE INQUIRY</p>
-          <h1 className="mt-6 font-serif text-[clamp(4.5rem,11vw,8.75rem)] font-medium leading-[0.72] tracking-[-0.055em] text-foreground">Notes.</h1>
-          <p className="mt-10 font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">ご依頼に対する留意事項</p>
+          <h1 className="mt-6 font-serif text-[clamp(2.5rem,24.3cqw,12rem)] font-medium leading-[0.9] tracking-[-0.055em] text-foreground">Notes.</h1>
+        </div>
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
+        <header className="self-start lg:sticky lg:top-24">
+          <p className="font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">ご依頼に対する留意事項</p>
           <p className="mt-5 max-w-md text-sm leading-8 text-foreground/70">ご相談前に確認していただきたい内容をまとめています。</p>
           <p className="mt-8 font-mono text-[10px] tracking-[0.18em] text-foreground/45">最終更新日：2026年8月31日</p>
           <Link href="/contact" className="mt-10 inline-flex min-h-11 items-center font-mono text-[10px] tracking-[0.2em] text-accent-cyan transition-colors hover:text-foreground">← CONTACTへ戻る</Link>
@@ -64,6 +68,7 @@ export default function NotesPage() {
             </ul>
           </NoteSection>
         </div>
+      </div>
       </div>
     </section>
   );
