@@ -76,7 +76,7 @@ export function Contact() {
             <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">
               005 / GET IN TOUCH
             </p>
-            <h1 className="mt-6 font-serif text-[clamp(4.5rem,11vw,8.75rem)] font-medium leading-[0.72] tracking-[-0.055em] text-foreground">
+            <h1 className="mt-6 font-serif text-[clamp(2.5rem,15vw,8.75rem)] font-medium leading-[0.9] tracking-[-0.055em] text-foreground lg:text-[clamp(3rem,5vw,4.5rem)]">
               Contact.
             </h1>
             <p className="mt-10 max-w-md font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">
