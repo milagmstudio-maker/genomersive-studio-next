@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const HALFTONE_MASK = "radial-gradient(circle at center, #000 52%, transparent 58%)";
+const HALFTONE_MASK = "radial-gradient(circle at center, #000 51%, transparent 57%)";
 
 export function AmbientVideo() {
   const pathname = usePathname();
@@ -16,21 +16,19 @@ export function AmbientVideo() {
 
   // トップは網点で光の量が減るぶん、上にかける幕を薄くして明るさを保つ
   const overlayClass = isHome
-    ? "from-background/10 via-background/5 to-background/20"
+    ? "from-background/20 via-background/10 to-background/30"
     : "from-background/80 via-background/70 to-background/85";
 
-  // トップだけ、背景の波を網点で見せる（5px 間隔の点で切り抜く）。
+  // 背景の波は全ページ網点で見せる（5px 間隔の点で切り抜く）。
   // 点のすき間は何も映らず暗くなるので、点を大きめにし、明るさと彩度を上げて補う。
-  // サブページは上に濃い幕がかかって網点が見えないため、負荷をかけない
-  const halftoneStyle = isHome
-    ? {
-        maskImage: HALFTONE_MASK,
-        WebkitMaskImage: HALFTONE_MASK,
-        maskSize: "5px 5px",
-        WebkitMaskSize: "5px 5px",
-        filter: "contrast(1.35) saturate(1.5) brightness(2.2)",
-      }
-    : undefined;
+  // 明るさの差はページごとの幕（overlayClass）で付ける
+  const halftoneStyle = {
+    maskImage: HALFTONE_MASK,
+    WebkitMaskImage: HALFTONE_MASK,
+    maskSize: "5px 5px",
+    WebkitMaskSize: "5px 5px",
+    filter: "contrast(1.35) saturate(1.5) brightness(2)",
+  };
 
   useEffect(() => {
     // データセーバー・低速回線では動画を読まず poster のままにする。
