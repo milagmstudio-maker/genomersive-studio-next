@@ -16,10 +16,10 @@ export default function NotesPage() {
   return (
     <section className="relative z-10 px-5 py-28 sm:px-8 md:py-36 lg:px-12">
       <div className="mx-auto max-w-6xl">
-        {/* 見出しは2列の上に置き、ページ幅いっぱいまで大きく（「Notes.」は字幅≒級数×4.0） */}
-        <div className="@container mb-12 lg:mb-16">
+        {/* 見出しは2列の上に置く（右の本文と重ならない）。大きさは Works / Services の見出しに合わせる */}
+        <div className="mb-12 lg:mb-16">
           <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">POLICY / BEFORE INQUIRY</p>
-          <h1 className="mt-6 font-serif text-[clamp(2.5rem,24.3cqw,12rem)] font-medium leading-[0.9] tracking-[-0.055em] text-foreground">Notes.</h1>
+          <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-[-0.055em] text-foreground">Notes.</h1>
         </div>
       <div className="grid gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
         <header className="self-start lg:sticky lg:top-24">
