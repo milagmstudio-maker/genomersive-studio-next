@@ -38,10 +38,10 @@ export const WORKS: Work[] = [
   },
   {
     id: "w-044",
-    title: "ワールドイズマイン",
-    artist: "supercell covered by 翠雨しの",
+    title: "気まぐれロマンティック",
+    artist: "いきものがかり covered by 翠雨しの",
     category: "VOCAL MIX",
-    youtubeId: "k6Usnmi_Kho",
+    youtubeId: "_sF9HK-JvZo",
     year: 2026,
   },
   {
