@@ -46,11 +46,11 @@ export function Hero() {
         style={{ x: subX }}
         className="font-mono text-[11px] text-foreground/80 text-center"
       >
-        {/* スマホでは「SOUND ENGINEER」を1語として2行目に送る */}
-        <SplitText text="PRODUCER  /  DIRECTOR" delay={0.15} stagger={0.015} rise={12} />
+        {/* 経歴の順（音の職人 → 活動全体を見る人）。スマホでは SOUND ENGINEER を1行目に単独で置く */}
+        <SplitText text="SOUND ENGINEER" delay={0.15} stagger={0.015} rise={12} />
         <span className="hidden whitespace-pre sm:inline">{"  /  "}</span>
         <br className="sm:hidden" />
-        <SplitText text="SOUND ENGINEER" delay={0.45} stagger={0.015} rise={12} />
+        <SplitText text="DIRECTOR  /  PRODUCER" delay={0.4} stagger={0.015} rise={12} />
       </motion.div>
 
       {/* Brand name — char-level reveal + 3D parallax */}

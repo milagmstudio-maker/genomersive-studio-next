@@ -53,7 +53,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 
 | No. | コンポーネント | 見出し・コピー |
 |-----|----------------|----------------|
-| 001 | `Hero` | 肩書き「PRODUCER / DIRECTOR / SOUND ENGINEER」→ 名前「GENOMERSIVE STUDIO」（横長の極太）→「音を整え、活動の次の一歩まで。」→「SOUND STUDIO FOR EVERY VOICE／声と音で活動する、すべての人へ」→ ボタン「実績を聴く」（白塗り）「料金を見る」（枠線） |
+| 001 | `Hero` | 肩書き「SOUND ENGINEER / DIRECTOR / PRODUCER」（経歴の順）→ 名前「GENOMERSIVE STUDIO」（横長の極太）→「音を整え、活動の次の一歩まで。」→「SOUND STUDIO FOR EVERY VOICE／声と音で活動する、すべての人へ」→ ボタン「実績を聴く」（白塗り）「料金を見る」（枠線） |
 | 002 | `SelectedWorks` | SELECTED WORKS / 代表作「言葉より先に、耳で確かめてください。」（002〜006の見出しは `TopSectionHeading`：番号＋和文の小ラベルの下に英字を極太で大きく） |
 | 003 | `CaseStudy` | CASE STUDY / プロデュース事例「数を並べるより、一つの物語を深く。」（にじゅな） |
 | 004 | `ServicesTeaser` | SERVICES / できること（6サービス＋「料金シミュレーターで概算を出す」） |
