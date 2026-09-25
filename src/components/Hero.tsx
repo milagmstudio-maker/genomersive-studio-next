@@ -41,24 +41,13 @@ export function Hero() {
       className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6"
       style={{ perspective: 1200 }}
     >
-      {/* Brutalist file-style meta — top-right */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="absolute top-6 right-6 font-mono text-[10px] tracking-[0.25em] hidden md:block"
-        style={{ color: "var(--accent-cream)", opacity: 0.55 }}
-      >
-        [ EST. 2022 ] · [ TYO / JP ]
-      </motion.div>
-
-      {/* Subtitle */}
+      {/* 何をするスタジオか（肩書きより機能で名乗る） */}
       <motion.div
         style={{ x: subX }}
-        className="font-mono text-[11px] tracking-[0.45em] text-foreground/70"
+        className="font-mono text-[11px] text-foreground/80 text-center"
       >
         <SplitText
-          text="PRODUCER  /  DIRECTOR  /  SOUND ENGINEER"
+          text="VOCAL MIX  /  PARA MIX  /  配信音響  /  整音"
           delay={0.15}
           stagger={0.015}
           rise={12}
@@ -74,9 +63,9 @@ export function Hero() {
           y: titleY,
           transformStyle: "preserve-3d",
         }}
-        className="mt-6 text-center font-sans font-bold leading-[0.92] tracking-tight will-change-transform"
+        className="mt-6 text-center font-serif leading-[0.9] will-change-transform"
       >
-        <span className="block text-[clamp(2.5rem,8.5vw,7.5rem)]">
+        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
           <SplitText
             text="GENOMERSIVE"
             delay={0.4}
@@ -84,7 +73,7 @@ export function Hero() {
             rise={60}
           />
         </span>
-        <span className="block text-[clamp(2.5rem,8.5vw,7.5rem)]">
+        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
           <SplitText
             text="STUDI"
             delay={0.95}
@@ -119,80 +108,36 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 1.5 }}
         style={{ x: tagX }}
-        className="mt-10 max-w-3xl text-center"
+        className="mt-9 max-w-3xl text-center"
       >
         <p
-          className="font-mincho text-xl leading-relaxed tracking-[0.08em] md:text-2xl"
+          className="font-mincho text-xl leading-relaxed md:text-2xl"
           style={{ color: "var(--accent-cream)" }}
         >
           音を整え、活動の次の一歩まで。
         </p>
-        <p className="mt-4 text-sm leading-loose tracking-wide text-foreground/90 md:text-base">
-          Vocal Mix・Para Mix・配信音響設計・整音を通じて、
-          <br className="hidden sm:block" />
-          作品や配信が「届く状態」になるところまでサポートします。
+        <p className="mt-3 font-mincho text-sm leading-relaxed text-foreground/85">
+          歌う人も、話す人も、つくる人も。
+          <br className="sm:hidden" />
+          音で活動する、すべての人の音響制作スタジオ
         </p>
-        <p className="mt-2 font-mono text-[11px] tracking-[0.16em] text-foreground/75">
-          VTuber・歌い手・配信者のための音響制作スタジオ
-        </p>
-      </motion.div>
 
-      {/* File-style label — bottom-left */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        className="absolute bottom-8 left-6 font-mono text-[10px] tracking-[0.25em] hidden md:flex items-center gap-2"
-        style={{ color: "var(--accent-cream)", opacity: 0.45 }}
-      >
-        <span
-          className="inline-block h-[6px] w-[6px]"
-          style={{
-            background: "var(--accent-cyan)",
-            boxShadow: "0 0 8px rgba(46,255,213,0.7)",
-          }}
-        />
-        001 / INDEX.MIX
-      </motion.div>
-
-      {/* Enter indicators → Works / Services */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.3 }}
-        className="absolute bottom-8 right-6 flex flex-col items-end"
-      >
-        <Link
-          href="/works"
-          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent-text transition-colors"
-        >
-          実績を聴く
-          <span className="transition-transform group-hover:translate-x-1">→</span>
-        </Link>
-        <Link
-          href="/services"
-          className="group flex items-center gap-2 py-4 -my-2 font-mono text-[10px] tracking-[0.3em] text-foreground/70 hover:text-accent-text transition-colors"
-        >
-          料金を見る
-          <span className="transition-transform group-hover:translate-x-1">→</span>
-        </Link>
-      </motion.div>
-
-      {/* Scroll indicator — center bottom */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-        aria-hidden
-      >
-        <span className="font-mono text-[10px] tracking-[0.35em] text-foreground/85">SCROLL</span>
-        <div className="relative h-12 w-[2px] overflow-hidden bg-foreground/30">
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-foreground shadow-[0_0_6px_rgba(255,255,255,0.8)]"
-            animate={{ height: ["0%", "100%", "100%"], y: ["0%", "0%", "100%"] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
-          />
+        {/* 行動は大きく・中央に。主（実績）は塗り、副（料金）は枠線 */}
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/works"
+            className="group inline-flex min-h-12 items-center gap-2 bg-foreground px-6 font-mono text-[11px] text-background transition-colors hover:bg-accent-cream"
+          >
+            実績を聴く
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+          <Link
+            href="/services"
+            className="group inline-flex min-h-12 items-center gap-2 border border-white/60 px-6 font-mono text-[11px] text-foreground transition-colors hover:border-white hover:bg-white/10"
+          >
+            料金を見る
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </motion.div>
     </section>
