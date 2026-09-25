@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const { contents: posts } = await getPosts({ limit: 200 });
+    const { contents: posts } = await getPosts({ limit: 100 }); // microCMS の上限は100件（超えるとエラーで記事が全部抜ける）
     const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
       url: `${BASE}/blog/${post.id}`,
       lastModified: new Date(post.updatedAt),

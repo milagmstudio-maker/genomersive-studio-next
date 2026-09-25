@@ -9,6 +9,7 @@ import { MobileNav } from "@/components/MobileNav";
 import { GlitchOverlay } from "@/components/GlitchOverlay";
 import { JsonLd } from "@/components/JsonLd";
 import { Splash } from "@/components/Splash";
+import { TrackClicks } from "@/components/TrackClicks";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -90,6 +91,7 @@ gtag('config', 'G-9VCCFHNYGL');`}
         <a href="#main" className="skip-link font-mono">
           本文へスキップ
         </a>
+        <TrackClicks />
         <Splash />
         <AmbientVideo />
         <GlitchOverlay />

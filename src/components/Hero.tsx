@@ -126,6 +126,7 @@ export function Hero() {
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/works"
+            data-track="hero_works"
             className="group inline-flex min-h-12 items-center gap-2 bg-foreground px-6 font-mono text-[11px] text-background transition-colors hover:bg-accent-cream"
           >
             実績を聴く
@@ -133,6 +134,7 @@ export function Hero() {
           </Link>
           <Link
             href="/services"
+            data-track="hero_services"
             className="group inline-flex min-h-12 items-center gap-2 border border-white/60 px-6 font-mono text-[11px] text-foreground transition-colors hover:border-white hover:bg-white/10"
           >
             料金を見る

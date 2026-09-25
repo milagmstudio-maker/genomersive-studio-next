@@ -4,13 +4,15 @@ type Props = {
   title: string;
   /** タイトル下に表示するリード文（1行）。セクションの役割を日本語で言い切る */
   lead?: string;
+  /** ページの主見出しとして使う時は "h1"（既定は "h2"） */
+  as?: "h1" | "h2";
 };
 
 /**
  * Editorial section header: small index + mono kicker, large serif title.
  * Title uses warm cream tone for atmosphere; the trailing period is hot magenta.
  */
-export function SectionLabel({ index, kicker, title, lead }: Props) {
+export function SectionLabel({ index, kicker, title, lead, as: Heading = "h2" }: Props) {
   // Split title into base + trailing punctuation for a colored period.
   const match = title.match(/^(.*?)([.。!?]?)$/);
   const base = match?.[1] ?? title;
@@ -29,7 +31,7 @@ export function SectionLabel({ index, kicker, title, lead }: Props) {
         />
         <span>{kicker}</span>
       </div>
-      <h2
+      <Heading
         className="mt-5 font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tight"
         style={{ color: "var(--accent-cream)" }}
       >
@@ -37,7 +39,7 @@ export function SectionLabel({ index, kicker, title, lead }: Props) {
         {punct && (
           <span style={{ color: "var(--accent-hot)" }}>{punct}</span>
         )}
-      </h2>
+      </Heading>
       {lead && (
         <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
           {lead}

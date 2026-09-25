@@ -1,6 +1,7 @@
 import { Contact } from "@/components/Contact";
 
 export const metadata = {
+  alternates: { canonical: "/contact" },
   title: "音響制作のご依頼・ご相談｜Genomersive Studio",
   description:
     "Vocal Mix・Para Mix・OBS Audio・Binaural・Audio Edit・Creative Directionのご相談はこちら。内容や素材を確認してから金額と納期をご案内します。",

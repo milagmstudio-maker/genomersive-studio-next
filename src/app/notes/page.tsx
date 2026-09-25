@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/notes" },
   title: "ご依頼に関する留意事項｜Genomersive Studio",
   description: "Genomersive Studioへ制作をご依頼いただく前にご確認いただきたい留意事項です。",
   openGraph: {

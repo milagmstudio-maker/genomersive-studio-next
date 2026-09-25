@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CATEGORY_LIST, formatDate, getPosts, type BlogPost } from "@/lib/microcms";
 
 export const metadata = {
+  alternates: { canonical: "/blog" },
   title: "OBS音響設定・Mix・歌ってみたの音作りTips｜Genomersive Studio",
   description:
     "OBS音響設定のやり方、ボーカルMixのコツ、歌ってみたの音質改善、機材レビューまで。VTuber・歌い手・配信者が自分でできる音作りを、サウンドエンジニア MiLa が解説します。",

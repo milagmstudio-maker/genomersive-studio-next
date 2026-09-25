@@ -4,6 +4,7 @@ import { Faq } from "@/components/Faq";
 import { CtaBand } from "@/components/CtaBand";
 
 export const metadata = {
+  alternates: { canonical: "/services" },
   title: "音響制作サービス・料金｜Genomersive Studio",
   description:
     "Vocal Mix、Para Mix、OBS Audio、Binaural、Audio Edit、Creative Directionのサービス内容と受付の流れをご案内します。",

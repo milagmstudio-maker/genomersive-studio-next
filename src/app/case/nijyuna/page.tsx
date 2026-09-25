@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
+  alternates: { canonical: "/case/nijyuna" },
   title: "CASE: にじゅな — Genomersive Studio",
   description:
     "VTuber・歌手「にじゅな」のプロデュース事例。ボーカルMix・OBS音響調整・チャンネル設計まで、声を起点に活動全体を設計するGenomersive Studioのケーススタディ。",

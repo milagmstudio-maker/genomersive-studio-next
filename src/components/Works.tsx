@@ -54,6 +54,7 @@ export function Works({ category }: { category?: WorkCategory }) {
     >
       <div className="mx-auto max-w-7xl">
         <SectionLabel
+          as="h1"
           index="002"
           kicker="PORTFOLIO"
           title="Works."

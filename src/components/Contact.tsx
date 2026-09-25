@@ -59,6 +59,8 @@ export function Contact() {
         throw new Error(data?.error ?? "送信に失敗しました");
       }
       setStatus("success");
+      // 問い合わせ完了を GA4 の推奨イベントとして記録（依頼につながった数を測る）
+      window.gtag?.("event", "generate_lead", { form: "contact" });
       form.reset();
       clearQuote();
       setQuote(null);

@@ -22,7 +22,8 @@ export function CtaBand() {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/contact"
-            className="group flex items-center justify-center gap-3 border border-accent bg-accent/10 px-10 py-4 font-mono text-xs tracking-[0.24em] text-foreground hover:bg-accent/20 hover:shadow-[0_0_24px_rgba(176,38,255,0.4)] transition-all w-full sm:w-auto"
+            data-track="ctaband_contact"
+            className="group flex items-center justify-center gap-3 border border-foreground bg-foreground px-10 py-4 font-mono text-xs tracking-[0.24em] text-background hover:bg-accent-cream hover:border-accent-cream transition-all w-full sm:w-auto"
           >
             相談・依頼する
             <span className="transition-transform group-hover:translate-x-1">
@@ -31,6 +32,7 @@ export function CtaBand() {
           </Link>
           <Link
             href="/services"
+            data-track="ctaband_services"
             className="group flex items-center justify-center gap-3 border border-white/35 px-10 py-4 font-mono text-xs tracking-[0.24em] text-foreground/90 hover:border-white/70 hover:text-foreground transition-all w-full sm:w-auto"
           >
             料金を確認する

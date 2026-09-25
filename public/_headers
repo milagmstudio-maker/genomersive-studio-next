@@ -1,0 +1,9 @@
+# https://developers.cloudflare.com/workers/static-assets/headers
+# https://opennext.js.org/cloudflare/caching#static-assets-caching
+# ファイル名に内容のハッシュが入る静的ファイルは、1年間そのまま使ってよい
+/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
+
+# 背景映像は差し替え時にファイル名が変わらないので1週間に留める
+/videos/*
+  Cache-Control: public,max-age=604800
