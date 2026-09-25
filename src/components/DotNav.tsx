@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
-// ロゴがトップへのリンクを兼ねるので、メニューに TOP は置かない
+// ロゴもトップへのリンクだが、ロゴ＝ホームを知らない人のためと、どのページでも
+// 必ず1つ「今いる場所」が光るように HOME も置く。
+// 5項目になるので 768px 未満はロゴと重なる → そこは三本線メニュー（MobileNav）に任せる
 const SECTIONS = [
+  { href: "/", label: "HOME", match: (p: string) => p === "/" },
   { href: "/works", label: "WORKS", match: (p: string) => p.startsWith("/works") },
   { href: "/services", label: "SERVICES", match: (p: string) => p.startsWith("/services") },
   { href: "/blog", label: "BLOG", match: (p: string) => p.startsWith("/blog") },
@@ -25,7 +28,7 @@ export function DotNav() {
       />
       <nav
         aria-label="メインメニュー"
-        className="hidden sm:flex fixed top-6 right-6 z-30 h-[37px] items-center gap-6 md:right-10 md:gap-8 lg:top-8 lg:h-[47px] lg:gap-10"
+        className="hidden md:flex fixed top-6 right-10 z-30 h-[37px] items-center gap-6 lg:top-8 lg:h-[47px] lg:gap-10"
       >
         {SECTIONS.map((s) => {
           const isActive = s.match(pathname);

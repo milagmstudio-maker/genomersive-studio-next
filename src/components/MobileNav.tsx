@@ -31,7 +31,7 @@ export function MobileNav() {
   useEffect(() => {
     if (!open) return;
     const onResize = () => {
-      if (window.innerWidth >= 640) setOpen(false);
+      if (window.innerWidth >= 768) setOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -42,7 +42,7 @@ export function MobileNav() {
       {/* ハンバーガーボタン — スマホのみ表示 */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="sm:hidden fixed top-4 right-5 z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px]"
+        className="md:hidden fixed top-4 right-5 z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px]"
         aria-label={open ? "メニューを閉じる" : "メニューを開く"}
         aria-expanded={open}
       >
@@ -72,7 +72,7 @@ export function MobileNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="sm:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-md flex flex-col items-center justify-center"
+            className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-md flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
               {LINKS.map((link, i) => {
