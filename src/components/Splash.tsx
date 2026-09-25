@@ -39,18 +39,18 @@ export function Splash() {
               <span>EST. 2022</span>
             </motion.div>
 
-            <h1 className="overflow-hidden">
-              <motion.span
-                className="block font-wordmark italic text-4xl md:text-6xl tracking-tight"
-                style={{ color: "var(--accent-cream)" }}
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-              >
-                Genomersive Studi
-                <span style={{ color: "var(--accent-hot)" }}>o.</span>
-              </motion.span>
-            </h1>
+            {/* ヒーローと同じ筆記体ロゴを、左から右へ書かれるように出す */}
+            <motion.img
+              src="/brand/genomersive-studio-logo.webp"
+              alt=""
+              width={2200}
+              height={341}
+              draggable={false}
+              className="block h-auto w-[min(78vw,560px)] select-none"
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={{ clipPath: "inset(0 0% 0 0)" }}
+              transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1], delay: 0.15 }}
+            />
 
             {/* progress line */}
             <div className="relative mt-2 h-px w-48 overflow-hidden bg-white/25">

@@ -53,7 +53,7 @@ export function Hero() {
         <SplitText text="DIRECTOR  /  PRODUCER" delay={0.4} stagger={0.015} rise={12} />
       </motion.div>
 
-      {/* スタジオ名 — 元の筆記体ロゴ（網点の質感はそのまま）。左から右へ書かれていくように現れ、マウスで少し傾く */}
+      {/* スタジオ名 — 元の筆記体ロゴ（網点を少し太らせて白の量を増やし、™は外した版）。左から右へ書かれていくように現れ、マウスで少し傾く */}
       <motion.h1
         style={{
           rotateX,
@@ -65,17 +65,18 @@ export function Hero() {
         className="relative mt-8 w-[min(90vw,1100px)] will-change-transform"
       >
         <span className="sr-only">Genomersive Studio</span>
-        {/* ロゴの後ろに敷く楕円の光（ロゴ自体に影を付けると網点ごとに光って四角い帯になるため） */}
+        {/* ロゴの後ろに敷く暗い楕円。明るい波と重なる所でもロゴの白が埋もれないようにする
+            （ロゴ自体に影を付けると網点ごとに効いて四角い帯になるため、別の要素で敷く） */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -inset-x-[6%] -inset-y-[45%] -z-10 bg-[radial-gradient(closest-side,rgba(176,38,255,0.22),rgba(42,54,255,0.08)_60%,transparent)] blur-2xl"
+          className="pointer-events-none absolute -inset-x-[8%] -inset-y-[60%] -z-10 bg-[radial-gradient(closest-side,rgba(3,5,12,0.82),rgba(3,5,12,0.5)_55%,transparent)] blur-[24px]"
         />
         <motion.img
           src="/brand/genomersive-studio-logo.webp"
           alt=""
           aria-hidden="true"
           width={2200}
-          height={340}
+          height={341}
           fetchPriority="high"
           draggable={false}
           // 完全に隠すと表示計測（LCP）が演出の分だけ遅れるので、2%だけ見せた状態から始める

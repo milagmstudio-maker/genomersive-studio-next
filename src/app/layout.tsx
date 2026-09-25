@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist, Geist_Mono, Cormorant_Garamond, Archivo } from "next/font/google";
+import { Geist, Geist_Mono, Archivo } from "next/font/google";
 import { AmbientVideo } from "@/components/AmbientVideo";
 import { BrandMark } from "@/components/BrandMark";
 import { Cursor } from "@/components/Cursor";
@@ -20,12 +20,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 // ラベル・英字見出し用。横幅（wdth）軸つきの可変フォントで、横長の太いゴシックとして使う
@@ -72,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${archivo.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} h-full antialiased`}
     >
       <head>
         <JsonLd />

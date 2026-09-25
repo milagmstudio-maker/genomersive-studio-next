@@ -29,8 +29,6 @@
   /* ラベル・英字見出しは横長の太いゴシック（Archivo）。調整は末尾の「タイポグラフィ」節 */
   --font-mono: var(--font-archivo);
   --font-serif: var(--font-archivo);
-  /* スプラッシュのロゴ（Genomersive Studio.）だけは従来のセリフ斜体を保つ */
-  --font-wordmark: var(--font-cormorant);
   /* 和文はOS標準の高品質ゴシックに委ねる。Webフォント配信を避けて初期表示を軽くする */
   --font-jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic,
     Meiryo, sans-serif;
