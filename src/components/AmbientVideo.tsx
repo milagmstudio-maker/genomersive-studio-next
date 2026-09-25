@@ -3,24 +3,39 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
+const HALFTONE_MASK = "radial-gradient(circle at center, #000 52%, transparent 58%)";
+
 export function AmbientVideo() {
   const pathname = usePathname();
   const videoRef = useRef<HTMLVideoElement>(null);
   const isHome = pathname === "/";
 
-  // 動画(2.3MB)が初回表示の帯域を奪わないよう、ページ読み込み完了後にsrcを差す。
-  // それまでは poster 画像(90KB)が背景を担う
-  const [videoReady, setVideoReady] = useState(false);
+  // 動画が初回表示の帯域を奪わないよう、ページ読み込み完了後にsrcを差す。
+  // それまでは poster 画像(90KB)が背景を担う。null = まだ差さない
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
+  // トップは網点で光の量が減るぶん、上にかける幕を薄くして明るさを保つ
   const overlayClass = isHome
-    ? "from-background/30 via-background/15 to-background/45"
+    ? "from-background/10 via-background/5 to-background/20"
     : "from-background/80 via-background/70 to-background/85";
 
+  // トップだけ、背景の波を網点で見せる（5px 間隔の点で切り抜く）。
+  // 点のすき間は何も映らず暗くなるので、点を大きめにし、明るさと彩度を上げて補う。
+  // サブページは上に濃い幕がかかって網点が見えないため、負荷をかけない
+  const halftoneStyle = isHome
+    ? {
+        maskImage: HALFTONE_MASK,
+        WebkitMaskImage: HALFTONE_MASK,
+        maskSize: "5px 5px",
+        WebkitMaskSize: "5px 5px",
+        filter: "contrast(1.35) saturate(1.5) brightness(2.2)",
+      }
+    : undefined;
+
   useEffect(() => {
-    // 小さい画面・データセーバー・低速回線では動画を読まず poster のままにする。
+    // データセーバー・低速回線では動画を読まず poster のままにする。
     // 背景は雰囲気を担うだけなので、静止画でも成立する
     const shouldLoadVideo = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) return false;
       const conn = (
         navigator as Navigator & {
           connection?: { saveData?: boolean; effectiveType?: string };
@@ -31,8 +46,12 @@ export function AmbientVideo() {
       return true;
     };
 
+    // スマホは縦長の画面で横長動画の中央しか映らないので、中央を縦に切り出した
+    // 軽い版(0.7MB。PC版は2.3MB)を使う。網点で細部は消えるため画質を落としても見た目は変わらない
     const activate = () => {
-      if (shouldLoadVideo()) setVideoReady(true);
+      if (!shouldLoadVideo()) return;
+      const isSmall = window.matchMedia("(max-width: 767px)").matches;
+      setVideoSrc(isSmall ? "/videos/sound-wave-mobile.mp4" : "/videos/sound-wave.mp4");
     };
 
     if (document.readyState === "complete") {
@@ -44,7 +63,7 @@ export function AmbientVideo() {
   }, []);
 
   useEffect(() => {
-    if (!videoReady) return;
+    if (!videoSrc) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -76,7 +95,7 @@ export function AmbientVideo() {
     return () => {
       video.removeEventListener("canplay", tryPlay);
     };
-  }, [videoReady]);
+  }, [videoSrc]);
 
   return (
     <div
@@ -90,10 +109,11 @@ export function AmbientVideo() {
         muted
         loop
         playsInline
-        preload={videoReady ? "auto" : "none"}
+        preload={videoSrc ? "auto" : "none"}
         poster="/videos/sound-wave-poster.jpg"
         className="absolute inset-0 h-full w-full object-cover"
-        src={videoReady ? "/videos/sound-wave.mp4" : undefined}
+        style={halftoneStyle}
+        src={videoSrc ?? undefined}
       />
       <div className={`absolute inset-0 bg-gradient-to-b ${overlayClass}`} />
     </div>

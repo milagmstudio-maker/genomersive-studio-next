@@ -38,14 +38,18 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6"
+      className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-24"
       style={{ perspective: 1200 }}
     >
-      {/* 肩書き */}
+      {/* 肩書き。PCでは網点の一番明るい帯に重なるので、一回り大きく・白くして、後ろに濃い暗がりを敷く */}
       <motion.div
-        style={{ x: subX }}
-        className="font-mono text-[11px] text-foreground/80 text-center"
+        style={{ x: subX, letterSpacing: "0.12em", textShadow: "0 0 8px rgba(3,5,12,0.9)" }}
+        className="relative font-mono text-[13px] text-foreground text-center sm:text-[15px]"
       >
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-x-28 -inset-y-8 -z-10 bg-[radial-gradient(closest-side,rgba(3,5,12,0.95),rgba(3,5,12,0.8)_55%,transparent)] blur-[6px]"
+        />
         {/* 経歴の順（音の職人 → 活動全体を見る人）。スマホでは SOUND ENGINEER を1行目に単独で置く */}
         <SplitText text="SOUND ENGINEER" delay={0.15} stagger={0.015} rise={12} />
         <span className="hidden whitespace-pre sm:inline">{"  /  "}</span>
@@ -53,7 +57,7 @@ export function Hero() {
         <SplitText text="DIRECTOR  /  PRODUCER" delay={0.4} stagger={0.015} rise={12} />
       </motion.div>
 
-      {/* スタジオ名 — 元の筆記体ロゴ（網点を少し太らせて白の量を増やし、™は外した版）。左から右へ書かれていくように現れ、マウスで少し傾く */}
+      {/* Brand name — char-level reveal + 3D parallax */}
       <motion.h1
         style={{
           rotateX,
@@ -62,29 +66,43 @@ export function Hero() {
           y: titleY,
           transformStyle: "preserve-3d",
         }}
-        className="relative mt-8 w-[min(90vw,1100px)] will-change-transform"
+        className="mt-6 text-center font-serif leading-[0.9] will-change-transform"
       >
-        <span className="sr-only">Genomersive Studio</span>
-        {/* ロゴの後ろに敷く暗い楕円。明るい波と重なる所でもロゴの白が埋もれないようにする
-            （ロゴ自体に影を付けると網点ごとに効いて四角い帯になるため、別の要素で敷く） */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -inset-x-[8%] -inset-y-[60%] -z-10 bg-[radial-gradient(closest-side,rgba(3,5,12,0.82),rgba(3,5,12,0.5)_55%,transparent)] blur-[24px]"
-        />
-        <motion.img
-          src="/brand/genomersive-studio-logo.webp"
-          alt=""
-          aria-hidden="true"
-          width={2200}
-          height={341}
-          fetchPriority="high"
-          draggable={false}
-          // 完全に隠すと表示計測（LCP）が演出の分だけ遅れるので、2%だけ見せた状態から始める
-          initial={{ clipPath: "inset(0 98% 0 0)" }}
-          animate={{ clipPath: "inset(0 0% 0 0)" }}
-          transition={{ duration: 1.6, delay: 0.35, ease: [0.65, 0, 0.35, 1] }}
-          className="block h-auto w-full select-none"
-        />
+        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
+          <SplitText
+            text="GENOMERSIVE"
+            delay={0.4}
+            stagger={0.05}
+            rise={60}
+          />
+        </span>
+        <span className="block text-[clamp(2.1rem,9.2vw,8.5rem)]" style={{ fontWeight: 900 }}>
+          <SplitText
+            text="STUDI"
+            delay={0.95}
+            stagger={0.05}
+            rise={60}
+          />
+          <motion.span
+            initial={{ opacity: 0.02, y: 60, rotateX: -45 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+              color: ["#b026ff", "#ff2ac0", "#b026ff", "#5b1a8c", "#b026ff"],
+            }}
+            transition={{
+              opacity: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
+              y: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
+              rotateX: { duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] },
+              color: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            }}
+            className="inline-block drop-shadow-[0_0_24px_rgba(176,38,255,0.7)]"
+            style={{ transformOrigin: "50% 100%" }}
+          >
+            O
+          </motion.span>
+        </span>
       </motion.h1>
 
       {/* Service message — existing reveal and parallax are preserved */}
@@ -108,7 +126,7 @@ export function Hero() {
           声と音で活動する、すべての人へ
         </p>
 
-        {/* 行動は大きく・中央に。主（実績）は塗り、副（料金）は枠線 */}
+        {/* 行動は大きく・中央に。主（実績）は塗り、副（料金）は枠線（明るい網点に埋もれないよう中は暗く塗る） */}
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/works"
@@ -121,7 +139,7 @@ export function Hero() {
           <Link
             href="/services"
             data-track="hero_services"
-            className="group inline-flex min-h-12 items-center gap-2 border border-white/60 px-6 font-mono text-[11px] text-foreground transition-colors hover:border-white hover:bg-white/10"
+            className="group inline-flex min-h-12 items-center gap-2 border border-white/60 bg-background/70 px-6 font-mono text-[11px] text-foreground backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"
           >
             料金を見る
             <span className="transition-transform group-hover:translate-x-1">→</span>

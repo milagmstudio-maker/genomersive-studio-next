@@ -24,7 +24,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 | フレームワーク | Next.js 16.2.4 (App Router)。学習データと仕様が違うので `node_modules/next/dist/docs/` を確認してから書く |
 | 言語 | TypeScript |
 | スタイリング | Tailwind CSS v4 |
-| フォント | 本文 Geist ／ ラベル・英字見出し Archivo（横幅 wdth 112〜125%、太字）／ 和文見出し OS標準の太いゴシック（Webフォントなし）。スタジオ名は筆記体ロゴ画像 `public/brand/genomersive-studio-logo.webp`（ヒーロー・スプラッシュ。元は Downloads/logo black.png の網点ロゴを白抜き・™除去・網点を少し太らせた版）。調整は `globals.css` 末尾の「タイポグラフィ」節で一括 |
+| フォント | 本文 Geist ／ ラベル・英字見出し Archivo（横幅 wdth 112〜125%、太字）／ 和文見出し OS標準の太いゴシック（Webフォントなし）。スタジオ名は Archivo 極太の2段「GENOMERSIVE / STUDIO」（O だけ紫。ヒーロー・スプラッシュ共通）。筆記体ロゴ画像 `public/brand/genomersive-studio-logo.webp` は 2026-09-26 に不採用となり未使用（書体再検討用に残置）。調整は `globals.css` 末尾の「タイポグラフィ」節で一括 |
 | アニメーション | framer-motion |
 | CMS | microCMS（ブログのみ。サービスドメイン: `mila-blog`） |
 | デプロイ | Cloudflare Workers（@opennextjs/cloudflare） |
@@ -53,7 +53,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 
 | No. | コンポーネント | 見出し・コピー |
 |-----|----------------|----------------|
-| 001 | `Hero` | 肩書き「SOUND ENGINEER / DIRECTOR / PRODUCER」（経歴の順）→ 名前（筆記体ロゴ画像。後ろに暗い楕円を敷いて明るい波と重なっても読めるようにしている）→「音を整え、活動の次の一歩まで。」→「SOUND STUDIO FOR EVERY VOICE／声と音で活動する、すべての人へ」→ ボタン「実績を聴く」（白塗り）「料金を見る」（枠線） |
+| 001 | `Hero` | 肩書き「SOUND ENGINEER / DIRECTOR / PRODUCER」（経歴の順）→ 名前（Archivo 極太の2段。背景の波はトップだけ網点で見せる＝`AmbientVideo.tsx`。肩書きは明るい網点に重なるので後ろに暗がりを敷き、「料金を見る」も中を暗く塗っている）→「音を整え、活動の次の一歩まで。」→「SOUND STUDIO FOR EVERY VOICE／声と音で活動する、すべての人へ」→ ボタン「実績を聴く」（白塗り）「料金を見る」（枠線） |
 | 002 | `SelectedWorks` | SELECTED WORKS / 代表作「言葉より先に、耳で確かめてください。」（002〜006の見出しは `TopSectionHeading`：番号＋和文の小ラベルの下に英字を極太で大きく） |
 | 003 | `CaseStudy` | CASE STUDY / プロデュース事例「数を並べるより、一つの物語を深く。」（にじゅな） |
 | 004 | `ServicesTeaser` | SERVICES / できること（6サービス＋「料金シミュレーターで概算を出す」） |
@@ -64,7 +64,7 @@ VTuber・歌い手・配信者向けの音響制作スタジオ（Vocal Mix / Pa
 
 ### 全ページ共通（`src/app/layout.tsx`）
 
-`JsonLd`（構造化データ）/ `Splash`（初回スプラッシュ）/ `AmbientVideo`（背景映像。スマホ・データセーバー・2G では読み込まない）/ `GlitchOverlay` / `Cursor` / `BrandMark`（左上ロゴ）/ `DotNav` / `MobileNav` / フッター / GA
+`JsonLd`（構造化データ）/ `Splash`（初回スプラッシュ）/ `AmbientVideo`（背景映像。スマホは縦切りの軽量版 `sound-wave-mobile.mp4`、データセーバー・2G では読み込まず poster）/ `GlitchOverlay` / `Cursor` / `BrandMark`（左上ロゴ）/ `DotNav` / `MobileNav` / フッター / GA
 
 ### 部品として中で使われているコンポーネント
 

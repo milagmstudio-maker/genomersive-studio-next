@@ -39,18 +39,21 @@ export function Splash() {
               <span>EST. 2022</span>
             </motion.div>
 
-            {/* ヒーローと同じ筆記体ロゴを、左から右へ書かれるように出す */}
-            <motion.img
-              src="/brand/genomersive-studio-logo.webp"
-              alt=""
-              width={2200}
-              height={341}
-              draggable={false}
-              className="block h-auto w-[min(78vw,560px)] select-none"
-              initial={{ clipPath: "inset(0 100% 0 0)" }}
-              animate={{ clipPath: "inset(0 0% 0 0)" }}
-              transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1], delay: 0.15 }}
-            />
+            {/* ヒーローと同じ太いゴシックの2段ロゴを、下からせり上がるように出す。
+                O の光が四角く切れないよう、枠で切り抜かず位置と透明度だけで出す */}
+            <motion.div
+              className="whitespace-nowrap text-center font-serif text-[clamp(1.5rem,7.5vw,3.75rem)] leading-[0.9]"
+              style={{ fontWeight: 900 }}
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            >
+              <span className="block">GENOMERSIVE</span>
+              <span className="block">
+                STUDI
+                <span className="text-accent drop-shadow-[0_0_18px_rgba(176,38,255,0.7)]">O</span>
+              </span>
+            </motion.div>
 
             {/* progress line */}
             <div className="relative mt-2 h-px w-48 overflow-hidden bg-white/25">
