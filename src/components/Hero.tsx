@@ -38,7 +38,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-24"
+      className="relative z-10 flex min-h-screen flex-col items-center justify-center overflow-x-clip px-6 py-24"
       style={{ perspective: 1200 }}
     >
       {/* 肩書き。PCでは網点の一番明るい帯に重なるので、一回り大きく・白くして、後ろに濃い暗がりを敷く */}

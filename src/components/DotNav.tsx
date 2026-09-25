@@ -16,7 +16,9 @@ export function DotNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden sm:flex fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-30 items-center gap-4 sm:gap-8 md:gap-12">
+    // 背景の網点が明るいので、メニュー全体を暗い半透明の帯で包み、後ろをぼかして文字を浮かせる。
+    // タブレット縦（768px未満）は中央だと左上のロゴに重なるので右寄せ
+    <nav className="hidden sm:flex fixed top-3 md:top-4 right-4 md:right-auto md:left-1/2 md:-translate-x-1/2 z-30 items-center gap-4 sm:gap-5 lg:gap-11 md:gap-8 rounded-2xl border border-white/10 bg-background/75 px-4 md:px-7 lg:px-9 py-2 md:py-2.5 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.45)]">
       {SECTIONS.map((s) => {
         const isActive = s.match(pathname);
         return (
@@ -36,18 +38,18 @@ export function DotNav() {
             />
             <span
               className={cn(
-                "hidden sm:block font-mono text-[10px] md:text-xs tracking-[0.15em] md:tracking-[0.22em] transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
+                "hidden sm:block font-mono text-[10px] md:text-[14px] tracking-[0.15em] md:tracking-[0.22em] transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
                 isActive
                   ? "text-foreground font-medium"
-                  : "text-foreground/70 group-hover:text-foreground"
+                  : "text-foreground/85 group-hover:text-foreground"
               )}
             >
               {s.label}
             </span>
             <span
               className={cn(
-                "hidden md:block font-sans text-[10px] -mt-1 transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
-                isActive ? "text-foreground/85" : "text-foreground/55 group-hover:text-foreground/85"
+                "hidden md:block font-sans text-[11px] -mt-1 transition-all duration-300 whitespace-nowrap [text-shadow:0_1px_5px_rgba(0,0,0,0.95)]",
+                isActive ? "text-foreground/90" : "text-foreground/70 group-hover:text-foreground/90"
               )}
             >
               {s.jp}
