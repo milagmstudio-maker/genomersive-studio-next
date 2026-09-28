@@ -36,21 +36,21 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://genomersivestudio.com"),
   openGraph: {
     title: "Genomersive Studio",
-    description: "Producer / Director / Sound Engineer",
+    description: "Sound Engineer / Director / Producer",
     type: "website",
     images: [
       {
         url: "/og-image.jpg?v=2",
         width: 1200,
         height: 630,
-        alt: "Genomersive Studio — Producer / Director / Sound Engineer",
+        alt: "Genomersive Studio — Sound Engineer / Director / Producer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Genomersive Studio",
-    description: "Producer / Director / Sound Engineer",
+    description: "Sound Engineer / Director / Producer",
     images: ["/og-image.jpg?v=2"],
   },
   verification: {
