@@ -11,9 +11,9 @@ export const metadata = {
   openGraph: {
     title: "音響制作サービス — Genomersive Studio",
     description: "作品や配信が届く状態になるところまでサポートします。",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630 }],
   },
-  twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg"] },
+  twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg?v=2"] },
 };
 
 export default function ServicesPage() {
