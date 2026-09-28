@@ -42,7 +42,7 @@ export function About() {
             <h3 className="font-sans font-bold text-2xl md:text-3xl leading-snug">
               MiLa
               <span className="ml-3 font-mono text-[10px] tracking-[0.25em] font-normal text-foreground/70 align-middle">
-                PRODUCER / DIRECTOR / SOUND ENGINEER
+                SOUND ENGINEER / DIRECTOR / PRODUCER
               </span>
             </h3>
             <p className="mt-6 text-base leading-loose text-foreground/95">
