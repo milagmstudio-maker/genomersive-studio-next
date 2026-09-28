@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: "音響Tips・Mix・OBS設定ブログ — Genomersive Studio",
     description: "OBS音響設定・ボーカルMix・歌ってみたの音作りを、サウンドエンジニアが解説。",
-    images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
   twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg?v=2"] },
 };
