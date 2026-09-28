@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=block" rel="stylesheet">
+<style>
+  :root{--bg:#08101e;--fg:#f4f4f5;--cream:#f4d9a6}
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:var(--bg)}
+  .stage{position:relative;width:1200px;height:630px;overflow:hidden;background:var(--bg)}
+  /* サイトの AmbientVideo と同じ網点：5px 間隔の点で波を切り抜く */
+  .wave{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    -webkit-mask-image:radial-gradient(circle at center,#000 51%,transparent 57%);
+    -webkit-mask-size:5px 5px;filter:contrast(1.35) saturate(1.5) brightness(2);transform:scale(1.28)}
+  /* トップページと同じ薄い幕 + 文字の後ろの暗がり */
+  .veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,16,30,.45),rgba(8,16,30,.35),rgba(8,16,30,.55))}
+  .shade{position:absolute;left:50%;top:50%;width:1100px;height:600px;transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side,rgba(3,5,12,.85),rgba(3,5,12,.6) 60%,transparent);filter:blur(8px)}
+  .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--fg)}
+  .role{font-family:Archivo;font-stretch:125%;font-weight:700;font-size:19px;letter-spacing:.12em;
+    text-shadow:0 0 8px rgba(3,5,12,.9)}
+  .mark{margin-top:22px;font-family:Archivo;font-stretch:125%;font-weight:900;letter-spacing:-.02em;
+    line-height:.9;font-size:98px}
+  .mark span{display:block}
+  .o{color:#b026ff;filter:drop-shadow(0 0 24px rgba(176,38,255,.7))}
+  .lead{margin-top:34px;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;font-weight:800;
+    letter-spacing:.02em;font-size:34px;color:var(--cream);text-shadow:0 0 10px rgba(3,5,12,.9)}
+  .en{margin-top:14px;font-family:Archivo;font-stretch:125%;font-weight:700;font-size:18px;letter-spacing:.04em;text-shadow:0 0 8px rgba(3,5,12,.9)}
+  .ja{margin-top:6px;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;font-weight:600;
+    letter-spacing:.02em;font-size:20px;color:rgba(244,244,245,.88);text-shadow:0 0 8px rgba(3,5,12,.9)}
+</style></head>
+<body><div class="stage">
+  <img class="wave" src="../public/videos/sound-wave-poster.jpg" alt="">
+  <div class="veil"></div><div class="shade"></div>
+  <div class="content">
+    <div class="role">SOUND ENGINEER&nbsp;&nbsp;/&nbsp;&nbsp;DIRECTOR&nbsp;&nbsp;/&nbsp;&nbsp;PRODUCER</div>
+    <div class="mark"><span>GENOMERSIVE</span><span>STUDI<span class="o" style="display:inline">O</span></span></div>
+    <div class="lead">音を整え、活動の次の一歩まで。</div>
+    <div class="en">SOUND STUDIO FOR EVERY VOICE</div>
+    <div class="ja">声と音で活動する、すべての人へ</div>
+  </div>
+</div></body></html>
