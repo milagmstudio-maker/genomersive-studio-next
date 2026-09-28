@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Genomersive Studio",
     description: "Sound Engineer / Director / Producer",
-    images: ["/og-image.jpg?v=2"],
+    images: [{ url: "/og-image.jpg?v=2", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
   verification: {
     google: "yC1SsnbYlhUxLauGhdw287HDdaywwZMntUBhEbCmPBE",

@@ -10,7 +10,7 @@ export const metadata = {
     description: "VTuber・歌い手の歌ってみた／配信の実績を、動画でそのまま確認。",
     images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg?v=2"] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=2", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 export default function WorksPage() {

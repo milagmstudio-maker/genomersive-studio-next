@@ -11,7 +11,7 @@ export const metadata = {
     description: "OBS音響設定・ボーカルMix・歌ってみたの音作りを、サウンドエンジニアが解説。",
     images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: ["/og-image.jpg?v=2"] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=2", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 export const revalidate = 60;
