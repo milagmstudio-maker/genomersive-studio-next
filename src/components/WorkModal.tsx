@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import type { Work } from "@/data/works";
 
 type Props = {
@@ -13,8 +14,89 @@ type Props = {
 const FOCUSABLE =
   'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
 
+const noopSubscribe = () => () => {};
+
+const YT_ORIGINS = ["https://www.youtube-nocookie.com", "https://www.youtube.com"];
+// プレイヤーから合図が来なくても、この時間が過ぎたら必ず映像を出す
+const REVEAL_FALLBACK_MS = 6000;
+// 準備完了の後、自動再生が始まらない（ブラウザに止められた）場合に再生ボタンを見せるまでの待ち
+const REVEAL_AFTER_READY_MS = 1500;
+
+// YouTubeの埋め込みは、枠の読み込みが終わってからも映像が出るまで数秒真っ黒になる。
+// iframeのonLoadはその黒い時間より前に来るので使えない。プレイヤー自身の合図（IFrame APIのpostMessage）を待ち、
+// それまではサムネイルと読み込み中の表示を見せる
+function Player({ work }: { work: Work }) {
+  const [loaded, setLoaded] = useState(false);
+  const frameRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    let afterReady: number | undefined;
+    const onMessage = (e: MessageEvent) => {
+      if (!YT_ORIGINS.includes(e.origin) || e.source !== frameRef.current?.contentWindow) return;
+      let data: { event?: string; info?: { playerState?: number } } | null = null;
+      try {
+        data = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
+      } catch {
+        return;
+      }
+      // 1=再生中 2=一時停止 5=頭出し済み。どれかになれば映像を見せてよい
+      const state = data?.info?.playerState;
+      if (state === 1 || state === 2 || state === 5) setLoaded(true);
+      if (data?.event === "onReady" && afterReady === undefined) {
+        afterReady = window.setTimeout(() => setLoaded(true), REVEAL_AFTER_READY_MS);
+      }
+    };
+    window.addEventListener("message", onMessage);
+    const fallback = window.setTimeout(() => setLoaded(true), REVEAL_FALLBACK_MS);
+    return () => {
+      window.removeEventListener("message", onMessage);
+      window.clearTimeout(fallback);
+      window.clearTimeout(afterReady);
+    };
+  }, []);
+
+  // 読み込み後に「状態を知らせて」と頼む（YouTube IFrame APIの取り決め）
+  const listen = () =>
+    frameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "listening", id: work.youtubeId, channel: "widget" }),
+      "*"
+    );
+
+  return (
+    <div className="relative aspect-video w-full border border-white/35 overflow-hidden bg-black">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://img.youtube.com/vi/${work.youtubeId}/hqdefault.jpg`}
+        alt=""
+        aria-hidden
+        className={`absolute inset-0 h-full w-full object-cover blur-sm scale-105 transition-opacity duration-500 ${loaded ? "opacity-0" : "opacity-50"}`}
+      />
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="animate-pulse border border-white/35 bg-black/60 px-4 py-2 font-mono text-[10px] tracking-[0.3em] text-foreground/90">
+            LOADING
+          </span>
+        </div>
+      )}
+      <iframe
+        ref={frameRef}
+        className={`absolute inset-0 h-full w-full transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        src={`https://www.youtube-nocookie.com/embed/${work.youtubeId}?autoplay=1&rel=0&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`}
+        title={work.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox"
+        allowFullScreen
+        onLoad={listen}
+      />
+    </div>
+  );
+}
+
 export function WorkModal({ work, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
+  // セクション内に置くと、そのセクションの重なり順に閉じ込められて固定ヘッダーの下に潜る。
+  // body直下へ出して、常にヘッダーより前面に表示する
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   // 開く前にフォーカスしていた要素。閉じた時にここへ戻す
   const restoreRef = useRef<HTMLElement | null>(null);
 
@@ -57,7 +139,9 @@ export function WorkModal({ work, onClose }: Props) {
     };
   }, [work, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {work && (
         <motion.div
@@ -94,17 +178,8 @@ export function WorkModal({ work, onClose }: Props) {
               </button>
             </div>
 
-            {/* Player */}
-            <div className="relative aspect-video w-full border border-white/35 overflow-hidden bg-black">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={`https://www.youtube-nocookie.com/embed/${work.youtubeId}?autoplay=1&rel=0`}
-                title={work.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox"
-                allowFullScreen
-              />
-            </div>
+            {/* Player — 作品が替わったら読み込み状態を最初からやり直す */}
+            <Player key={work.id} work={work} />
 
             {/* Caption */}
             <div className="border border-white/35 border-t-0 bg-black/70 px-4 py-4">
@@ -139,6 +214,7 @@ export function WorkModal({ work, onClose }: Props) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

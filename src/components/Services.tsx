@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ADDONS,
   DELIVERIES,
@@ -108,6 +108,37 @@ export function Services() {
       hasSelection: planLines.length > 0,
     };
   }, [selectedByCategory, units, addons, deliveryId, discountId]);
+
+  // スマホでは見積もり欄が一覧のずっと下にあり、選んでも合計が見えない。
+  // 見積もり欄がまだ画面より下にある間（＝項目を選んでいる最中）だけ、画面下に合計と相談ボタンの帯を出す。
+  // 見積もり欄を通り過ぎた後は出さない（後続のセクションと重なり順がぶつかるため）。
+  // IntersectionObserverは交差の変化しか通知しないので、欄を画面に通さず一気に飛ぶと判定が古いまま残る。
+  // スクロールのたびに位置で判定する
+  const summaryRef = useRef<HTMLElement>(null);
+  const [summaryBelow, setSummaryBelow] = useState(true);
+  useEffect(() => {
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      const el = summaryRef.current;
+      if (el) setSummaryBelow(el.getBoundingClientRect().top > window.innerHeight - 80);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(check);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const totalLabel =
+    calc.hasSelection && calc.total === 0 ? "個別相談" : formatJPY(calc.total);
+  const showsFrom = calc.hasSelection && calc.total > 0;
 
   const togglePlan = (plan: Plan) => {
     setSelectedByCategory((s) => ({
@@ -226,7 +257,7 @@ export function Services() {
           </div>
 
           {/* Sticky summary */}
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+          <aside ref={summaryRef} className="lg:sticky lg:top-24 lg:self-start">
             <motion.div
               layout
               className="border border-white/35 bg-black/60 backdrop-blur-md"
@@ -293,10 +324,8 @@ export function Services() {
                     TOTAL
                   </span>
                   <span className="font-sans text-3xl font-bold tabular-nums">
-                    {calc.hasSelection && calc.total === 0
-                      ? "個別相談"
-                      : formatJPY(calc.total)}
-                    {calc.hasSelection && calc.total > 0 && (
+                    {totalLabel}
+                    {showsFrom && (
                       <span className="ml-1 text-base font-normal text-foreground/80">〜</span>
                     )}
                   </span>
@@ -323,6 +352,36 @@ export function Services() {
               </div>
             </motion.div>
           </aside>
+        </div>
+      </div>
+
+      {/* スマホ用：画面下の合計バー（lg以上は見積もり欄が横に固定されるので不要） */}
+      <div
+        className={cn(
+          "lg:hidden fixed inset-x-0 bottom-0 z-40 border-t border-white/35 bg-black/85 backdrop-blur-md px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300",
+          calc.hasSelection && summaryBelow ? "translate-y-0" : "translate-y-full"
+        )}
+        aria-hidden={!calc.hasSelection || !summaryBelow}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/75">
+              EST. {calc.planLines.length}件
+            </p>
+            <p className="font-sans text-xl font-bold tabular-nums">
+              {totalLabel}
+              {showsFrom && <span className="ml-1 text-sm font-normal text-foreground/80">〜</span>}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={goToContact}
+            tabIndex={calc.hasSelection && summaryBelow ? 0 : -1}
+            className="group flex shrink-0 items-center gap-2 border border-accent bg-accent/10 px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-foreground"
+          >
+            この内容で相談する
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </button>
         </div>
       </div>
     </section>
