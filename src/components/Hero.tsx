@@ -113,13 +113,8 @@ export function Hero() {
         style={{ x: tagX }}
         className="mt-9 max-w-3xl text-center"
       >
-        <p
-          className="font-mincho text-xl leading-relaxed md:text-2xl"
-          style={{ color: "var(--accent-cream)" }}
-        >
-          音を整え、活動の次の一歩まで。
-        </p>
-        <p className="mt-4 font-mono text-[11px] text-foreground/90">
+        {/* キャッチ「音を整え、活動の次の一歩まで。」は 2026-09-29 に外した（ロゴと張り合い、同じ内容を About 以下で繰り返しているため） */}
+        <p className="font-mono text-[11px] text-foreground/90">
           SOUND STUDIO FOR EVERY VOICE
         </p>
         <p className="mt-1.5 font-mincho text-sm leading-relaxed text-foreground/75">
