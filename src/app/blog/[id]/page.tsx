@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const description = post.excerpt?.slice(0, 120) || post.title;
     const image = post.thumbnail
       ? { url: `${post.thumbnail.url}?w=1200&fit=crop`, width: 1200, height: 630, alt: post.title }
-      : { url: "/og-image.jpg?v=3", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" };
+      : { url: "/og-image.jpg?v=4", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" };
     return {
       title: `${post.title} — Genomersive Studio`,
       description,

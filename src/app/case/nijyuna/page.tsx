@@ -9,9 +9,9 @@ export const metadata = {
     title: "CASE: にじゅな — 「忘れられない歌手」を、設計する。",
     description:
       "ボーカルMix・OBS音響調整・チャンネル設計。声を起点に活動全体を設計するプロデュース事例。",
-    images: [{ url: "/og-image.jpg?v=3", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
+    images: [{ url: "/og-image.jpg?v=4", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=3", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=4", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 function Embed({

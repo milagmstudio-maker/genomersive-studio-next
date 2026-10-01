@@ -8,9 +8,9 @@ export const metadata = {
   openGraph: {
     title: "制作実績 — ボーカルMix・OBS音響調整 Genomersive Studio",
     description: "VTuber・歌い手の歌ってみた／配信の実績を、動画でそのまま確認。",
-    images: [{ url: "/og-image.jpg?v=3", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
+    images: [{ url: "/og-image.jpg?v=4", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=3", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=4", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 export default function WorksPage() {

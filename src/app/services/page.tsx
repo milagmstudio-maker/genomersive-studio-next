@@ -11,9 +11,9 @@ export const metadata = {
   openGraph: {
     title: "音響制作サービス — Genomersive Studio",
     description: "作品や配信が届く状態になるところまでサポートします。",
-    images: [{ url: "/og-image.jpg?v=3", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
+    images: [{ url: "/og-image.jpg?v=4", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=3", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=4", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 export default function ServicesPage() {
