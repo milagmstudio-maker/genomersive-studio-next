@@ -212,6 +212,4 @@ export type Discount = {
 
 export const DISCOUNTS: Discount[] = [
   { id: "x-none", name: "適用なし", type: "fixed", value: 0, description: "" },
-  { id: "x-first", name: "初回利用割引", type: "fixed", value: 2000, description: "−¥2,000" },
-  { id: "x-repeat", name: "3回目以降割引", type: "rate", value: 0.2, description: "20% OFF" },
 ];
