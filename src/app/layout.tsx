@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg?v=2",
+        url: "/og-image.jpg?v=3",
         width: 1200,
         height: 630,
         alt: "Genomersive Studio — Sound Engineer / Director / Producer",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Genomersive Studio",
     description: "Sound Engineer / Director / Producer",
-    images: [{ url: "/og-image.jpg?v=2", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
+    images: [{ url: "/og-image.jpg?v=3", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
   verification: {
     google: "yC1SsnbYlhUxLauGhdw287HDdaywwZMntUBhEbCmPBE",

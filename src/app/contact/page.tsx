@@ -8,9 +8,9 @@ export const metadata = {
   openGraph: {
     title: "ご依頼・ご相談 — Genomersive Studio",
     description: "見積もりだけ・相談だけでも歓迎。通常24時間以内を目安に返信します。",
-    images: [{ url: "/og-image.jpg?v=2", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
+    images: [{ url: "/og-image.jpg?v=3", width: 1200, height: 630, alt: "Genomersive Studio — Sound Engineer / Director / Producer" }],
   },
-  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=2", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
+  twitter: { card: "summary_large_image" as const, images: [{ url: "/og-image.jpg?v=3", alt: "Genomersive Studio — Sound Engineer / Director / Producer" }] },
 };
 
 export default function ContactPage() {
