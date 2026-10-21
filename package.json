@@ -16,21 +16,21 @@
     "dompurify": "^3.4.8",
     "framer-motion": "^12.38.0",
     "microcms-js-sdk": "^3.4.0",
-    "next": "16.2.4",
+    "next": "16.3.8",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.4",
+    "@opennextjs/cloudflare": "1.20.11",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.9",
+    "eslint-config-next": "^16.3.8",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "wrangler": "^4.85.0"
+    "wrangler": "^4.151.3"
   }
 }
