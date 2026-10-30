@@ -25,7 +25,7 @@ export default function ServicesPage() {
           <h1 className="font-sans font-bold text-2xl md:text-4xl leading-tight">
             音響制作サービスと、ご依頼の進め方。
           </h1>
-          <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+          <p className="mt-6 font-mincho text-[15px] md:text-base leading-relaxed text-foreground/85">
             Vocal Mix、Para Mix、配信音響、バイノーラル、整音、投稿導線の相談まで。まず内容や素材を確認し、対応可否・金額・納期をご案内します。価格が決まっている項目は、このページで概算を確認できます。
           </p>
         </div>

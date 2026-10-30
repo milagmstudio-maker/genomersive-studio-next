@@ -94,8 +94,8 @@ export function MobileNav() {
                     >
                       <span
                         className={cn(
-                          "font-sans text-[11px] tracking-[0.3em] transition-colors",
-                          isActive ? "text-accent-text" : "text-foreground/50"
+                          "font-sans text-[12px] tracking-[0.3em] transition-colors",
+                          isActive ? "text-accent-text" : "text-foreground/85"
                         )}
                       >
                         {link.sub}
@@ -105,7 +105,7 @@ export function MobileNav() {
                           "font-sans text-4xl font-bold tracking-tight transition-colors",
                           isActive
                             ? "text-foreground"
-                            : "text-foreground/80 group-hover:text-foreground"
+                            : "text-foreground/90 group-hover:text-foreground"
                         )}
                       >
                         {link.label}
@@ -120,7 +120,7 @@ export function MobileNav() {
             </nav>
 
             {/* フッターリンク */}
-            <div className="absolute bottom-8 flex items-center gap-6 font-mono text-[10px] tracking-[0.3em] text-foreground/50">
+            <div className="absolute bottom-8 flex items-center gap-6 font-mono text-[11px] tracking-[0.3em] text-foreground/85">
               <a href="https://x.com/mila_mixstudio" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                 X @mila_mixstudio
               </a>

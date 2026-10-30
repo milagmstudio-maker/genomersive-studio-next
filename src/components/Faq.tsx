@@ -54,7 +54,7 @@ export function Faq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="mx-auto max-w-3xl">
-        <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-12 flex items-center gap-4 font-mono text-[11px] tracking-[0.3em] text-foreground/90">
           <span>005</span>
           <span className="h-px w-10 bg-foreground/30" />
           <span>FAQ / よくある質問</span>
@@ -64,7 +64,7 @@ export function Faq() {
           {FAQS.map((f) => (
             <details key={f.q} className="group">
               <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 px-3 -mx-3 hover:bg-accent/[0.04] transition-colors list-none [&::-webkit-details-marker]:hidden">
-                <h3 className="font-sans font-medium text-sm md:text-base leading-snug">
+                <h3 className="font-sans font-medium text-[15px] md:text-base leading-snug">
                   {f.q}
                 </h3>
                 <span
@@ -74,7 +74,7 @@ export function Faq() {
                   +
                 </span>
               </summary>
-              <p className="pb-6 px-3 -mx-3 text-xs md:text-sm leading-relaxed text-foreground/85">
+              <p className="pb-6 px-3 -mx-3 text-[13px] md:text-sm leading-relaxed text-foreground/85">
                 {f.a}
               </p>
             </details>

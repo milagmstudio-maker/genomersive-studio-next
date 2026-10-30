@@ -27,7 +27,7 @@ export function About() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-black/60 backdrop-blur-sm px-3 py-1.5 font-mono text-[10px] tracking-[0.25em] text-foreground/85">
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-black/60 backdrop-blur-sm px-3 py-1.5 font-mono text-[11px] tracking-[0.25em] text-foreground/85">
                 <span>MILA / PORTRAIT</span>
                 <span
                   className="inline-block h-[5px] w-[5px]"
@@ -41,7 +41,7 @@ export function About() {
 
             <h3 className="font-sans font-bold text-2xl md:text-3xl leading-snug">
               MiLa
-              <span className="ml-3 font-mono text-[10px] tracking-[0.25em] font-normal text-foreground/70 align-middle">
+              <span className="ml-3 font-mono text-[11px] tracking-[0.25em] font-normal text-foreground/85 align-middle">
                 SOUND ENGINEER / DIRECTOR / PRODUCER
               </span>
             </h3>
@@ -57,17 +57,17 @@ export function About() {
 
             {/* Produce */}
             <div className="mt-8 flex items-center justify-between gap-4 border border-white/30 bg-black/30 backdrop-blur-sm px-4 py-3">
-              <span className="font-mono text-[10px] tracking-[0.3em] text-foreground/70 shrink-0">
+              <span className="font-mono text-[11px] tracking-[0.3em] text-foreground/85 shrink-0">
                 PRODUCE
               </span>
               <a
                 href="https://x.com/Nijyuuu7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 py-3 -my-2 text-sm text-foreground/95 hover:text-accent-text transition-colors"
+                className="group inline-flex items-center gap-2 py-3 -my-2 text-[15px] text-foreground/95 hover:text-accent-text transition-colors"
               >
                 にじゅな
-                <span className="font-mono text-[10px] text-foreground/70 group-hover:text-accent-text">
+                <span className="font-mono text-[11px] text-foreground/85 group-hover:text-accent-text">
                   — VTuber ↗
                 </span>
               </a>
@@ -79,7 +79,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   500+
                 </p>
-                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[11px] tracking-[0.25em] text-foreground/85">
                   TOTAL WORKS
                 </p>
               </div>
@@ -87,7 +87,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   2022
                 </p>
-                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[11px] tracking-[0.25em] text-foreground/85">
                   EST.
                 </p>
               </div>
@@ -95,7 +95,7 @@ export function About() {
                 <p className="font-sans text-2xl md:text-3xl font-bold tabular-nums">
                   2<span className="text-base font-normal">ヶ月</span>
                 </p>
-                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-foreground/70">
+                <p className="mt-1 font-mono text-[11px] tracking-[0.25em] text-foreground/85">
                   OBS AFTER SUPPORT
                 </p>
               </div>
@@ -108,10 +108,10 @@ export function About() {
 
             {/* Setup */}
             <div className="border border-white/30 bg-black/30 backdrop-blur-sm">
-              <div className="border-b border-white/30 px-5 py-2 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
+              <div className="border-b border-white/30 px-5 py-2 font-mono text-[11px] tracking-[0.25em] text-foreground/90">
                 SETUP / 使用環境
               </div>
-              <dl className="p-5 space-y-3 text-sm md:text-base">
+              <dl className="p-5 space-y-3 text-[15px] md:text-base">
                 {[
                   ["DAW", "Pro Tools / REAPER / Logic Pro"],
                   ["PITCH & VOCAL", "Melodyne 5 Studio / Vovious / RePitch"],
@@ -120,7 +120,7 @@ export function About() {
                   ["GENRE", "ポップス / ボカロ / ロック / バラード / メタル"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex items-start gap-4">
-                    <dt className="font-mono text-[10px] tracking-[0.2em] text-foreground/70 w-28 shrink-0 pt-[3px]">
+                    <dt className="font-mono text-[11px] tracking-[0.2em] text-foreground/85 w-28 shrink-0 pt-[3px]">
                       {k}
                     </dt>
                     <dd className="text-foreground/90 leading-relaxed">{v}</dd>

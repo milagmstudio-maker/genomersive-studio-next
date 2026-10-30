@@ -114,10 +114,10 @@ export function Hero() {
         className="mt-9 max-w-3xl text-center"
       >
         {/* キャッチ「音を整え、活動の次の一歩まで。」は 2026-09-29 に外した（ロゴと張り合い、同じ内容を About 以下で繰り返しているため） */}
-        <p className="font-mono text-[11px] text-foreground/90">
+        <p className="font-mono text-[12px] text-foreground/90">
           SOUND STUDIO FOR EVERY VOICE
         </p>
-        <p className="mt-1.5 font-mincho text-sm leading-relaxed text-foreground/75">
+        <p className="mt-1.5 font-mincho text-[15px] leading-relaxed text-foreground/85">
           声と音で活動する、すべての人へ
         </p>
 
@@ -126,7 +126,7 @@ export function Hero() {
           <Link
             href="/works"
             data-track="hero_works"
-            className="group inline-flex min-h-12 items-center gap-2 bg-foreground px-6 font-mono text-[11px] text-background transition-colors hover:bg-accent-cream"
+            className="group inline-flex min-h-12 items-center gap-2 bg-foreground px-6 font-mono text-[12px] text-background transition-colors hover:bg-accent-cream"
           >
             実績を聴く
             <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -134,7 +134,7 @@ export function Hero() {
           <Link
             href="/services"
             data-track="hero_services"
-            className="group inline-flex min-h-12 items-center gap-2 border border-white/60 bg-background/70 px-6 font-mono text-[11px] text-foreground backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"
+            className="group inline-flex min-h-12 items-center gap-2 border border-white/60 bg-background/70 px-6 font-mono text-[12px] text-foreground backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"
           >
             料金を見る
             <span className="transition-transform group-hover:translate-x-1">→</span>

@@ -56,7 +56,7 @@ export function Flow() {
       className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+        <div className="mb-12 flex items-center gap-4 font-mono text-[11px] tracking-[0.3em] text-foreground/90">
           <span>004</span>
           <span className="h-px w-10 bg-foreground/30" />
           <span>FLOW / 依頼の流れ</span>
@@ -76,13 +76,13 @@ export function Flow() {
                   {s.no}
                 </span>
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.3em] text-foreground/70">
+                  <p className="font-mono text-[11px] tracking-[0.3em] text-foreground/85">
                     {s.en}
                   </p>
                   <h3 className="font-sans font-bold text-base">{s.jp}</h3>
                 </div>
               </div>
-              <p className="mt-3 text-xs md:text-sm leading-relaxed text-foreground/85">
+              <p className="mt-3 text-[13px] md:text-sm leading-relaxed text-foreground/85">
                 {s.body}
               </p>
             </li>
@@ -90,11 +90,11 @@ export function Flow() {
         </ol>
 
         <div className="mt-12 border border-white/30 bg-black/30 p-6 backdrop-blur-sm md:p-8">
-          <div className="mb-5 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] text-foreground/80">
+          <div className="mb-5 flex items-center gap-3 font-mono text-[11px] tracking-[0.25em] text-foreground/90">
             <span className="inline-block h-[6px] w-[6px] bg-accent shadow-[0_0_8px_rgba(176,38,255,0.9)]" />
             RECEPTION / PAYMENT / DEADLINE
           </div>
-          <div className="grid gap-5 text-sm leading-loose text-foreground/90 md:grid-cols-3">
+          <div className="grid gap-5 text-[15px] leading-loose text-foreground/90 md:grid-cols-3">
             <p>
               まずは内容や素材を確認したうえで、対応可否・金額・納期をご案内します。
             </p>

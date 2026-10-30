@@ -30,7 +30,7 @@ export function Splash() {
         >
           <div className="flex flex-col items-center gap-6 px-8">
             <motion.div
-              className="flex items-baseline gap-3 font-mono text-[10px] tracking-[0.4em] text-foreground/90"
+              className="flex items-baseline gap-3 font-mono text-[11px] tracking-[0.4em] text-foreground/90"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -66,7 +66,7 @@ export function Splash() {
             </div>
 
             <motion.div
-              className="font-mono text-[10px] tracking-[0.4em] text-foreground/70"
+              className="font-mono text-[11px] tracking-[0.4em] text-foreground/85"
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 1, 0.5] }}
               transition={{ duration: 1.4, delay: 0.2, times: [0, 0.2, 0.85, 1] }}
