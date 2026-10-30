@@ -98,8 +98,8 @@ gtag('config', 'G-9VCCFHNYGL');`}
           {children}
         </main>
 
-        <footer className="relative z-10 border-t border-white/25 py-8 font-mono text-[10px] tracking-[0.3em] text-foreground/60">
-          <p className="mb-6 text-center font-mincho text-sm tracking-[0.15em] text-foreground/80">
+        <footer className="relative z-10 border-t border-white/25 py-8 font-mono text-[11px] tracking-[0.3em] text-foreground/85">
+          <p className="mb-6 text-center font-mincho text-[15px] tracking-[0.15em] text-foreground/90">
             忘れられない音にする。
           </p>
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 sm:flex-row sm:justify-between">

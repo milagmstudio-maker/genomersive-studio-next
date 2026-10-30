@@ -37,7 +37,7 @@ export function SelectedWorks() {
         <div className="mt-10 flex justify-end">
           <Link
             href="/works"
-            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-xs tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[13px] tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
           >
             VIEW ALL WORKS
             <span className="transition-transform group-hover:translate-x-1">

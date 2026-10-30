@@ -19,15 +19,15 @@ export default function NotesPage() {
       <div className="mx-auto max-w-6xl">
         {/* 見出しは2列の上に置く（右の本文と重ならない）。大きさは Works / Services の見出しに合わせる */}
         <div className="mb-12 lg:mb-16">
-          <p className="font-mono text-[10px] tracking-[0.34em] text-accent-cyan">POLICY / BEFORE INQUIRY</p>
+          <p className="font-mono text-[11px] tracking-[0.34em] text-accent-cyan">POLICY / BEFORE INQUIRY</p>
           <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-[-0.055em] text-foreground">Notes<span className="text-accent-grad">.</span></h1>
         </div>
       <div className="grid gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.28fr)] lg:gap-20">
         <header className="self-start lg:sticky lg:top-24">
           <p className="font-mincho text-xl leading-[1.9] tracking-[0.06em] text-foreground md:text-2xl">ご依頼に対する留意事項</p>
-          <p className="mt-5 max-w-md text-sm leading-8 text-foreground/70">ご相談前に確認していただきたい内容をまとめています。</p>
-          <p className="mt-8 font-mono text-[10px] tracking-[0.18em] text-foreground/45">最終更新日：2026年8月31日</p>
-          <Link href="/contact" className="mt-10 inline-flex min-h-11 items-center font-mono text-[10px] tracking-[0.2em] text-accent-cyan transition-colors hover:text-foreground">← CONTACTへ戻る</Link>
+          <p className="mt-5 max-w-md text-[15px] leading-8 text-foreground/85">ご相談前に確認していただきたい内容をまとめています。</p>
+          <p className="mt-8 font-mono text-[11px] tracking-[0.18em] text-foreground/85">最終更新日：2026年8月31日</p>
+          <Link href="/contact" className="mt-10 inline-flex min-h-11 items-center font-mono text-[11px] tracking-[0.2em] text-accent-cyan transition-colors hover:text-foreground">← CONTACTへ戻る</Link>
         </header>
 
         <div className="border border-white/15 bg-[#060b15]/90 px-5 py-3 shadow-[0_30px_90px_rgba(0,0,0,0.32)] sm:px-8 md:px-10">
@@ -79,10 +79,10 @@ function NoteSection({ index, title, children, last = false }: { index: string; 
   return (
     <section className={last ? "py-9" : "border-b border-white/15 py-9"}>
       <div className="grid gap-4 sm:grid-cols-[40px_1fr] sm:gap-5">
-        <span className="font-mono text-[10px] tracking-[0.16em] text-accent-text">{index}</span>
+        <span className="font-mono text-[11px] tracking-[0.16em] text-accent-text">{index}</span>
         <div>
           <h2 className="font-mincho text-lg leading-8 tracking-[0.04em] text-foreground md:text-xl">{title}</h2>
-          <div className="mt-4 text-sm leading-8 text-foreground/72 md:text-[15px]">{children}</div>
+          <div className="mt-4 text-[15px] leading-8 text-foreground/85 md:text-[15px]">{children}</div>
         </div>
       </div>
     </section>

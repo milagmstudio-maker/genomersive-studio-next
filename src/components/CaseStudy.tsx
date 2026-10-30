@@ -26,7 +26,7 @@ export function CaseStudy() {
 
           <div className="p-6 md:p-9">
             <p
-              className="font-mono text-[10px] tracking-[0.28em]"
+              className="font-mono text-[11px] tracking-[0.28em]"
               style={{ color: "var(--accent-cream)" }}
             >
               PRODUCE / VOCAL MIX / OBS AUDIO / CHANNEL DESIGN
@@ -34,18 +34,18 @@ export function CaseStudy() {
             <h3 className="mt-3 font-sans font-bold text-xl md:text-2xl leading-snug">
               にじゅな — 「忘れられない歌手」を、設計する。
             </h3>
-            <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/90">
+            <p className="mt-4 text-[15px] md:text-base leading-relaxed text-foreground/90">
               歌ってみたのMixだけではなく、配信音響・チャンネル構造・リリース戦略まで。一人のVTuberの「声」を起点に、活動全体を設計している現在進行形のプロジェクト。
             </p>
             <p
-              className="mt-4 border-l-2 pl-4 font-mincho text-sm md:text-base leading-relaxed text-foreground/95"
+              className="mt-4 border-l-2 pl-4 font-mincho text-[15px] md:text-base leading-relaxed text-foreground/95"
               style={{ borderColor: "var(--accent-cream)" }}
             >
               2026年6月、歌のための新チャンネルが始動しました。
             </p>
             <Link
               href="/case/nijyuna"
-              className="group mt-4 inline-flex items-center gap-2 py-4 font-mono text-xs tracking-[0.22em] hover:text-foreground transition-colors"
+              className="group mt-4 inline-flex items-center gap-2 py-4 font-mono text-[13px] tracking-[0.22em] hover:text-foreground transition-colors"
               style={{ color: "var(--accent-cream)" }}
             >
               READ CASE

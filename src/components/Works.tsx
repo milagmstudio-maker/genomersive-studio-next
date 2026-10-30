@@ -72,10 +72,10 @@ export function Works({ category }: { category?: WorkCategory }) {
                 scroll={false}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "relative px-4 py-2 font-mono text-[11px] tracking-[0.3em] transition-colors",
+                  "relative px-4 py-2 font-mono text-[12px] tracking-[0.3em] transition-colors",
                   active
                     ? "text-foreground"
-                    : "text-foreground/70 hover:text-foreground"
+                    : "text-foreground/85 hover:text-foreground"
                 )}
               >
                 {c}
@@ -93,7 +93,7 @@ export function Works({ category }: { category?: WorkCategory }) {
 
         {/* Grid */}
         {paginated.length === 0 ? (
-          <p className="mt-12 text-center font-mono text-xs tracking-[0.3em] text-foreground/70">
+          <p className="mt-12 text-center font-mono text-[13px] tracking-[0.3em] text-foreground/85">
             NO ITEMS IN THIS CATEGORY
           </p>
         ) : (
@@ -105,7 +105,7 @@ export function Works({ category }: { category?: WorkCategory }) {
         )}
 
         {totalPages > 1 && (
-          <nav className="mt-16 flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.25em]">
+          <nav className="mt-16 flex items-center justify-center gap-2 font-mono text-[12px] tracking-[0.25em]">
             {safePage > 1 ? (
               <button
                 onClick={() => goToPage(safePage - 1)}
@@ -114,7 +114,7 @@ export function Works({ category }: { category?: WorkCategory }) {
                 ← PREV
               </button>
             ) : (
-              <span className="px-3 py-2 text-foreground/50">← PREV</span>
+              <span className="px-3 py-2 text-foreground/85">← PREV</span>
             )}
 
             <div className="flex items-center gap-1">
@@ -145,7 +145,7 @@ export function Works({ category }: { category?: WorkCategory }) {
                 NEXT →
               </button>
             ) : (
-              <span className="px-3 py-2 text-foreground/50">NEXT →</span>
+              <span className="px-3 py-2 text-foreground/85">NEXT →</span>
             )}
           </nav>
         )}

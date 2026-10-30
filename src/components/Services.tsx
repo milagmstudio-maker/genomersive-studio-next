@@ -236,7 +236,7 @@ export function Services() {
 
             <Step no={stepNo()} en="DELIVERY" jp="納期">
               {calc.deliveryLocked && (
-                <p className="mb-4 border border-white/25 bg-black/30 px-4 py-3 font-mono text-[10px] leading-relaxed tracking-[0.15em] text-foreground/75">
+                <p className="mb-4 border border-white/25 bg-black/30 px-4 py-3 font-mono text-[11px] leading-relaxed tracking-[0.15em] text-foreground/85">
                   パックプランをお選びの場合、納期オプションは適用されません。
                 </p>
               )}
@@ -262,23 +262,23 @@ export function Services() {
               layout
               className="border border-white/35 bg-black/60 backdrop-blur-md"
             >
-              <div className="flex items-center justify-between border-b border-white/30 px-4 py-2 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
+              <div className="flex items-center justify-between border-b border-white/30 px-4 py-2 font-mono text-[11px] tracking-[0.25em] text-foreground/90">
                 <span>QUOTE / SUMMARY</span>
                 <span>EST.</span>
               </div>
 
               <div className="p-5 space-y-4 max-h-[60vh] overflow-y-auto">
                 {!calc.hasSelection ? (
-                  <p className="font-mono text-xs tracking-[0.2em] text-foreground/70 text-center py-8">
+                  <p className="font-mono text-[13px] tracking-[0.2em] text-foreground/85 text-center py-8">
                     プランを選択してください
                   </p>
                 ) : (
                   <>
                     {calc.planLines.map((l) => (
-                      <div key={l.id} className="flex justify-between gap-3 text-sm">
+                      <div key={l.id} className="flex justify-between gap-3 text-[15px]">
                         <div className="min-w-0">
                           <p className="truncate">{l.name}</p>
-                          <p className="font-mono text-[10px] tracking-[0.15em] text-foreground/75">
+                          <p className="font-mono text-[11px] tracking-[0.15em] text-foreground/85">
                             {l.category}
                             {l.recurring === "monthly" ? " / monthly" : ""}
                           </p>
@@ -292,7 +292,7 @@ export function Services() {
                     {calc.addonLines.length > 0 && (
                       <div className="border-t border-white/30 pt-4 space-y-2">
                         {calc.addonLines.map((a) => (
-                          <div key={a.id} className="flex justify-between text-sm">
+                          <div key={a.id} className="flex justify-between text-[15px]">
                             <span className="text-foreground">+ {a.name}</span>
                             <span className="font-mono text-foreground">
                               {formatJPY(a.price)}
@@ -302,7 +302,7 @@ export function Services() {
                       </div>
                     )}
 
-                    <div className="border-t border-white/30 pt-4 space-y-2 text-sm">
+                    <div className="border-t border-white/30 pt-4 space-y-2 text-[15px]">
                       <div className="flex justify-between">
                         <span className="text-foreground/90">納期</span>
                         <span className="font-mono">
@@ -320,17 +320,17 @@ export function Services() {
 
               <div className="border-t border-white/35 p-5 bg-black/40">
                 <div className="flex items-baseline justify-between">
-                  <span className="font-mono text-[10px] tracking-[0.3em] text-foreground/85">
+                  <span className="font-mono text-[11px] tracking-[0.3em] text-foreground/85">
                     TOTAL
                   </span>
                   <span className="font-sans text-3xl font-bold tabular-nums">
                     {totalLabel}
                     {showsFrom && (
-                      <span className="ml-1 text-base font-normal text-foreground/80">〜</span>
+                      <span className="ml-1 text-base font-normal text-foreground/90">〜</span>
                     )}
                   </span>
                 </div>
-                <p className="mt-2 font-mono text-[10px] tracking-[0.2em] text-foreground/70">
+                <p className="mt-2 font-mono text-[11px] tracking-[0.2em] text-foreground/85">
                   ※ 表示価格は概算です。実額はヒアリング後にご提案します。
                 </p>
 
@@ -338,10 +338,10 @@ export function Services() {
                   onClick={goToContact}
                   disabled={!calc.hasSelection}
                   className={cn(
-                    "mt-5 group flex w-full items-center justify-center gap-3 border px-5 py-3 font-mono text-[11px] tracking-[0.3em] transition-all",
+                    "mt-5 group flex w-full items-center justify-center gap-3 border px-5 py-3 font-mono text-[12px] tracking-[0.3em] transition-all",
                     calc.hasSelection
                       ? "border-accent bg-accent/10 text-foreground hover:bg-accent/20 hover:shadow-[0_0_24px_rgba(176,38,255,0.4)]"
-                      : "border-white/30 text-foreground/60 cursor-not-allowed"
+                      : "border-white/30 text-foreground/85 cursor-not-allowed"
                   )}
                 >
                   GET A QUOTE
@@ -365,19 +365,19 @@ export function Services() {
       >
         <div className="flex items-center justify-between gap-4">
           <div className="min-w-0">
-            <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/75">
+            <p className="font-mono text-[11px] tracking-[0.25em] text-foreground/85">
               EST. {calc.planLines.length}件
             </p>
             <p className="font-sans text-xl font-bold tabular-nums">
               {totalLabel}
-              {showsFrom && <span className="ml-1 text-sm font-normal text-foreground/80">〜</span>}
+              {showsFrom && <span className="ml-1 text-[15px] font-normal text-foreground/90">〜</span>}
             </p>
           </div>
           <button
             type="button"
             onClick={goToContact}
             tabIndex={calc.hasSelection && summaryBelow ? 0 : -1}
-            className="group flex shrink-0 items-center gap-2 border border-accent bg-accent/10 px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-foreground"
+            className="group flex shrink-0 items-center gap-2 border border-accent bg-accent/10 px-4 py-3 font-mono text-[12px] tracking-[0.2em] text-foreground"
           >
             この内容で相談する
             <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -410,10 +410,10 @@ function Step({
             {no}
           </span>
           <div className="flex flex-col gap-1">
-            <span className="font-mono text-[11px] tracking-[0.3em] text-foreground/95">
+            <span className="font-mono text-[12px] tracking-[0.3em] text-foreground/95">
               {en}
             </span>
-            <span className="font-sans text-[11px] text-foreground/75">{jp}</span>
+            <span className="font-sans text-[12px] text-foreground/85">{jp}</span>
           </div>
         </div>
         <span
@@ -487,11 +487,11 @@ function Tile({
       />
 
       <div className="font-sans font-bold leading-tight">{title}</div>
-      <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent-text">
+      <div className="mt-1 font-mono text-[11px] tracking-[0.18em] text-accent-text">
         {priceLabel}
       </div>
       {description && (
-        <p className="mt-3 text-xs leading-relaxed text-foreground/90">
+        <p className="mt-3 text-[13px] leading-relaxed text-foreground/90">
           {description}
         </p>
       )}
@@ -540,17 +540,17 @@ function PlanTile({
           )}
         />
         <div className="font-sans font-bold leading-tight">{plan.name}</div>
-        <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-accent-text">
+        <div className="mt-1 font-mono text-[11px] tracking-[0.18em] text-accent-text">
           {priceLabel}
         </div>
-        <p className="mt-3 text-xs leading-relaxed text-foreground/90">
+        <p className="mt-3 text-[13px] leading-relaxed text-foreground/90">
           {plan.description}
         </p>
       </button>
 
       {selected && plan.extra && (
         <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/30 pt-3">
-          <span className="font-mono text-[10px] tracking-[0.2em] text-foreground/85">
+          <span className="font-mono text-[11px] tracking-[0.2em] text-foreground/85">
             {plan.extra.label}
           </span>
           <div className="flex items-center gap-2">

@@ -21,7 +21,7 @@ export function SectionLabel({ index, kicker, title, lead, as: Heading = "h2" }:
   return (
     <header className="mb-16 md:mb-24">
       <div
-        className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80"
+        className="flex items-center gap-4 font-mono text-[11px] tracking-[0.3em] text-foreground/90"
       >
         <span>{index}</span>
         <span
@@ -39,7 +39,7 @@ export function SectionLabel({ index, kicker, title, lead, as: Heading = "h2" }:
         )}
       </Heading>
       {lead && (
-        <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+        <p className="mt-6 font-mincho text-[15px] md:text-base leading-relaxed text-foreground/85">
           {lead}
         </p>
       )}

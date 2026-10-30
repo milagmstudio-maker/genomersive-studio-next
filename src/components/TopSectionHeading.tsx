@@ -15,7 +15,7 @@ type Props = {
 export function TopSectionHeading({ index, en, ja, lead }: Props) {
   return (
     <div className={lead ? "mb-12" : "mb-10"}>
-      <div className="flex items-center gap-4 font-mono text-[11px] text-foreground/85" aria-hidden="true">
+      <div className="flex items-center gap-4 font-mono text-[12px] text-foreground/85" aria-hidden="true">
         <span>{index}</span>
         <span className="h-px w-10 bg-foreground/30" />
         <span>{ja}</span>

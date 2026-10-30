@@ -77,7 +77,7 @@ export function WorkCard({ work, index, onOpen }: Props) {
 
           {/* 常に見える再生の印。ホバーできないスマホでも「押すと聴ける」と分かるように。
               ホバー時は中央の大きな再生ボタンに役目を譲って消える */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-2 border border-white/35 bg-black/60 px-2.5 py-1 font-mono text-[10px] tracking-[0.25em] text-foreground backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-0">
+          <div className="absolute bottom-3 left-3 flex items-center gap-2 border border-white/35 bg-black/60 px-2.5 py-1 font-mono text-[11px] tracking-[0.25em] text-foreground backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-0">
             <svg width="8" height="8" viewBox="0 0 20 20" aria-hidden>
               <path d="M4 2 L18 10 L4 18 Z" fill="currentColor" />
             </svg>
@@ -85,12 +85,12 @@ export function WorkCard({ work, index, onOpen }: Props) {
           </div>
 
           {/* Top-left category tag */}
-          <div className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.25em] text-foreground bg-black/60 backdrop-blur-sm border border-white/30 px-2 py-1">
+          <div className="absolute top-3 left-3 font-mono text-[11px] tracking-[0.25em] text-foreground bg-black/60 backdrop-blur-sm border border-white/30 px-2 py-1">
             {work.category}
           </div>
 
           {/* Top-right index — スマホの2列表示ではカテゴリタグと重なるので隠す */}
-          <div className="absolute top-3 right-3 hidden sm:block font-mono text-[10px] tracking-[0.25em] text-foreground/90">
+          <div className="absolute top-3 right-3 hidden sm:block font-mono text-[11px] tracking-[0.25em] text-foreground/90">
             {work.id.toUpperCase()}
           </div>
         </div>
@@ -98,7 +98,7 @@ export function WorkCard({ work, index, onOpen }: Props) {
         {/* Caption */}
         <div className="p-4 border-t border-white/25">
           {/* 和名の固有名詞が入るため字間は詰める。0.25emだと語が解ける */}
-          <p className="font-mono text-[10px] tracking-[0.1em] text-foreground/80">
+          <p className="font-mono text-[11px] tracking-[0.1em] text-foreground/90">
             {work.artist} · {work.year}
           </p>
           <h3 className="mt-1.5 line-clamp-2 font-sans text-base md:text-lg font-medium leading-snug">

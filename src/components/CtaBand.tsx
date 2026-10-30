@@ -4,7 +4,7 @@ export function CtaBand() {
   return (
     <section className="relative z-10 px-6 md:px-12 lg:px-20 py-24 md:py-32 border-t border-white/25">
       <div className="mx-auto max-w-5xl text-center">
-        <p className="font-mono text-[11px] tracking-[0.3em] text-foreground/80">
+        <p className="font-mono text-[12px] tracking-[0.3em] text-foreground/90">
           GET IN TOUCH
         </p>
         <h2
@@ -23,7 +23,7 @@ export function CtaBand() {
           <Link
             href="/contact"
             data-track="ctaband_contact"
-            className="group flex items-center justify-center gap-3 border border-foreground bg-foreground px-10 py-4 font-mono text-xs tracking-[0.24em] text-background hover:bg-accent-cream hover:border-accent-cream transition-all w-full sm:w-auto"
+            className="group flex items-center justify-center gap-3 border border-foreground bg-foreground px-10 py-4 font-mono text-[13px] tracking-[0.24em] text-background hover:bg-accent-cream hover:border-accent-cream transition-all w-full sm:w-auto"
           >
             相談・依頼する
             <span className="transition-transform group-hover:translate-x-1">
@@ -33,7 +33,7 @@ export function CtaBand() {
           <Link
             href="/services"
             data-track="ctaband_services"
-            className="group flex items-center justify-center gap-3 border border-white/35 px-10 py-4 font-mono text-xs tracking-[0.24em] text-foreground/90 hover:border-white/70 hover:text-foreground transition-all w-full sm:w-auto"
+            className="group flex items-center justify-center gap-3 border border-white/35 px-10 py-4 font-mono text-[13px] tracking-[0.24em] text-foreground/90 hover:border-white/70 hover:text-foreground transition-all w-full sm:w-auto"
           >
             料金を確認する
             <span className="transition-transform group-hover:translate-x-1">

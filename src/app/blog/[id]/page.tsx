@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="relative z-10 px-6 md:px-12 pt-32 pb-32">
         <div className="mx-auto max-w-3xl">
           {/* Meta */}
-          <div className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80 mb-6">
+          <div className="flex items-center gap-4 font-mono text-[11px] tracking-[0.3em] text-foreground/90 mb-6">
             <span>{formatDate(post.publishedAt)}</span>
             <span className="h-px w-8 bg-foreground/30" />
             <span className="text-accent-text">{post.category?.[0] ?? ""}</span>
@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
           <BlogCta />
 
           {/* Footer nav */}
-          <div className="mt-20 pt-8 border-t border-white/30 flex justify-between font-mono text-[11px] tracking-[0.3em]">
+          <div className="mt-20 pt-8 border-t border-white/30 flex justify-between font-mono text-[12px] tracking-[0.3em]">
             <Link href="/blog" className="text-foreground hover:text-accent-text transition-colors">
               ← BACK TO LIST
             </Link>

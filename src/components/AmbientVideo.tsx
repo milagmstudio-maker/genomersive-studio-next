@@ -15,9 +15,21 @@ export function AmbientVideo() {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
   // トップは網点で光の量が減るぶん、上にかける幕を薄くして明るさを保つ
+  // 下層ページは本文が主役なので、幕を濃くして網点を気配程度に抑える
   const overlayClass = isHome
     ? "from-background/20 via-background/10 to-background/30"
-    : "from-background/80 via-background/70 to-background/85";
+    : "from-background/92 via-background/90 to-background/94";
+
+  // トップもヒーローを過ぎたら幕を下ろす（網点が本文の真後ろに来て読みにくいため）。
+  // 網点を見せるのはヒーローだけにする
+  const [pastHero, setPastHero] = useState(false);
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.55);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   // 背景の波は全ページ網点で見せる（5px 間隔の点で切り抜く）。
   // 点のすき間は何も映らず暗くなるので、点を大きめにし、明るさと彩度を上げて補う。
@@ -114,6 +126,11 @@ export function AmbientVideo() {
         src={videoSrc ?? undefined}
       />
       <div className={`absolute inset-0 bg-gradient-to-b ${overlayClass}`} />
+      {isHome && (
+        <div
+          className={`absolute inset-0 bg-background/90 transition-opacity duration-700 ${pastHero ? "opacity-100" : "opacity-0"}`}
+        />
+      )}
     </div>
   );
 }

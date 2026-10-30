@@ -73,7 +73,7 @@ function Player({ work }: { work: Work }) {
       />
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="animate-pulse border border-white/35 bg-black/60 px-4 py-2 font-mono text-[10px] tracking-[0.3em] text-foreground/90">
+          <span className="animate-pulse border border-white/35 bg-black/60 px-4 py-2 font-mono text-[11px] tracking-[0.3em] text-foreground/90">
             LOADING
           </span>
         </div>
@@ -165,7 +165,7 @@ export function WorkModal({ work, onClose }: Props) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header bar — file-style */}
-            <div className="flex items-center justify-between border border-white/35 border-b-0 bg-black/70 px-4 py-2 font-mono text-[10px] tracking-[0.25em] text-foreground">
+            <div className="flex items-center justify-between border border-white/35 border-b-0 bg-black/70 px-4 py-2 font-mono text-[11px] tracking-[0.25em] text-foreground">
               <span className="truncate">
                 {work.id.toUpperCase()} / {work.title.replace(/\s+/g, "_")}.MP4
               </span>
@@ -185,7 +185,7 @@ export function WorkModal({ work, onClose }: Props) {
             <div className="border border-white/35 border-t-0 bg-black/70 px-4 py-4">
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                 <div className="min-w-0">
-                  <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] text-foreground/90">
+                  <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.25em] text-foreground/90">
                     <span className="inline-block h-[3px] w-[3px] bg-accent shadow-[0_0_6px_rgba(176,38,255,0.8)]" />
                     <span>{work.category}</span>
                     <span>·</span>
@@ -197,12 +197,12 @@ export function WorkModal({ work, onClose }: Props) {
                   >
                     {work.title}
                   </h3>
-                  <p className="mt-1 text-sm text-foreground">{work.artist}</p>
+                  <p className="mt-1 text-[15px] text-foreground">{work.artist}</p>
                 </div>
                 {/* 「いい音だな」と思った瞬間を逃さない依頼導線 */}
                 <Link
                   href="/contact"
-                  className="group flex shrink-0 items-center justify-center gap-3 border border-accent bg-accent/10 px-5 py-3 font-mono text-[10px] tracking-[0.25em] text-foreground hover:bg-accent/20 hover:shadow-[0_0_24px_rgba(176,38,255,0.4)] transition-all"
+                  className="group flex shrink-0 items-center justify-center gap-3 border border-accent bg-accent/10 px-5 py-3 font-mono text-[11px] tracking-[0.25em] text-foreground hover:bg-accent/20 hover:shadow-[0_0_24px_rgba(176,38,255,0.4)] transition-all"
                 >
                   このクオリティで依頼する
                   <span className="transition-transform group-hover:translate-x-1">

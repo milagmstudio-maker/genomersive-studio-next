@@ -36,7 +36,7 @@ export default async function BlogIndex({ searchParams }: Props) {
       <section className="relative z-10 px-6 md:px-12 lg:px-20 pt-32 pb-32">
         <div className="mx-auto max-w-7xl">
           <header className="mb-16 md:mb-24">
-            <div className="flex items-center gap-4 font-mono text-[10px] tracking-[0.3em] text-foreground/80">
+            <div className="flex items-center gap-4 font-mono text-[11px] tracking-[0.3em] text-foreground/90">
               <span>004</span>
               <span className="h-px w-10 bg-foreground/30" />
               <span>JOURNAL & TIPS</span>
@@ -44,7 +44,7 @@ export default async function BlogIndex({ searchParams }: Props) {
             <h1 className="mt-5 font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tight">
               Blog<span className="text-accent-grad">.</span>
             </h1>
-            <p className="mt-6 font-mincho text-sm md:text-base leading-relaxed text-foreground/85">
+            <p className="mt-6 font-mincho text-[15px] md:text-base leading-relaxed text-foreground/85">
               読むだけで音が良くなる、を目指して書いています。
             </p>
           </header>
@@ -63,11 +63,11 @@ export default async function BlogIndex({ searchParams }: Props) {
           </div>
 
           {fetchError ? (
-            <p className="font-mono text-xs tracking-[0.2em] text-foreground/70">
+            <p className="font-mono text-[13px] tracking-[0.2em] text-foreground/85">
               記事の読み込みに失敗しました
             </p>
           ) : posts.length === 0 ? (
-            <p className="font-mono text-xs tracking-[0.2em] text-foreground/70 py-12 text-center">
+            <p className="font-mono text-[13px] tracking-[0.2em] text-foreground/85 py-12 text-center">
               該当する記事がありません
             </p>
           ) : (
@@ -78,16 +78,16 @@ export default async function BlogIndex({ searchParams }: Props) {
                     href={`/blog/${p.id}`}
                     className="group grid grid-cols-1 md:grid-cols-[120px_120px_1fr_24px] items-center gap-4 md:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
                   >
-                    <span className="font-mono text-[11px] tracking-[0.25em] text-foreground/75">
+                    <span className="font-mono text-[12px] tracking-[0.25em] text-foreground/85">
                       {formatDate(p.publishedAt)}
                     </span>
-                    <span className="font-mono text-[10px] tracking-[0.25em] text-accent-text">
+                    <span className="font-mono text-[11px] tracking-[0.25em] text-accent-text">
                       {p.category?.[0] ?? "—"}
                     </span>
                     <h2 className="font-sans font-medium text-base md:text-lg leading-snug">
                       {p.title}
                     </h2>
-                    <span className="hidden md:block text-foreground/70 group-hover:text-accent-text group-hover:translate-x-1 transition-all">
+                    <span className="hidden md:block text-foreground/85 group-hover:text-accent-text group-hover:translate-x-1 transition-all">
                       →
                     </span>
                   </Link>
@@ -113,10 +113,10 @@ function CategoryLink({
   return (
     <Link
       href={href}
-      className={`relative px-4 py-2 font-mono text-[11px] tracking-[0.3em] transition-colors ${
+      className={`relative px-4 py-2 font-mono text-[12px] tracking-[0.3em] transition-colors ${
         active
           ? "text-foreground"
-          : "text-foreground/70 hover:text-foreground"
+          : "text-foreground/85 hover:text-foreground"
       }`}
     >
       {label}

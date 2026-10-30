@@ -62,20 +62,20 @@ export function ServicesTeaser() {
                 className="group grid grid-cols-[1fr_auto] sm:grid-cols-[180px_1fr_110px_24px] items-center gap-x-4 gap-y-1 sm:gap-8 py-6 hover:bg-accent/[0.04] px-3 -mx-3 transition-colors"
               >
                 <div>
-                  <p className="font-mono text-[11px] tracking-[0.22em] text-foreground/80">
+                  <p className="font-mono text-[12px] tracking-[0.22em] text-foreground/90">
                     {s.en}
                   </p>
                   <p className="font-sans font-bold text-base md:text-lg leading-snug">
                     {s.jp}
                   </p>
                 </div>
-                <p className="col-span-2 sm:col-span-1 row-start-2 sm:row-start-auto text-sm md:text-base leading-relaxed text-foreground/90">
+                <p className="col-span-2 sm:col-span-1 row-start-2 sm:row-start-auto text-[15px] md:text-base leading-relaxed text-foreground/90">
                   {s.description}
                 </p>
-                <p className="font-mono text-sm text-accent-text text-right tabular-nums">
+                <p className="font-mono text-[15px] text-accent-text text-right tabular-nums">
                   {s.price}
                 </p>
-                <span className="hidden sm:block text-foreground/70 group-hover:text-accent-text group-hover:translate-x-1 transition-all text-right">
+                <span className="hidden sm:block text-foreground/85 group-hover:text-accent-text group-hover:translate-x-1 transition-all text-right">
                   →
                 </span>
               </Link>
@@ -86,7 +86,7 @@ export function ServicesTeaser() {
         <div className="mt-8 flex justify-end">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-xs tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
+            className="group inline-flex items-center gap-2 py-4 -my-3 font-mono text-[13px] tracking-[0.22em] text-foreground/90 hover:text-accent-text transition-colors"
           >
             料金シミュレーターで概算を出す
             <span className="transition-transform group-hover:translate-x-1">
