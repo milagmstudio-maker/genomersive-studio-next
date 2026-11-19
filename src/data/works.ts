@@ -205,6 +205,14 @@ export const WORKS: Work[] = [
     year: 2026,
   },
   {
+    id: "w-045",
+    title: "【お知らせ有】藍来いあ. cover live #27 ~㊗️チャンネル登録7000人突破記念編~",
+    artist: "藍来いあ.",
+    category: "OBS AUDIO",
+    youtubeId: "TcV-Ad_P-WA",
+    year: 2026,
+  },
+  {
     id: "w-013",
     title: "OBS音響調整のbefore or after",
     artist: "にじゅな",
